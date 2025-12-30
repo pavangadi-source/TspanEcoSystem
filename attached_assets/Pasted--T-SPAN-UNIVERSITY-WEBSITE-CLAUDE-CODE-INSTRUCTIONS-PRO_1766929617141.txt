@@ -1,0 +1,1487 @@
+# T-SPAN UNIVERSITY WEBSITE - CLAUDE CODE INSTRUCTIONS
+
+## PROJECT OVERVIEW
+Build a modern, responsive website for T-SPAN University (Threat-Sovereign Platform for Autonomous Networks) - a global cybersecurity education institution. The website should attract professional registrations for their 10-weekend hybrid program launching March 15, 2025.
+
+---
+
+## TARGET AUDIENCE
+- Cybersecurity professionals seeking advanced training
+- Students interested in operational cybersecurity
+- Academic faculty and researchers
+- Enterprise partners
+- Government stakeholders
+
+---
+
+## WEBSITE OBJECTIVES
+1. Drive registrations before February 15, 2025 deadline
+2. Communicate T-SPAN's unique value proposition (live infrastructure vs. theoretical training)
+3. Establish credibility through institutional partnerships
+4. Provide clear program information and pricing
+5. Enable easy registration process
+
+---
+
+## TECHNICAL STACK RECOMMENDATION
+
+### Option 1: Modern Single-Page Application (RECOMMENDED)
+- **Framework**: React with Next.js 14+ (App Router)
+- **Styling**: Tailwind CSS
+- **Animations**: Framer Motion
+- **Icons**: React Icons + Lucide React
+- **Forms**: React Hook Form + Zod validation
+- **Deployment**: Vercel (zero-config)
+
+### Option 2: Lightweight Static Site
+- **Base**: HTML5 + CSS3 + Vanilla JavaScript
+- **Styling**: Custom CSS with CSS Variables
+- **Animations**: AOS (Animate On Scroll)
+- **Icons**: Font Awesome / Iconify
+- **Forms**: HTML5 validation + EmailJS for submission
+
+---
+
+## FREE VECTOR/ICON/IMAGE RESOURCES
+
+### STEP 1: Download Cybersecurity-Themed Vectors & Icons
+
+Execute these downloads using curl/wget in Claude Code:
+
+#### Undraw Illustrations (SVG - Open Source)
+```bash
+# Cybersecurity & Technology themed illustrations
+wget -O assets/images/hero-security.svg "https://undraw.co/api/illustrations/security_on"
+wget -O assets/images/developer.svg "https://undraw.co/api/illustrations/developer_activity"
+wget -O assets/images/data-analysis.svg "https://undraw.co/api/illustrations/data_analysis"
+wget -O assets/images/server.svg "https://undraw.co/api/illustrations/server_cluster"
+wget -O assets/images/education.svg "https://undraw.co/api/illustrations/online_learning"
+wget -O assets/images/collaboration.svg "https://undraw.co/api/illustrations/team_collaboration"
+wget -O assets/images/global.svg "https://undraw.co/api/illustrations/around_the_world"
+wget -O assets/images/certification.svg "https://undraw.co/api/illustrations/certification"
+```
+
+#### Heroicons (MIT Licensed - SVG Icons)
+Download from: https://heroicons.com/
+```bash
+# Download heroicons package
+npm install @heroicons/react
+# Or use CDN in HTML: https://cdn.jsdelivr.net/npm/heroicons@2.0.18/24/outline/
+```
+
+Common icons needed:
+- Shield (security)
+- Academic cap (education)
+- Globe (global reach)
+- Server (infrastructure)
+- Chart bar (analytics)
+- Users (community)
+- Lightning bolt (performance)
+- Check badge (certification)
+
+#### Lucide Icons (ISC License - React/Vue/Angular)
+```bash
+npm install lucide-react
+# Or CDN: https://cdn.jsdelivr.net/npm/lucide-static@latest/
+```
+
+#### Font Awesome (Free Icons)
+```bash
+# Via CDN
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+```
+
+#### SVG Repo (CC0 License - Free for Commercial Use)
+Download URLs:
+```bash
+# Network & Security Icons
+wget -O assets/icons/network.svg "https://www.svgrepo.com/download/513276/network.svg"
+wget -O assets/icons/shield-check.svg "https://www.svgrepo.com/download/513363/shield-check.svg"
+wget -O assets/icons/server.svg "https://www.svgrepo.com/download/513357/server.svg"
+wget -O assets/icons/cloud-security.svg "https://www.svgrepo.com/download/513089/cloud-lock.svg"
+wget -O assets/icons/ai-brain.svg "https://www.svgrepo.com/download/513014/brain.svg"
+wget -O assets/icons/code.svg "https://www.svgrepo.com/download/513103/code.svg"
+wget -O assets/icons/globe.svg "https://www.svgrepo.com/download/513180/globe.svg"
+wget -O assets/icons/certificate.svg "https://www.svgrepo.com/download/513052/certificate.svg"
+```
+
+#### Iconify (Unified Icon Framework - 200k+ icons)
+```bash
+npm install @iconify/react
+# Or use API: https://api.iconify.design/
+```
+
+Collections to use:
+- `mdi:` (Material Design Icons)
+- `carbon:` (IBM Carbon Design)
+- `ph:` (Phosphor Icons)
+- `tabler:` (Tabler Icons)
+
+#### Free Stock Photos (High-Quality)
+
+**Unsplash API** (Free for unlimited use):
+```bash
+# Cybersecurity themed photos
+wget -O assets/images/tech-bg-1.jpg "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1920&q=80"
+wget -O assets/images/tech-bg-2.jpg "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1920&q=80"
+wget -O assets/images/server-room.jpg "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1920&q=80"
+wget -O assets/images/data-center.jpg "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1920&q=80"
+```
+
+**Pexels API** (Free commercial use):
+```bash
+# Network/technology backgrounds
+wget -O assets/images/network-cables.jpg "https://images.pexels.com/photos/1148820/pexels-photo-1148820.jpeg?auto=compress&cs=tinysrgb&w=1920"
+```
+
+#### Pattern Backgrounds
+
+**SVG Backgrounds** (Free, customizable):
+Generate from: https://www.svgbackgrounds.com/
+
+```bash
+# Topography pattern for hero section
+wget -O assets/patterns/topography.svg "https://www.svgbackgrounds.com/download/topography.svg"
+
+# Circuit board pattern
+wget -O assets/patterns/circuit-board.svg "https://www.svgbackgrounds.com/download/circuit-board.svg"
+```
+
+**Hero Patterns** (MIT License):
+Website: https://heropatterns.com/
+Download patterns as CSS or SVG
+
+---
+
+## WEBSITE STRUCTURE & CONTENT
+
+### Page Sections (Single Page Layout Recommended)
+
+#### 1. NAVIGATION BAR (Sticky)
+**Content:**
+- Logo: "T-SPAN UNIVERSITY" (use cybersecurity shield icon)
+- Menu items: Home | About | Program | Faculty | Partners | Register
+- CTA Button: "Register Now" (prominent color)
+- Mobile hamburger menu
+
+**Design Notes:**
+- Glassmorphism effect (semi-transparent background with backdrop blur)
+- Shadow on scroll
+- Smooth scroll navigation
+
+#### 2. HERO SECTION
+**Headline:** 
+"The World's First Live-Infrastructure Cybersecurity University"
+
+**Subheadline:**
+"Train on production-grade sovereign cyber infrastructure. Learn how nations defend themselves in real time."
+
+**Key Metrics Display:**
+- Launch Date: March 15, 2025
+- Investment: $2,500 USD/semester
+- Duration: 10 Weekends
+- Target: 5,000 Global Students
+
+**CTAs:**
+- Primary: "Register by Feb 15, 2025" (large button)
+- Secondary: "Download Prospectus" (outline button)
+
+**Visuals:**
+- Hero illustration: cybersecurity/network visualization
+- Animated background: subtle gradient animation or particle effect
+- Optional: Auto-playing background video (data center/network visualization)
+
+**Free Video Resources:**
+- Pexels Videos: https://www.pexels.com/search/videos/cybersecurity/
+- Pixabay Videos: https://pixabay.com/videos/search/technology/
+
+#### 3. PROBLEM STATEMENT
+**Section Title:** "Why Traditional Cybersecurity Education Fails"
+
+**Content Grid (4 columns responsive to 2/1):**
+
+1. **Slideware vs Reality**
+   - Icon: presentation-chart-line
+   - Text: "Universities teach frameworks; attackers operate in milliseconds"
+   
+2. **Vendor Silos**
+   - Icon: lock-closed
+   - Text: "CISSP/CEH teach compliance, not operational defense"
+   
+3. **No Live Infrastructure**
+   - Icon: server-stack
+   - Text: "Students never see production systems until employment"
+   
+4. **Nation-State Threats Ignored**
+   - Icon: shield-exclamation
+   - Text: "Fast-flux networks and DNS tunneling absent from curricula"
+
+**Statistics Panel:**
+- Global unfilled positions: 3.5 Million
+- India gap: 1.5 Million (820,000 immediate)
+- Annual growth: 30% YoY in India
+
+**Visual:** Gradient background with subtle pattern
+
+#### 4. THE T-SPAN DIFFERENCE
+**Section Title:** "What Makes T-SPAN Different"
+
+**Comparison Table (Side-by-side cards):**
+
+| Traditional Education | T-SPAN University |
+|----------------------|-------------------|
+| Simulated labs | **Live production infrastructure** (TCPWave DDI, MISP) |
+| Post-incident analysis | **Real-time attack observation** |
+| Vendor certifications | **Operational competency + placement** |
+| Single campus | **67+ Global PoPs, hybrid delivery** |
+| Theoretical frameworks | **DevSecOps/MLOps pipelines, live SOC** |
+
+**Design:** Use contrasting colors (red/muted for left, green/vibrant for right)
+
+#### 5. GLOBAL INFRASTRUCTURE MAP
+**Section Title:** "T-SPAN Global Cyber Backbone"
+
+**Interactive Map or Static Visualization:**
+- Show 67+ Points of Presence worldwide
+- Highlight key regions: India, US, Europe, Asia-Pacific
+- Animated connection lines between nodes
+
+**Free Map Resources:**
+- Leaflet.js (open source): https://leafletjs.com/
+- D3.js for custom visualizations
+- Static world map SVG: https://www.svgrepo.com/svg/513525/world-map
+
+**Technology Logos (Partners):**
+- TCPWave
+- BITS Pilani
+- DSCI Cyber Centre of Excellence
+- VCNS Global
+- MISP Project
+- Apache Kafka
+
+Use official logos from partner websites or create text-based badges
+
+#### 6. CURRICULUM OVERVIEW
+**Section Title:** "10-Weekend Academic Journey"
+
+**Timeline/Accordion Design:**
+
+**Weekend 1-2:** Infrastructure as Intelligence
+- DNS/DDI Layer, TCPWave Platform
+- Icon: server-stack
+
+**Weekend 3-4:** Threat Intelligence at Scale
+- MISP, STIX/TAXII, Real-time IOC correlation
+- Icon: shield-check
+
+**Weekend 5-6:** Fast-Flux Networks & Adversarial Infrastructure
+- Nation-state threats, ML classifiers
+- Icon: lightning-bolt
+
+**Weekend 7-8:** AI Inside Networks
+- ONNX, Apache Kafka, ML-powered threat detection
+- Icon: cpu-chip
+
+**Weekend 9:** DevSecOps & SOC Operations
+- CI/CD pipeline security, SIEM/SOAR integration
+- Icon: cog
+
+**Weekend 10:** Capstone Project & Certification
+- Real-world deployment, presentation
+- Icon: academic-cap
+
+**Design:** Vertical timeline with alternating left/right content blocks
+
+#### 7. FACULTY SECTION
+**Section Title:** "Learn from Global Experts"
+
+**Faculty Grid (3-4 per row, responsive):**
+
+Each card includes:
+- Photo placeholder (circular avatar)
+- Name
+- Title/Institution
+- Credentials snippet
+
+**Highlighted Faculty:**
+- Dr. Ravin Kumar Jhaala (Founder & Academic Lead)
+- Prof. Ramesh Raskar (MIT Media Lab)
+- Dr. Arpan Kar (IIT Delhi)
+- Dr. Somitra Sanadhya (IIT Kanpur)
+- Dr. Amitava Das (BITS Pilani)
+- Ken Huang (University of San Francisco)
+
+**Avatar Placeholders:**
+Use Dicebear API (free avatars):
+```
+https://api.dicebear.com/7.x/initials/svg?seed=DrRavinJhaala
+```
+
+Or UI Avatars:
+```
+https://ui-avatars.com/api/?name=Ravin+Jhaala&size=200&background=random
+```
+
+#### 8. PROGRAM DETAILS
+**Section Title:** "Program Structure"
+
+**Info Cards (4 columns responsive):**
+
+1. **Format**
+   - Icon: calendar
+   - Text: "Hybrid: On-campus (BITS Pilani Goa) + Global Online"
+
+2. **Duration**
+   - Icon: clock
+   - Text: "10 Weekends (March - May 2025)"
+
+3. **Investment**
+   - Icon: currency-dollar
+   - Text: "$2,500 USD per semester"
+
+4. **Certification**
+   - Icon: badge-check
+   - Text: "Joint credential: BITS Pilani + T-SPAN + DSCI"
+
+**What's Included List:**
+- ✓ Access to live TCPWave infrastructure
+- ✓ MISP threat intelligence platform
+- ✓ Hands-on labs with production systems
+- ✓ DevSecOps pipeline projects
+- ✓ SOC operations training
+- ✓ Industry certification preparation
+- ✓ Placement assistance
+- ✓ Lifetime alumni network access
+
+#### 9. WHO SHOULD APPLY
+**Section Title:** "Is This Program For You?"
+
+**Audience Tabs or Cards:**
+
+**Tab 1: Cybersecurity Professionals**
+- Seeking hands-on operational experience
+- Want to transition from compliance to defense
+- Need skills for SOC analyst, threat hunter roles
+
+**Tab 2: Students & Recent Graduates**
+- Computer Science, IT, or related backgrounds
+- Want practical skills over theoretical knowledge
+- Seeking competitive edge in job market
+
+**Tab 3: Career Changers**
+- IT professionals moving to cybersecurity
+- System admins expanding skill set
+- Software engineers adding security expertise
+
+**Prerequisites:**
+- Basic networking knowledge (TCP/IP, DNS)
+- Familiarity with Linux command line
+- Programming fundamentals (Python preferred)
+- Passion for cybersecurity
+
+#### 10. TESTIMONIALS / SOCIAL PROOF
+**Section Title:** "Join a Global Community"
+
+**Stats Counter (Animated numbers):**
+- 67+ Global Points of Presence
+- 1000+ Billion DNS Queries Processed
+- 102 Countries Served
+- 5,000 Target Students (Semester 1)
+
+**Partner Logos Carousel:**
+- BITS Pilani
+- TCPWave
+- DSCI
+- Government partners
+
+**Future Testimonials Section:**
+(Placeholder for after first cohort)
+
+#### 11. REGISTRATION FORM SECTION
+**Section Title:** "Secure Your Spot – Register by February 15, 2025"
+
+**Form Fields:**
+
+**Personal Information:**
+- Full Name* (text)
+- Email Address* (email validation)
+- Phone Number* (with country code selector)
+- Country* (dropdown)
+- City* (text)
+
+**Professional Background:**
+- Current Role* (dropdown: Student, IT Professional, Cybersecurity Analyst, System Admin, Developer, Other)
+- Years of Experience in IT (dropdown: 0-1, 1-3, 3-5, 5-10, 10+)
+- Current Organization (text, optional)
+
+**Education:**
+- Highest Degree* (dropdown: Bachelor's, Master's, PhD, Diploma, Other)
+- Field of Study* (text)
+- Institution Name (text, optional)
+
+**Technical Background:**
+- Networking Knowledge* (checkboxes: TCP/IP, DNS, Routing, Switching, None)
+- Programming Experience* (checkboxes: Python, JavaScript, Java, C/C++, None)
+- Linux/Unix Experience* (radio: Beginner, Intermediate, Advanced, None)
+- Previous Cybersecurity Training (text area, optional)
+
+**Program Preferences:**
+- Preferred Learning Format* (radio: Hybrid (On-campus + Online), Fully Online)
+- Payment Plan Interest* (radio: Full Payment, Installments)
+
+**Motivation:**
+- Why do you want to join T-SPAN University?* (textarea, 200-500 words)
+- How did you hear about us?* (dropdown: LinkedIn, University Partner, Google Search, Referral, Other)
+
+**Consent:**
+- [ ] I agree to receive program updates via email*
+- [ ] I have read the program terms and conditions*
+
+**Submit Button:** "Submit Application" (large, prominent)
+
+**Form Validation:**
+- Client-side validation (React Hook Form + Zod OR HTML5)
+- Server-side validation (if using backend)
+- Error messages inline
+- Success confirmation page/modal
+
+**Form Submission Options:**
+
+**Option A: Frontend Only (EmailJS)**
+```javascript
+// Free email service for forms
+// Sign up at emailjs.com
+// Sends form data to designated email
+```
+
+**Option B: Backend Integration**
+```javascript
+// POST to API endpoint
+// Store in database (Supabase/Firebase - free tiers)
+// Send confirmation email
+// Integrate with CRM (optional)
+```
+
+**Option C: Google Forms Embed**
+```html
+<!-- Easiest but less customizable -->
+<iframe src="https://docs.google.com/forms/..." />
+```
+
+#### 12. FAQ SECTION
+**Section Title:** "Frequently Asked Questions"
+
+**Accordion/Expandable Cards:**
+
+**Q: What are the prerequisites?**
+A: Basic networking knowledge, Linux familiarity, and programming fundamentals (Python preferred). No prior cybersecurity certification required.
+
+**Q: Is the program fully online?**
+A: Hybrid format. Attend in person at BITS Pilani Goa or join online globally. All sessions recorded.
+
+**Q: What's the time commitment?**
+A: 10 weekends (approximately 16-20 hours per weekend including labs and lectures).
+
+**Q: Is financial aid available?**
+A: Yes, 10% of revenue allocated to scholarships. Merit-based and need-based options available.
+
+**Q: What's the certification?**
+A: Joint credential from BITS Pilani, T-SPAN University, and DSCI Cyber Centre of Excellence.
+
+**Q: Will this help me get a job?**
+A: Yes, we provide placement assistance and direct connections to enterprise partners with 820,000+ unfilled positions in India alone.
+
+**Q: Can I pay in installments?**
+A: Yes, flexible payment plans available. Contact admissions for details.
+
+**Q: What's the class size?**
+A: Limited to 5,000 students globally for Semester 1 to ensure quality interaction.
+
+#### 13. CALL TO ACTION (Final CTA)
+**Design:** Full-width section with gradient background
+
+**Headline:** "Transform Your Cybersecurity Career"
+
+**Subheadline:** "Join 5,000 global professionals learning on live infrastructure"
+
+**Countdown Timer:** Days until February 15, 2025 deadline
+
+**CTAs:**
+- Primary: "Register Now" (jumps to form)
+- Secondary: "Schedule a Call with Admissions"
+
+**Trust Signals:**
+- Secure payment badge
+- Data privacy statement
+- Accreditation logos
+
+#### 14. FOOTER
+**Sections:**
+
+**Column 1: About**
+- T-SPAN University logo
+- Tagline: "Global Institute for Sovereign Cybersecurity & AI-Native Infrastructure"
+- Brief description
+
+**Column 2: Quick Links**
+- Program Details
+- Faculty
+- Partners
+- FAQ
+- Privacy Policy
+- Terms of Service
+
+**Column 3: Resources**
+- Download Prospectus
+- Blog (future)
+- Research Papers
+- News & Updates
+
+**Column 4: Contact**
+- **Admissions:** admissions@tspan.university
+- **Partnerships:** partners@vcnsglobal.com
+- **Media:** media@tspan.university
+- **Website:** www.tspan.university
+
+**Column 5: Follow Us**
+- LinkedIn
+- Twitter/X
+- YouTube
+- GitHub
+
+**Bottom Bar:**
+- Copyright © 2025 T-SPAN University. All rights reserved.
+- Designed by [Your Credit]
+
+**Social Media Icons:**
+Use Lucide/Heroicons or Font Awesome
+
+---
+
+## COLOR SCHEME RECOMMENDATIONS
+
+### Option 1: Cybersecurity Professional (Blue & Green)
+```css
+:root {
+  --primary: #0066FF; /* Electric Blue */
+  --secondary: #00D9FF; /* Cyan */
+  --accent: #00FF88; /* Neon Green */
+  --dark: #0A1628; /* Deep Navy */
+  --dark-2: #152238; /* Navy Blue */
+  --light: #F0F4F8; /* Off White */
+  --text: #E8EEF3; /* Light Gray */
+}
+```
+
+### Option 2: Modern Tech (Purple & Blue)
+```css
+:root {
+  --primary: #6366F1; /* Indigo */
+  --secondary: #8B5CF6; /* Purple */
+  --accent: #F59E0B; /* Amber */
+  --dark: #0F172A; /* Slate 900 */
+  --dark-2: #1E293B; /* Slate 800 */
+  --light: #F8FAFC; /* Slate 50 */
+  --text: #E2E8F0; /* Slate 200 */
+}
+```
+
+### Option 3: Professional Corporate (Navy & Orange)
+```css
+:root {
+  --primary: #1E40AF; /* Blue 800 */
+  --secondary: #3B82F6; /* Blue 500 */
+  --accent: #F97316; /* Orange 500 */
+  --dark: #111827; /* Gray 900 */
+  --dark-2: #1F2937; /* Gray 800 */
+  --light: #F9FAFB; /* Gray 50 */
+  --text: #F3F4F6; /* Gray 100 */
+}
+```
+
+**Recommendation:** Option 1 for tech-forward feel, Option 3 for institutional credibility
+
+---
+
+## TYPOGRAPHY
+
+### Font Pairings (Google Fonts - Free)
+
+**Option 1: Modern Sans-Serif**
+```html
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+```
+- Headings: Inter (700-800 weight)
+- Body: Inter (400-500 weight)
+- Code/Technical: JetBrains Mono
+
+**Option 2: Professional**
+```html
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+```
+- Headings: Poppins (600-800 weight)
+- Body: Roboto (400-500 weight)
+
+**Option 3: Elegant Modern**
+```html
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+```
+- Headings: Space Grotesk
+- Body: Work Sans
+
+---
+
+## ANIMATIONS & INTERACTIONS
+
+### Recommended Libraries
+
+**Framer Motion (React):**
+```bash
+npm install framer-motion
+```
+
+**AOS (Animate On Scroll) - Vanilla JS:**
+```bash
+npm install aos
+# Or CDN
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+```
+
+**GSAP (GreenSock) - Professional animations:**
+```bash
+npm install gsap
+# Or CDN
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+```
+
+### Animation Guidelines
+
+**Hero Section:**
+- Fade in headline with slight upward movement
+- Stagger statistics cards
+- Pulse effect on CTA button
+- Parallax background scroll
+
+**Section Reveals:**
+- Fade in on scroll (AOS or Framer Motion)
+- Stagger children elements
+- Slide in from left/right for comparison tables
+
+**Interactive Elements:**
+- Hover scale on cards (1.02-1.05)
+- Smooth color transitions (200-300ms)
+- Button ripple effects
+- Icon rotations on hover
+
+**Micro-interactions:**
+- Form input focus animations
+- Success/error state transitions
+- Navigation menu smooth slide
+- Tooltip appearances
+
+**Performance:**
+- Use CSS transforms (GPU-accelerated)
+- Lazy load off-screen animations
+- Reduce motion for accessibility (prefers-reduced-motion)
+
+---
+
+## RESPONSIVE DESIGN BREAKPOINTS
+
+```css
+/* Mobile First Approach */
+
+/* Mobile: 320px - 639px (default) */
+
+/* Tablet: 640px - 1023px */
+@media (min-width: 640px) { }
+
+/* Desktop: 1024px - 1279px */
+@media (min-width: 1024px) { }
+
+/* Large Desktop: 1280px+ */
+@media (min-width: 1280px) { }
+
+/* Extra Large: 1536px+ */
+@media (min-width: 1536px) { }
+```
+
+**Mobile Optimizations:**
+- Hamburger navigation
+- Stack all columns
+- Reduce font sizes (clamp)
+- Touch-friendly buttons (min 44px)
+- Simplified hero section
+
+---
+
+## SEO & PERFORMANCE
+
+### Meta Tags
+```html
+<title>T-SPAN University | Live-Infrastructure Cybersecurity Training</title>
+<meta name="description" content="Train on production-grade sovereign cyber infrastructure. Join 5,000 global professionals learning operational cybersecurity. Register by Feb 15, 2025.">
+<meta name="keywords" content="cybersecurity training, DNS security, threat intelligence, MISP, fast flux, SOC operations, BITS Pilani">
+
+<!-- Open Graph -->
+<meta property="og:title" content="T-SPAN University - Cybersecurity Training">
+<meta property="og:description" content="World's first live-infrastructure cybersecurity university">
+<meta property="og:image" content="/og-image.jpg">
+<meta property="og:url" content="https://www.tspan.university">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+```
+
+### Performance Checklist
+- [ ] Lazy load images (loading="lazy")
+- [ ] Optimize images (WebP format, compression)
+- [ ] Minimize JavaScript bundle
+- [ ] Code splitting (Next.js automatic)
+- [ ] CDN for static assets
+- [ ] Gzip/Brotli compression
+- [ ] Cache static resources
+- [ ] Preload critical fonts
+- [ ] Defer non-critical CSS
+
+### Core Web Vitals Targets
+- LCP (Largest Contentful Paint): < 2.5s
+- FID (First Input Delay): < 100ms
+- CLS (Cumulative Layout Shift): < 0.1
+
+---
+
+## ACCESSIBILITY (WCAG 2.1 AA)
+
+- [ ] Semantic HTML5 elements
+- [ ] ARIA labels for icons/buttons
+- [ ] Keyboard navigation support
+- [ ] Focus visible styles
+- [ ] Color contrast ratio 4.5:1 minimum
+- [ ] Alt text for all images
+- [ ] Form labels and error messages
+- [ ] Skip to main content link
+- [ ] Screen reader friendly
+
+```html
+<!-- Example accessible button -->
+<button 
+  aria-label="Register for T-SPAN University"
+  class="cta-button"
+>
+  Register Now
+</button>
+```
+
+---
+
+## DEPLOYMENT OPTIONS
+
+### Option 1: Vercel (Recommended for Next.js)
+```bash
+# Install Vercel CLI
+npm i -g vercel
+
+# Deploy
+vercel --prod
+```
+- Zero-config deployment
+- Automatic HTTPS
+- Global CDN
+- Free SSL certificate
+- Preview deployments
+
+### Option 2: Netlify (Great for Static Sites)
+```bash
+# Install Netlify CLI
+npm i -g netlify-cli
+
+# Deploy
+netlify deploy --prod
+```
+- Form handling built-in
+- Serverless functions
+- Split testing
+- Free tier generous
+
+### Option 3: GitHub Pages (Free Static Hosting)
+```bash
+# Build site
+npm run build
+
+# Deploy via GitHub Actions or manual
+# Configure custom domain
+```
+
+### Option 4: Cloudflare Pages
+- Fast global CDN
+- Unlimited bandwidth
+- Web Analytics included
+- Direct GitHub integration
+
+---
+
+## IMPLEMENTATION CHECKLIST FOR CLAUDE CODE
+
+### Phase 1: Setup & Foundation (1-2 hours)
+- [ ] Initialize project (Next.js or static)
+- [ ] Setup folder structure
+- [ ] Install dependencies
+- [ ] Create assets directory
+- [ ] Download all vectors/icons/images
+- [ ] Configure Tailwind CSS
+- [ ] Setup color scheme and typography
+- [ ] Create layout components (Header, Footer)
+
+### Phase 2: Hero & Navigation (1 hour)
+- [ ] Build sticky navigation
+- [ ] Implement mobile menu
+- [ ] Create hero section with CTA
+- [ ] Add background patterns/animations
+- [ ] Implement smooth scroll
+
+### Phase 3: Content Sections (3-4 hours)
+- [ ] Problem statement section
+- [ ] T-SPAN difference comparison
+- [ ] Global infrastructure map
+- [ ] Curriculum timeline
+- [ ] Faculty grid
+- [ ] Program details cards
+- [ ] Who should apply tabs
+- [ ] Stats counter
+
+### Phase 4: Registration Form (2-3 hours)
+- [ ] Build form structure
+- [ ] Implement validation
+- [ ] Setup form submission (EmailJS/backend)
+- [ ] Create success/error states
+- [ ] Add progress indicators
+- [ ] Test all fields
+
+### Phase 5: FAQ & Footer (1 hour)
+- [ ] Create accordion component
+- [ ] Add all FAQs
+- [ ] Build footer structure
+- [ ] Add social links
+- [ ] Contact information
+
+### Phase 6: Animations & Polish (1-2 hours)
+- [ ] Add scroll animations (AOS/Framer)
+- [ ] Implement hover effects
+- [ ] Add loading states
+- [ ] Create 404 page
+- [ ] Add favicon
+
+### Phase 7: SEO & Performance (1 hour)
+- [ ] Add meta tags
+- [ ] Optimize images
+- [ ] Generate sitemap
+- [ ] Create robots.txt
+- [ ] Test Lighthouse scores
+
+### Phase 8: Testing (1-2 hours)
+- [ ] Cross-browser testing
+- [ ] Mobile responsiveness
+- [ ] Form submission testing
+- [ ] Accessibility audit
+- [ ] Performance testing
+
+### Phase 9: Deployment (30 mins)
+- [ ] Configure deployment platform
+- [ ] Setup custom domain
+- [ ] Enable HTTPS
+- [ ] Configure analytics
+- [ ] Test live site
+
+---
+
+## ADVANCED FEATURES (Optional Enhancements)
+
+### 1. Live Chat Integration
+```html
+<!-- Tawk.to (Free) -->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/YOUR_PROPERTY_ID/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+```
+
+### 2. Analytics
+```javascript
+// Google Analytics 4
+// Plausible Analytics (privacy-friendly)
+// Umami (self-hosted, open source)
+```
+
+### 3. Email Marketing Integration
+- Mailchimp API for newsletter signups
+- ConvertKit for course creators
+- Brevo (formerly Sendinblue) - generous free tier
+
+### 4. CRM Integration
+- HubSpot Forms (free tier)
+- Salesforce Web-to-Lead
+- Zoho CRM
+
+### 5. Payment Gateway (for future phases)
+- Stripe Checkout
+- Razorpay (India-focused)
+- PayPal
+
+### 6. Countdown Timer for Deadline
+```javascript
+// Countdown to February 15, 2025
+const deadline = new Date('2025-02-15T23:59:59').getTime();
+
+function updateCountdown() {
+  const now = new Date().getTime();
+  const distance = deadline - now;
+  
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  
+  return { days, hours, minutes, seconds };
+}
+```
+
+### 7. Interactive Global Map
+```bash
+# Leaflet.js
+npm install leaflet react-leaflet
+
+# Or use Google Maps API
+# Or Mapbox GL JS
+```
+
+### 8. Video Background (Hero Section)
+```html
+<video 
+  autoplay 
+  muted 
+  loop 
+  playsinline 
+  class="hero-video"
+  poster="/video-poster.jpg"
+>
+  <source src="/hero-video.mp4" type="video/mp4">
+  <source src="/hero-video.webm" type="video/webm">
+</video>
+```
+
+### 9. Testimonials Slider
+```bash
+# Swiper.js (best carousel library)
+npm install swiper
+
+# Or use Embla Carousel
+npm install embla-carousel-react
+```
+
+### 10. Blog/News Section (Future)
+- Next.js MDX integration
+- Contentful CMS (free tier)
+- Sanity.io (generous free tier)
+
+---
+
+## CONTENT WRITING GUIDELINES
+
+### Voice & Tone
+- **Professional yet accessible**: Avoid jargon overload
+- **Confident and authoritative**: Backed by facts and partnerships
+- **Action-oriented**: Clear CTAs throughout
+- **Inclusive**: "Join us" not "we offer"
+- **Urgent but not pushy**: Emphasize deadline without desperation
+
+### Copywriting Best Practices
+- **Headlines**: Benefit-driven, clear value proposition
+- **Subheadlines**: Expand on headline, add credibility
+- **Body**: Scannable, short paragraphs, bullet points
+- **CTAs**: Action verbs (Register, Secure, Transform, Join)
+- **Social Proof**: Numbers, partnerships, credentials
+
+### Microcopy
+- Form field placeholders: Helpful examples
+- Button text: Specific (not just "Submit")
+- Error messages: Friendly and actionable
+- Success messages: Celebratory, next steps
+
+---
+
+## ASSET ORGANIZATION
+
+```
+project-root/
+├── public/
+│   ├── favicon.ico
+│   ├── logo.svg
+│   ├── og-image.jpg
+│   └── robots.txt
+├── assets/
+│   ├── images/
+│   │   ├── hero-security.svg
+│   │   ├── developer.svg
+│   │   ├── data-analysis.svg
+│   │   ├── tech-bg-1.jpg
+│   │   └── ...
+│   ├── icons/
+│   │   ├── network.svg
+│   │   ├── shield-check.svg
+│   │   ├── server.svg
+│   │   └── ...
+│   └── patterns/
+│       ├── topography.svg
+│       └── circuit-board.svg
+├── components/
+│   ├── layout/
+│   │   ├── Header.jsx
+│   │   ├── Footer.jsx
+│   │   └── Layout.jsx
+│   ├── sections/
+│   │   ├── Hero.jsx
+│   │   ├── Problem.jsx
+│   │   ├── Difference.jsx
+│   │   ├── Curriculum.jsx
+│   │   ├── Faculty.jsx
+│   │   ├── Registration.jsx
+│   │   └── FAQ.jsx
+│   └── ui/
+│       ├── Button.jsx
+│       ├── Card.jsx
+│       ├── Input.jsx
+│       └── Accordion.jsx
+├── styles/
+│   ├── globals.css
+│   └── animations.css
+├── lib/
+│   ├── constants.js
+│   └── utils.js
+└── pages/ (or app/ for Next.js 13+)
+    ├── index.jsx
+    ├── privacy-policy.jsx
+    └── terms-of-service.jsx
+```
+
+---
+
+## EXAMPLE CODE SNIPPETS
+
+### Next.js Page Structure (Recommended)
+```jsx
+// app/page.jsx (Next.js 14 App Router)
+import Hero from '@/components/sections/Hero'
+import Problem from '@/components/sections/Problem'
+import Difference from '@/components/sections/Difference'
+import GlobalMap from '@/components/sections/GlobalMap'
+import Curriculum from '@/components/sections/Curriculum'
+import Faculty from '@/components/sections/Faculty'
+import ProgramDetails from '@/components/sections/ProgramDetails'
+import Registration from '@/components/sections/Registration'
+import FAQ from '@/components/sections/FAQ'
+
+export default function Home() {
+  return (
+    <main className="overflow-x-hidden">
+      <Hero />
+      <Problem />
+      <Difference />
+      <GlobalMap />
+      <Curriculum />
+      <Faculty />
+      <ProgramDetails />
+      <Registration />
+      <FAQ />
+    </main>
+  )
+}
+```
+
+### Tailwind Config
+```javascript
+// tailwind.config.js
+module.exports = {
+  content: [
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
+  theme: {
+    extend: {
+      colors: {
+        primary: '#0066FF',
+        secondary: '#00D9FF',
+        accent: '#00FF88',
+        dark: {
+          DEFAULT: '#0A1628',
+          2: '#152238',
+        },
+      },
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace'],
+      },
+      animation: {
+        'fade-in': 'fadeIn 0.6s ease-out',
+        'slide-up': 'slideUp 0.6s ease-out',
+        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        slideUp: {
+          '0%': { transform: 'translateY(30px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+      },
+    },
+  },
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/typography'),
+  ],
+}
+```
+
+### Hero Component Example
+```jsx
+// components/sections/Hero.jsx
+import { motion } from 'framer-motion'
+import { ArrowRight, Download } from 'lucide-react'
+
+export default function Hero() {
+  return (
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-dark via-dark-2 to-primary/20">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-10">
+        <img src="/assets/patterns/topography.svg" alt="" className="w-full h-full object-cover" />
+      </div>
+      
+      {/* Content */}
+      <div className="relative z-10 container mx-auto px-4 py-20">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-center max-w-5xl mx-auto"
+        >
+          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
+            The World's First
+            <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+              {' '}Live-Infrastructure{' '}
+            </span>
+            Cybersecurity University
+          </h1>
+          
+          <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
+            Train on production-grade sovereign cyber infrastructure. 
+            Learn how nations defend themselves in real time.
+          </p>
+          
+          {/* Stats Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+            <StatCard label="Launch Date" value="March 15, 2025" />
+            <StatCard label="Investment" value="$2,500 USD" />
+            <StatCard label="Duration" value="10 Weekends" />
+            <StatCard label="Target Students" value="5,000 Global" />
+          </div>
+          
+          {/* CTAs */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button className="btn-primary flex items-center justify-center gap-2">
+              Register by Feb 15, 2025 <ArrowRight size={20} />
+            </button>
+            <button className="btn-secondary flex items-center justify-center gap-2">
+              <Download size={20} /> Download Prospectus
+            </button>
+          </div>
+        </motion.div>
+      </div>
+      
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+        <svg className="w-6 h-6 text-white/50" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+          <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+        </svg>
+      </div>
+    </section>
+  )
+}
+
+function StatCard({ label, value }) {
+  return (
+    <motion.div
+      whileHover={{ scale: 1.05 }}
+      className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-4"
+    >
+      <div className="text-sm text-gray-400 mb-1">{label}</div>
+      <div className="text-lg md:text-xl font-semibold text-white">{value}</div>
+    </motion.div>
+  )
+}
+```
+
+### Registration Form Example
+```jsx
+// components/sections/Registration.jsx
+import { useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import * as z from 'zod'
+
+const formSchema = z.object({
+  fullName: z.string().min(2, 'Name must be at least 2 characters'),
+  email: z.string().email('Invalid email address'),
+  phone: z.string().min(10, 'Invalid phone number'),
+  country: z.string().min(1, 'Please select a country'),
+  role: z.string().min(1, 'Please select your role'),
+  motivation: z.string().min(200, 'Please write at least 200 characters'),
+  consent: z.boolean().refine(val => val === true, 'You must agree to continue'),
+})
+
+export default function Registration() {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitSuccess, setSubmitSuccess] = useState(false)
+  
+  const { register, handleSubmit, formState: { errors } } = useForm({
+    resolver: zodResolver(formSchema),
+  })
+  
+  const onSubmit = async (data) => {
+    setIsSubmitting(true)
+    
+    try {
+      // Send to EmailJS or your API
+      const response = await fetch('/api/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+      
+      if (response.ok) {
+        setSubmitSuccess(true)
+      }
+    } catch (error) {
+      console.error('Submission error:', error)
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+  
+  if (submitSuccess) {
+    return (
+      <div className="text-center py-20">
+        <h2 className="text-4xl font-bold text-white mb-4">
+          Application Submitted! 🎉
+        </h2>
+        <p className="text-gray-300">
+          We'll review your application and contact you within 48 hours.
+        </p>
+      </div>
+    )
+  }
+  
+  return (
+    <section id="register" className="py-20 bg-dark">
+      <div className="container mx-auto px-4 max-w-3xl">
+        <h2 className="text-4xl md:text-5xl font-bold text-center text-white mb-12">
+          Secure Your Spot – Register by February 15, 2025
+        </h2>
+        
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+          {/* Form fields */}
+          <div>
+            <label className="block text-white mb-2">Full Name *</label>
+            <input
+              {...register('fullName')}
+              className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:border-primary focus:outline-none"
+              placeholder="John Doe"
+            />
+            {errors.fullName && (
+              <p className="mt-1 text-sm text-red-400">{errors.fullName.message}</p>
+            )}
+          </div>
+          
+          {/* Add all other form fields similarly */}
+          
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="w-full btn-primary py-4 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {isSubmitting ? 'Submitting...' : 'Submit Application'}
+          </button>
+        </form>
+      </div>
+    </section>
+  )
+}
+```
+
+---
+
+## FINAL EXECUTION STEPS FOR CLAUDE CODE
+
+### Step 1: Environment Setup
+```bash
+# Create Next.js app with Tailwind
+npx create-next-app@latest tspan-university --typescript --tailwind --app
+
+cd tspan-university
+
+# Install dependencies
+npm install framer-motion lucide-react react-hook-form @hookform/resolvers zod
+```
+
+### Step 2: Download Assets
+```bash
+# Create assets directory
+mkdir -p public/assets/{images,icons,patterns}
+
+# Download all vectors/icons/images using the URLs provided above
+# Use wget or curl for each resource
+```
+
+### Step 3: Build Components
+```bash
+# Create component directories
+mkdir -p components/{layout,sections,ui}
+
+# Create each component file
+# Follow the structure outlined in ASSET ORGANIZATION section
+```
+
+### Step 4: Configure Styling
+```bash
+# Update tailwind.config.js with custom colors and animations
+# Create globals.css with base styles and custom classes
+```
+
+### Step 5: Build Pages
+```bash
+# Create main page with all sections
+# Add metadata for SEO
+# Configure layout with header and footer
+```
+
+### Step 6: Test Locally
+```bash
+# Run development server
+npm run dev
+
+# Open http://localhost:3000
+# Test all interactions, forms, navigation
+```
+
+### Step 7: Optimize & Deploy
+```bash
+# Build for production
+npm run build
+
+# Test production build
+npm start
+
+# Deploy to Vercel
+vercel --prod
+```
+
+---
+
+## SUCCESS METRICS
+
+After deployment, monitor:
+- **Registrations**: Track form submissions daily
+- **Traffic**: Google Analytics or Plausible
+- **Bounce Rate**: Aim for <50%
+- **Time on Page**: Target >3 minutes
+- **Conversion Rate**: Registrations / Visitors (target: 5-10%)
+- **Mobile Traffic**: Should be 50%+ of total
+- **Page Load Speed**: <3 seconds
+- **Lighthouse Score**: 90+ across all metrics
+
+---
+
+## POST-LAUNCH IMPROVEMENTS
+
+### Week 1-2:
+- Add live chat support
+- Integrate with CRM
+- Setup email drip campaign for leads
+- Create thank you page with next steps
+
+### Month 1:
+- Add blog/news section
+- Create faculty interview videos
+- Student testimonials (after first cohort)
+- Webinar landing pages
+
+### Month 2-3:
+- A/B test different CTAs
+- Add more interactive elements (calculators, quizzes)
+- Expand FAQ based on common questions
+- Multilingual support (Hindi, Spanish, etc.)
+
+---
+
+## SUPPORT & RESOURCES
+
+### Documentation:
+- Next.js: https://nextjs.org/docs
+- Tailwind CSS: https://tailwindcss.com/docs
+- Framer Motion: https://www.framer.com/motion/
+- React Hook Form: https://react-hook-form.com/
+
+### Design Inspiration:
+- Dribbble: https://dribbble.com/tags/university
+- Behance: https://www.behance.net/search/projects?search=educational+website
+- Awwwards: https://www.awwwards.com/websites/education/
+
+### Community:
+- Next.js Discord
+- Tailwind CSS Discord
+- Stack Overflow
+- Dev.to
+
+---
+
+## CONCLUSION
+
+This comprehensive guide provides everything needed to build a professional, modern website for T-SPAN University using Claude Code. The website will:
+
+✅ Attract quality registrations through compelling storytelling
+✅ Establish credibility through institutional partnerships
+✅ Provide seamless user experience across all devices
+✅ Optimize for search engines and performance
+✅ Enable easy content updates and scaling
+
+**Estimated Timeline:** 12-16 hours for complete implementation
+
+**Budget:** $0 (using free resources) + Domain (~$15/year) + Hosting (Free tier Vercel/Netlify)
+
+**Next Steps:** 
+1. Review and approve this instruction document
+2. Provide any specific branding assets (logos, colors)
+3. Execute with Claude Code
+4. Test and iterate
+5. Launch and promote
+
+---
+
+**Document Version:** 1.0
+**Created:** December 2024
+**For:** T-SPAN University Website Development
+
+---
+
+Good luck building an exceptional website! 🚀

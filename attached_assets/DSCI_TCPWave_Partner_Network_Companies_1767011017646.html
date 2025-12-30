@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSCI-TCPWave Partner Network Syndicate | Complete Company Directory</title>
+    <style>
+        :root {
+            --primary: #0a0f1a;
+            --secondary: #1a2744;
+            --accent-gold: #d4af37;
+            --accent-blue: #00d4ff;
+            --accent-purple: #7c3aed;
+            --accent-green: #10b981;
+            --accent-orange: #f59e0b;
+            --accent-red: #ef4444;
+            --text: #e2e8f0;
+            --text-muted: #94a3b8;
+            --border: #334155;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(135deg, var(--primary) 0%, #0d1929 100%);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 50px 20px;
+            background: linear-gradient(180deg, rgba(212, 175, 55, 0.2) 0%, transparent 100%);
+            border-bottom: 3px solid var(--accent-gold);
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(90deg, var(--accent-gold), #fff, var(--accent-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .header .subtitle {
+            color: var(--accent-blue);
+            font-size: 1.2rem;
+        }
+
+        .stats-banner {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat .number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+        }
+
+        .stat .label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Category Section */
+        .category {
+            margin-bottom: 40px;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            background: var(--secondary);
+            border-radius: 12px 12px 0 0;
+            border-left: 5px solid var(--accent-gold);
+        }
+
+        .category-header.platinum { border-left-color: #e5e4e2; background: linear-gradient(90deg, rgba(229,228,226,0.2), var(--secondary)); }
+        .category-header.gold { border-left-color: var(--accent-gold); background: linear-gradient(90deg, rgba(212,175,55,0.2), var(--secondary)); }
+        .category-header.silver { border-left-color: #c0c0c0; }
+        .category-header.bronze { border-left-color: #cd7f32; }
+        .category-header.startup { border-left-color: var(--accent-green); }
+        .category-header.academic { border-left-color: var(--accent-purple); }
+
+        .category-header h2 {
+            color: var(--accent-gold);
+            font-size: 1.4rem;
+        }
+
+        .category-header .count {
+            background: var(--accent-gold);
+            color: var(--primary);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Company Grid */
+        .company-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 0;
+            background: var(--primary);
+            border-radius: 0 0 12px 12px;
+            border: 1px solid var(--border);
+            border-top: none;
+        }
+
+        .company-card {
+            padding: 25px;
+            border-bottom: 1px solid var(--border);
+            border-right: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        .company-card:hover {
+            background: rgba(212, 175, 55, 0.05);
+        }
+
+        .company-card.featured {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(0, 212, 255, 0.1));
+            border: 2px solid var(--accent-gold);
+            border-radius: 12px;
+            margin: 15px;
+        }
+
+        .company-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .company-name {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .company-card.featured .company-name {
+            font-size: 1.5rem;
+            color: var(--accent-gold);
+        }
+
+        .tier-badge {
+            font-size: 0.7rem;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .tier-badge.flagship { background: linear-gradient(135deg, var(--accent-gold), var(--accent-orange)); color: var(--primary); }
+        .tier-badge.platinum { background: #e5e4e2; color: var(--primary); }
+        .tier-badge.gold { background: var(--accent-gold); color: var(--primary); }
+        .tier-badge.silver { background: #c0c0c0; color: var(--primary); }
+        .tier-badge.partner { background: var(--accent-blue); color: var(--primary); }
+        .tier-badge.startup { background: var(--accent-green); color: var(--primary); }
+
+        .company-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .meta-item span {
+            color: var(--accent-blue);
+        }
+
+        .company-specialization {
+            font-size: 0.9rem;
+            color: var(--accent-green);
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .company-description {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        .company-services {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .service-tag {
+            background: var(--secondary);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+        }
+
+        .service-tag.primary {
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+        }
+
+        /* Contact Info */
+        .contact-info {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px dashed var(--border);
+            font-size: 0.8rem;
+        }
+
+        .contact-info a {
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* Role Badge */
+        .role-badge {
+            display: inline-block;
+            background: rgba(124, 58, 237, 0.2);
+            color: var(--accent-purple);
+            padding: 3px 10px;
+            border-radius: 5px;
+            font-size: 0.75rem;
+            margin-top: 8px;
+        }
+
+        /* Funding Info */
+        .funding-info {
+            display: inline-block;
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--accent-green);
+            padding: 3px 10px;
+            border-radius: 5px;
+            font-size: 0.75rem;
+            margin-left: 8px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            margin-top: 40px;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer h3 {
+            color: var(--accent-gold);
+            margin-bottom: 10px;
+        }
+
+        .footer p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Legend */
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 30px 0;
+            padding: 20px;
+            background: var(--secondary);
+            border-radius: 12px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+        }
+
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .legend-dot.flagship { background: linear-gradient(135deg, var(--accent-gold), var(--accent-orange)); }
+        .legend-dot.platinum { background: #e5e4e2; }
+        .legend-dot.gold { background: var(--accent-gold); }
+        .legend-dot.silver { background: #c0c0c0; }
+        .legend-dot.startup { background: var(--accent-green); }
+        .legend-dot.academic { background: var(--accent-purple); }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            .company-grid {
+                grid-template-columns: 1fr;
+            }
+            .stats-banner {
+                gap: 20px;
+            }
+        }
+
+        /* Print */
+        @media print {
+            body { background: white; color: black; }
+            .company-card { border: 1px solid #ccc; page-break-inside: avoid; }
+        }
+
+        /* Number badge */
+        .number-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: var(--accent-gold);
+            color: var(--primary);
+            border-radius: 50%;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-right: 10px;
+        }
+
+        .company-card.featured .number-badge {
+            width: 40px;
+            height: 40px;
+            font-size: 1.2rem;
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-orange));
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🛡️ DSCI-TCPWave Partner Network Syndicate</h1>
+            <p class="subtitle">Complete Directory of Cybersecurity Companies, Startups & Partners</p>
+
+            <div class="stats-banner">
+                <div class="stat">
+                    <div class="number">75+</div>
+                    <div class="label">Total Companies</div>
+                </div>
+                <div class="stat">
+                    <div class="number">$20B+</div>
+                    <div class="label">Industry Size</div>
+                </div>
+                <div class="stat">
+                    <div class="number">1500+</div>
+                    <div class="label">Indian Startups</div>
+                </div>
+                <div class="stat">
+                    <div class="number">30+</div>
+                    <div class="label">CCoE Partners</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Legend -->
+        <div class="legend">
+            <div class="legend-item"><span class="legend-dot flagship"></span> Flagship Partner</div>
+            <div class="legend-item"><span class="legend-dot platinum"></span> Platinum Partner</div>
+            <div class="legend-item"><span class="legend-dot gold"></span> Gold Partner</div>
+            <div class="legend-item"><span class="legend-dot silver"></span> Silver Partner</div>
+            <div class="legend-item"><span class="legend-dot startup"></span> DSCI Incubated/Funded Startup</div>
+            <div class="legend-item"><span class="legend-dot academic"></span> Academic/Research Partner</div>
+        </div>
+
+        <!-- ==================== FLAGSHIP PARTNER ==================== -->
+        <div class="category">
+            <div class="category-header platinum">
+                <h2>🏆 #1 FLAGSHIP PARTNER</h2>
+                <span class="count">Command Center Core</span>
+            </div>
+            <div class="company-grid">
+                <div class="company-card featured">
+                    <div class="company-header">
+                        <div>
+                            <span class="number-badge">1</span>
+                            <span class="company-name">TCPWave</span>
+                        </div>
+                        <span class="tier-badge flagship">🥇 FLAGSHIP</span>
+                    </div>
+                    <div class="company-meta">
+                        <span class="meta-item">📍 <span>USA / India (Hyderabad)</span></span>
+                        <span class="meta-item">🏢 <span>Enterprise DDI/ADC</span></span>
+                        <span class="meta-item">👥 <span>100+ Employees</span></span>
+                    </div>
+                    <div class="company-specialization">AI-Native DDI, ADC, IPAM & Threat Intelligence Platform</div>
+                    <div class="company-description">
+                        TCPWave is the flagship partner and command center core for the DSCI CCoE ecosystem. The platform provides enterprise-grade DNS, DHCP, IPAM management with integrated ADC (Application Delivery Controller), GSLB, and AI-powered threat intelligence (TSPAN). TCPWave's technology powers the sovereign Indian RPZ feed and serves as the backbone for the DSCI Cybersecurity Centre of Excellence infrastructure across 30 CtrlS data centers.
+                    </div>
+                    <div class="company-services">
+                        <span class="service-tag primary">DNS Security</span>
+                        <span class="service-tag primary">DHCP Management</span>
+                        <span class="service-tag primary">IPAM</span>
+                        <span class="service-tag primary">ADC/Load Balancing</span>
+                        <span class="service-tag primary">GSLB</span>
+                        <span class="service-tag primary">TSPAN Threat Intel</span>
+                        <span class="service-tag">RPZ Feeds</span>
+                        <span class="service-tag">DGA Detection</span>
+                        <span class="service-tag">DNS Tunneling Detection</span>
+                        <span class="service-tag">Agentic AI</span>
+                        <span class="service-tag">Zero Trust DNS</span>
+                        <span class="service-tag">DevSecOps</span>
+                    </div>
+                    <div class="role-badge">🎯 DSCI CCoE Infrastructure Partner | Command Center Core | TSPAN Platform Owner</div>
+                    <div class="contact-info">
+                        📧 <a href="mailto:pavan.gadi@tcpwave.com">pavan.gadi@tcpwave.com</a> |
+                        <a href="mailto:ewagner@tcpwave.com">ewagner@tcpwave.com</a> |
+                        <a href="mailto:swiggins@tcpwave.com">swiggins@tcpwave.com</a><br>
+                        🌐 <a href="https://www.tcpwave.com" target="_blank">www.tcpwave.com</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== PLATINUM PARTNERS ==================== -->
+        <div class="category">
+            <div class="category-header platinum">
+                <h2>💎 PLATINUM PARTNERS</h2>
+                <span class="count">5 Companies</span>
+            </div>
+            <div class="company-grid">
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">2</span><span class="company-name">DSCI (Data Security Council of India)</span></div>
+                        <span class="tier-badge platinum">PLATINUM</span>
+                    </div>
+                    <div class="company-meta">
+                        <span class="meta-item">📍 <span>New Delhi, India</span></span>
+                        <span class="meta-item">🏢 <span>Industry Body</span></span>
+                    </div>
+                    <div class="company-specialization">National Cybersecurity Policy & Ecosystem Development</div>
+                    <div class="company-description">Premier industry body on cybersecurity and data protection, set up by NASSCOM. Hosts CCoE Hyderabad with Government of Telangana.</div>
+                    <div class="company-services">
+                        <span class="service-tag primary">Policy Advocacy</span>
+                        <span class="service-tag primary">CCoE Operations</span>
+                        <span class="service-tag">Startup Incubation</span>
+                        <span class="service-tag">Certification</span>
+                        <span class="service-tag">Training</span>
+                    </div>
+                    <div class="role-badge">🏛️ National Cybersecurity Partner & CCoE Host</div>
+                    <div class="contact-info">
+                        📧 <a href="mailto:sriram.b@dsci.in">sriram.b@dsci.in</a> | <a href="mailto:saikrishna@dsci.in">saikrishna@dsci.in</a><br>
+                        🌐 <a href="https://www.dsci.in" target="_blank">www.dsci.in</a> | <a href="https://ccoe.dsci.in" target="_blank">ccoe.dsci.in</a>
+                    </div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">3</span><span class="company-name">Accenture India</span></div>
+                        <span class="tier-badge platinum">PLATINUM</span>
+                    </div>
+                    <div class="company-meta">
+                        <span class="meta-item">📍 <span>Mumbai / Bangalore</span></span>
+                        <span class="meta-item">🏢 <span>Global Consulting</span></span>
+                    </div>
+                    <div class="company-specialization">Enterprise Digital Transformation & Cybersecurity Consulting</div>
+                    <div class="company-description">Global professional services company promoting TCPWave to Fortune 500 enterprises in India. Joint go-to-market for BFSI sector.</div>
+                    <div class="company-services">
+                        <span class="service-tag primary">Enterprise Sales</span>
+                        <span class="service-tag primary">Implementation</span>
+                        <span class="service-tag">Consulting</span>
+                        <span class="service-tag">Managed Services</span>
+                    </div>
+                    <div class="role-badge">🔷 Enterprise Sales & Implementation Partner</div>
+                    <div class="contact-info">
+                        📧 <a href="mailto:sridhar.koduri@accenture.com">sridhar.koduri@accenture.com</a> | <a href="mailto:suresh.chandra@accenture.com">suresh.chandra@accenture.com</a>
+                    </div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">4</span><span class="company-name">PricewaterhouseCoopers (PwC)</span></div>
+                        <span class="tier-badge platinum">PLATINUM</span>
+                    </div>
+                    <div class="company-meta">
+                        <span class="meta-item">📍 <span>Global / India</span></span>
+                        <span class="meta-item">🏢 <span>Big 4 Consulting</span></span>
+                    </div>
+                    <div class="company-specialization">AI Advisory, Digital Twin & Compliance Audit</div>
+                    <div class="company-description">Dr. Jai Advani leads AI advisory. Claude Anthropic integration for Digital Twin. SOC2/GDPR audit validation partner.</div>
+                    <div class="company-services">
+                        <span class="service-tag primary">AI Advisory</span>
+                        <span class="service-tag primary">Digital Twin</span>
+                        <span class="service-tag">SOC2 Validation</span>
+                        <span class="service-tag">GDPR Audit</span>
+                    </div>
+                    <div class="role-badge">🔶 AI Advisory & Digital Twin Partner</div>
+                    <div class="contact-info">
+                        📧 <a href="mailto:jai.advani@pwc.com">jai.advani@pwc.com</a> | <a href="mailto:madhavi.kota@pwc.com">madhavi.kota@pwc.com</a>
+                    </div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">5</span><span class="company-name">Marven Systems</span></div>
+                        <span class="tier-badge platinum">PLATINUM</span>
+                    </div>
+                    <div class="company-meta">
+                        <span class="meta-item">📍 <span>Hyderabad, India</span></span>
+                        <span class="meta-item">🏢 <span>SOC2 Auditing</span></span>
+                    </div>
+                    <div class="company-specialization">SOC2 Type II Auditing & GDPR Compliance</div>
+                    <div class="company-description">Founded by Srinivas Muppaneni. India-first expansion strategy using McKinsey 7S framework. Primary compliance audit partner.</div>
+                    <div class="company-services">
+                        <span class="service-tag primary">SOC2 Type II</span>
+                        <span class="service-tag primary">GDPR</span>
+                        <span class="service-tag">ISO 27001</span>
+                        <span class="service-tag">Compliance Audit</span>
+                    </div>
+                    <div class="role-badge">🔐 SOC2 Auditing & Compliance Partner</div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">6</span><span class="company-name">Ernst & Young (EY)</span></div>
+                        <span class="tier-badge platinum">PLATINUM</span>
+                    </div>
+                    <div class="company-meta">
+                        <span class="meta-item">📍 <span>India</span></span>
+                        <span class="meta-item">🏢 <span>Big 4 Consulting</span></span>
+                    </div>
+                    <div class="company-specialization">Cybersecurity Advisory & Risk Consulting</div>
+                    <div class="company-description">Global audit and advisory firm. Risk consulting and cybersecurity assessment services.</div>
+                    <div class="company-services">
+                        <span class="service-tag primary">Risk Advisory</span>
+                        <span class="service-tag">Financial Audit</span>
+                        <span class="service-tag">Cyber Assessment</span>
+                    </div>
+                    <div class="role-badge">📊 Audit & Advisory Partner</div>
+                    <div class="contact-info">
+                        📧 <a href="mailto:murali.rao@in.ey.com">murali.rao@in.ey.com</a> | <a href="mailto:mayank.lau@in.ey.com">mayank.lau@in.ey.com</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== GOLD PARTNERS ==================== -->
+        <div class="category">
+            <div class="category-header gold">
+                <h2>🥇 GOLD PARTNERS</h2>
+                <span class="count">10 Companies</span>
+            </div>
+            <div class="company-grid">
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">7</span><span class="company-name">Red Hat</span></div>
+                        <span class="tier-badge gold">GOLD</span>
+                    </div>
+                    <div class="company-specialization">Enterprise Linux & OpenShift Platform</div>
+                    <div class="company-description">RHEL for DDI appliances, OpenShift integration, Ansible automation.</div>
+                    <div class="company-services">
+                        <span class="service-tag primary">RHEL</span>
+                        <span class="service-tag">OpenShift</span>
+                        <span class="service-tag">Ansible</span>
+                    </div>
+                    <div class="contact-info">📧 <a href="mailto:sanjay@redhat.com">sanjay@redhat.com</a> | <a href="mailto:vramacha@redhat.com">vramacha@redhat.com</a></div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">8</span><span class="company-name">Kyndryl</span></div>
+                        <span class="tier-badge gold">GOLD</span>
+                    </div>
+                    <div class="company-specialization">IT Infrastructure Services</div>
+                    <div class="company-description">Managed infrastructure services, spun off from IBM.</div>
+                    <div class="company-services">
+                        <span class="service-tag primary">Managed Services</span>
+                        <span class="service-tag">Infrastructure</span>
+                    </div>
+                    <div class="contact-info">📧 <a href="mailto:Trrn.Srinivas@kyndryl.com">Trrn.Srinivas@kyndryl.com</a> | <a href="mailto:savitha.rana@kyndryl.com">savitha.rana@kyndryl.com</a></div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">9</span><span class="company-name">Tech Mahindra</span></div>
+                        <span class="tier-badge gold">GOLD</span>
+                    </div>
+                    <div class="company-specialization">IT Services & Cybersecurity</div>
+                    <div class="company-description">CCoE partner for driving cyber security innovation ecosystem. Co-innovation with startups.</div>
+                    <div class="company-services">
+                        <span class="service-tag primary">IT Services</span>
+                        <span class="service-tag">Cyber Innovation</span>
+                        <span class="service-tag">Co-creation</span>
+                    </div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">10</span><span class="company-name">CrowdStrike</span></div>
+                        <span class="tier-badge gold">GOLD</span>
+                    </div>
+                    <div class="company-specialization">Endpoint Security & Threat Intelligence</div>
+                    <div class="company-description">Global cybersecurity leader. Cloud-native platform for endpoint and cloud workload protection.</div>
+                    <div class="company-services">
+                        <span class="service-tag primary">EDR</span>
+                        <span class="service-tag primary">XDR</span>
+                        <span class="service-tag">Threat Intel</span>
+                        <span class="service-tag">Cloud Security</span>
+                    </div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">11</span><span class="company-name">Grant Thornton Bharat</span></div>
+                        <span class="tier-badge gold">GOLD</span>
+                    </div>
+                    <div class="company-specialization">Assurance, Tax & Risk Consulting</div>
+                    <div class="company-description">Founding member of Grant Thornton network. Comprehensive cybersecurity solutions.</div>
+                    <div class="company-services">
+                        <span class="service-tag primary">Risk Consulting</span>
+                        <span class="service-tag">Assurance</span>
+                        <span class="service-tag">ESG</span>
+                    </div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">12</span><span class="company-name">Innspark</span></div>
+                        <span class="tier-badge gold">GOLD</span>
+                    </div>
+                    <div class="company-specialization">Critical Infrastructure Security</div>
+                    <div class="company-description">Comprehensive cybersecurity with AI-backed analytics. Serves defense, aviation, BFSI, manufacturing.</div>
+                    <div class="company-services">
+                        <span class="service-tag primary">AI Analytics</span>
+                        <span class="service-tag">Defense</span>
+                        <span class="service-tag">OT Security</span>
+                    </div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">13</span><span class="company-name">SafeSquid</span></div>
+                        <span class="tier-badge gold">GOLD</span>
+                    </div>
+                    <div class="company-specialization">Web Security Gateway</div>
+                    <div class="company-description">Secure web gateway and proxy security solutions for enterprises.</div>
+                    <div class="company-services">
+                        <span class="service-tag primary">Web Gateway</span>
+                        <span class="service-tag">Proxy Security</span>
+                        <span class="service-tag">Content Filtering</span>
+                    </div>
+                    <div class="contact-info">📧 <a href="mailto:vk@safesquid.com">vk@safesquid.com</a></div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">14</span><span class="company-name">CyberPrivilege</span></div>
+                        <span class="tier-badge gold">GOLD</span>
+                    </div>
+                    <div class="company-specialization">Cybersecurity Services</div>
+                    <div class="company-description">Cybersecurity consulting and managed security services.</div>
+                    <div class="company-services">
+                        <span class="service-tag primary">Security Services</span>
+                        <span class="service-tag">Consulting</span>
+                    </div>
+                    <div class="contact-info">📧 <a href="mailto:krishna@cyberprivilege.com">krishna@cyberprivilege.com</a></div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">15</span><span class="company-name">Maha AI</span></div>
+                        <span class="tier-badge gold">GOLD</span>
+                    </div>
+                    <div class="company-specialization">AI/ML Platform</div>
+                    <div class="company-description">AI and machine learning solutions for enterprise security applications.</div>
+                    <div class="company-services">
+                        <span class="service-tag primary">AI Platform</span>
+                        <span class="service-tag">ML Solutions</span>
+                    </div>
+                    <div class="contact-info">📧 <a href="mailto:narender.chinthamu@mahaaai.com">narender.chinthamu@mahaaai.com</a></div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">16</span><span class="company-name">World Wide Technology (WWT)</span></div>
+                        <span class="tier-badge gold">GOLD</span>
+                    </div>
+                    <div class="company-specialization">Technology Solutions Provider</div>
+                    <div class="company-description">Global technology solutions provider and integrator.</div>
+                    <div class="company-services">
+                        <span class="service-tag primary">Integration</span>
+                        <span class="service-tag">Infrastructure</span>
+                    </div>
+                    <div class="contact-info">📧 <a href="mailto:jing.rong@wwt.com">jing.rong@wwt.com</a></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== DSCI INCUBATED/FUNDED STARTUPS ==================== -->
+        <div class="category">
+            <div class="category-header startup">
+                <h2>🚀 DSCI INCUBATED / FUNDED CYBERSECURITY STARTUPS</h2>
+                <span class="count">35+ Companies</span>
+            </div>
+            <div class="company-grid">
+                <!-- Top Funded Startups -->
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">17</span><span class="company-name">CloudSEK</span></div>
+                        <span class="tier-badge startup">FUNDED</span>
+                    </div>
+                    <div class="company-meta">
+                        <span class="meta-item">📍 <span>Bangalore</span></span>
+                        <span class="meta-item">💰 <span>$10M+ Raised</span></span>
+                    </div>
+                    <div class="company-specialization">AI-Powered Threat Intelligence</div>
+                    <div class="company-description">XVigil platform provides real-time threat intelligence. Serves ICICI, NPCI, CRED, Sun Pharma, Reliance, OLA.</div>
+                    <div class="company-services">
+                        <span class="service-tag primary">Threat Intel</span>
+                        <span class="service-tag primary">Digital Risk</span>
+                        <span class="service-tag">Dark Web Monitoring</span>
+                        <span class="service-tag">Brand Protection</span>
+                    </div>
+                    <div class="role-badge">🎯 TSPAN Integration: External Threat Monitoring</div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">18</span><span class="company-name">Safe Security (Lucideus)</span></div>
+                        <span class="tier-badge startup">UNICORN</span>
+                    </div>
+                    <div class="company-meta">
+                        <span class="meta-item">📍 <span>Palo Alto / Delhi</span></span>
+                        <span class="meta-item">💰 <span>$100M+ Raised</span></span>
+                    </div>
+                    <div class="company-specialization">Cyber Risk Quantification (SAFE Platform)</div>
+                    <div class="company-description">India's only cybersecurity unicorn. SAFE platform quantifies cyber risk in financial terms for boards.</div>
+                    <div class="company-services">
+                        <span class="service-tag primary">Risk Quantification</span>
+                        <span class="service-tag primary">SAFE Platform</span>
+                        <span class="service-tag">Board Reporting</span>
+                        <span class="service-tag">Cyber Insurance</span>
+                    </div>
+                    <div class="role-badge">🎯 TSPAN Integration: Executive Risk Dashboards</div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">19</span><span class="company-name">Sequretek</span></div>
+                        <span class="tier-badge startup">FUNDED</span>
+                    </div>
+                    <div class="company-meta">
+                        <span class="meta-item">📍 <span>Mumbai</span></span>
+                        <span class="meta-item">💰 <span>$8M Series A</span></span>
+                    </div>
+                    <div class="company-specialization">AI-Driven SOC-as-a-Service</div>
+                    <div class="company-description">Processes 4B+ security events daily. Next-Gen SOC, endpoint management, IAM, GRC modules.</div>
+                    <div class="company-services">
+                        <span class="service-tag primary">SOC-as-a-Service</span>
+                        <span class="service-tag primary">MDR</span>
+                        <span class="service-tag">Endpoint Security</span>
+                        <span class="service-tag">IAM</span>
+                    </div>
+                    <div class="role-badge">🎯 TSPAN Integration: Endpoint Threat Correlation</div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">20</span><span class="company-name">InstaSafe</span></div>
+                        <span class="tier-badge startup">FUNDED</span>
+                    </div>
+                    <div class="company-meta">
+                        <span class="meta-item">📍 <span>Bangalore</span></span>
+                        <span class="meta-item">💰 <span>$2.7M Raised</span></span>
+                    </div>
+                    <div class="company-specialization">Zero Trust Network Access (ZTNA)</div>
+                    <div class="company-description">India's first ZTNA/SDP startup. Replacing VPNs with micro-segmentation. 500%+ YoY growth.</div>
+                    <div class="company-services">
+                        <span class="service-tag primary">ZTNA</span>
+                        <span class="service-tag primary">SDP</span>
+                        <span class="service-tag">SASE</span>
+                        <span class="service-tag">VPN Replacement</span>
+                    </div>
+                    <div class="role-badge">🎯 TSPAN Integration: Zero Trust Access Control</div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">21</span><span class="company-name">TAC Security</span></div>
+                        <span class="tier-badge startup">FUNDED</span>
+                    </div>
+                    <div class="company-meta">
+                        <span class="meta-item">📍 <span>Chandigarh / USA</span></span>
+                    </div>
+                    <div class="company-specialization">Vulnerability Management (ESOF Platform)</div>
+                    <div class="company-description">Enterprise Security on One Framework. Unified vulnerability assessment and management.</div>
+                    <div class="company-services">
+                        <span class="service-tag primary">VAPT</span>
+                        <span class="service-tag primary">ESOF</span>
+                        <span class="service-tag">Vulnerability Mgmt</span>
+                        <span class="service-tag">Risk Scoring</span>
+                    </div>
+                    <div class="role-badge">🎯 TSPAN Integration: Asset Risk Mapping</div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">22</span><span class="company-name">Kratikal</span></div>
+                        <span class="tier-badge startup">FUNDED</span>
+                    </div>
+                    <div class="company-meta">
+                        <span class="meta-item">📍 <span>Noida</span></span>
+                    </div>
+                    <div class="company-specialization">Security Awareness & Penetration Testing</div>
+                    <div class="company-description">ThreatCop platform for phishing simulation and security awareness. Reduces cyber risk by 90%.</div>
+                    <div class="company-services">
+                        <span class="service-tag primary">Phishing Simulation</span>
+                        <span class="service-tag primary">ThreatCop</span>
+                        <span class="service-tag">Security Awareness</span>
+                        <span class="service-tag">Penetration Testing</span>
+                    </div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">23</span><span class="company-name">Appknox</span></div>
+                        <span class="tier-badge startup">FUNDED</span>
+                    </div>
+                    <div class="company-meta">
+                        <span class="meta-item">📍 <span>Bangalore</span></span>
+                    </div>
+                    <div class="company-specialization">Mobile Application Security</div>
+                    <div class="company-description">Automated mobile app vulnerability assessment. Works with banking, telecom, government.</div>
+                    <div class="company-services">
+                        <span class="service-tag primary">Mobile Security</span>
+                        <span class="service-tag primary">App Testing</span>
+                        <span class="service-tag">VAPT</span>
+                        <span class="service-tag">DevSecOps</span>
+                    </div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">24</span><span class="company-name">WiJungle</span></div>
+                        <span class="tier-badge startup">FUNDED</span>
+                    </div>
+                    <div class="company-meta">
+                        <span class="meta-item">📍 <span>Delhi NCR</span></span>
+                    </div>
+                    <div class="company-specialization">Unified Network Security Gateway</div>
+                    <div class="company-description">All-in-one appliance: firewall, VPN, threat intelligence. Simplifies network security management.</div>
+                    <div class="company-services">
+                        <span class="service-tag primary">UTM</span>
+                        <span class="service-tag primary">Firewall</span>
+                        <span class="service-tag">VPN</span>
+                        <span class="service-tag">Gateway Security</span>
+                    </div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">25</span><span class="company-name">Vehere</span></div>
+                        <span class="tier-badge startup">FUNDED</span>
+                    </div>
+                    <div class="company-meta">
+                        <span class="meta-item">📍 <span>Kolkata / Bangalore</span></span>
+                    </div>
+                    <div class="company-specialization">Network Detection & Response (NDR)</div>
+                    <div class="company-description">AI-powered network threat detection and incident response platform.</div>
+                    <div class="company-services">
+                        <span class="service-tag primary">NDR</span>
+                        <span class="service-tag primary">Network Analytics</span>
+                        <span class="service-tag">Threat Hunting</span>
+                        <span class="service-tag">Forensics</span>
+                    </div>
+                    <div class="role-badge">🎯 TSPAN Integration: Network Threat Hunting</div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">26</span><span class="company-name">Block Armour</span></div>
+                        <span class="tier-badge startup">FUNDED</span>
+                    </div>
+                    <div class="company-meta">
+                        <span class="meta-item">📍 <span>Mumbai</span></span>
+                    </div>
+                    <div class="company-specialization">Blockchain-Based Cybersecurity</div>
+                    <div class="company-description">Decentralized Zero Trust Architecture using blockchain. Critical infrastructure and IoT security.</div>
+                    <div class="company-services">
+                        <span class="service-tag primary">Blockchain Security</span>
+                        <span class="service-tag primary">ZTA</span>
+                        <span class="service-tag">IoT Security</span>
+                        <span class="service-tag">SDP</span>
+                    </div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">27</span><span class="company-name">Seconize</span></div>
+                        <span class="tier-badge startup">FUNDED</span>
+                    </div>
+                    <div class="company-meta">
+                        <span class="meta-item">📍 <span>Bangalore</span></span>
+                    </div>
+                    <div class="company-specialization">Cloud Security & Risk Assessment</div>
+                    <div class="company-description">AI/ML-enabled automated security solutions. Proactive risk assessment and remediation.</div>
+                    <div class="company-services">
+                        <span class="service-tag primary">Cloud Security</span>
+                        <span class="service-tag primary">Risk Assessment</span>
+                        <span class="service-tag">Automation</span>
+                    </div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">28</span><span class="company-name">Smokescreen</span></div>
+                        <span class="tier-badge startup">FUNDED</span>
+                    </div>
+                    <div class="company-meta">
+                        <span class="meta-item">📍 <span>Mumbai</span></span>
+                    </div>
+                    <div class="company-specialization">Deception Technology</div>
+                    <div class="company-description">Cyber deception platform. Detects threats by deploying decoys and honeypots.</div>
+                    <div class="company-services">
+                        <span class="service-tag primary">Deception</span>
+                        <span class="service-tag primary">Honeypots</span>
+                        <span class="service-tag">Threat Detection</span>
+                    </div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">29</span><span class="company-name">Aujas Cybersecurity</span></div>
+                        <span class="tier-badge startup">ACQUIRED</span>
+                    </div>
+                    <div class="company-meta">
+                        <span class="meta-item">📍 <span>Bangalore</span></span>
+                    </div>
+                    <div class="company-specialization">Cybersecurity Consulting</div>
+                    <div class="company-description">Full-spectrum cybersecurity consulting and managed services. Acquired by NTT.</div>
+                    <div class="company-services">
+                        <span class="service-tag primary">Consulting</span>
+                        <span class="service-tag">Managed Security</span>
+                        <span class="service-tag">GRC</span>
+                    </div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">30</span><span class="company-name">SISA</span></div>
+                        <span class="tier-badge startup">FUNDED</span>
+                    </div>
+                    <div class="company-meta">
+                        <span class="meta-item">📍 <span>Bangalore</span></span>
+                    </div>
+                    <div class="company-specialization">PCI DSS & Payment Security</div>
+                    <div class="company-description">Global leader in payment security. PCI DSS certification and forensic investigations.</div>
+                    <div class="company-services">
+                        <span class="service-tag primary">PCI DSS</span>
+                        <span class="service-tag primary">Payment Security</span>
+                        <span class="service-tag">Forensics</span>
+                    </div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">31</span><span class="company-name">SecurWeave</span></div>
+                        <span class="tier-badge startup">STARTUP</span>
+                    </div>
+                    <div class="company-specialization">Security Solutions</div>
+                    <div class="company-description">Emerging cybersecurity solutions provider in the Indian market.</div>
+                    <div class="company-services">
+                        <span class="service-tag primary">Security Solutions</span>
+                    </div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">32</span><span class="company-name">FireCompass</span></div>
+                        <span class="tier-badge startup">FUNDED</span>
+                    </div>
+                    <div class="company-meta">
+                        <span class="meta-item">📍 <span>Bangalore</span></span>
+                    </div>
+                    <div class="company-specialization">Attack Surface Management</div>
+                    <div class="company-description">Continuous automated red teaming and attack surface discovery platform.</div>
+                    <div class="company-services">
+                        <span class="service-tag primary">ASM</span>
+                        <span class="service-tag primary">Red Teaming</span>
+                        <span class="service-tag">Continuous Testing</span>
+                    </div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">33</span><span class="company-name">CyberEye</span></div>
+                        <span class="tier-badge startup">STARTUP</span>
+                    </div>
+                    <div class="company-specialization">Cyber Threat Monitoring</div>
+                    <div class="company-description">Threat monitoring and cyber intelligence services.</div>
+                    <div class="company-services">
+                        <span class="service-tag primary">Threat Monitoring</span>
+                        <span class="service-tag">Intelligence</span>
+                    </div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">34</span><span class="company-name">Payatu</span></div>
+                        <span class="tier-badge startup">FUNDED</span>
+                    </div>
+                    <div class="company-meta">
+                        <span class="meta-item">📍 <span>Pune</span></span>
+                    </div>
+                    <div class="company-specialization">IoT & Hardware Security</div>
+                    <div class="company-description">Specialized in IoT security, hardware hacking, and embedded systems pentesting.</div>
+                    <div class="company-services">
+                        <span class="service-tag primary">IoT Security</span>
+                        <span class="service-tag primary">Hardware Security</span>
+                        <span class="service-tag">Embedded Pentest</span>
+                    </div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">35</span><span class="company-name">WeSecureApp</span></div>
+                        <span class="tier-badge startup">STARTUP</span>
+                    </div>
+                    <div class="company-meta">
+                        <span class="meta-item">📍 <span>Hyderabad</span></span>
+                    </div>
+                    <div class="company-specialization">Application Security</div>
+                    <div class="company-description">Application security testing and DevSecOps solutions.</div>
+                    <div class="company-services">
+                        <span class="service-tag primary">AppSec</span>
+                        <span class="service-tag">SAST/DAST</span>
+                        <span class="service-tag">DevSecOps</span>
+                    </div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">36</span><span class="company-name">SecureLayer7</span></div>
+                        <span class="tier-badge startup">STARTUP</span>
+                    </div>
+                    <div class="company-meta">
+                        <span class="meta-item">📍 <span>Pune</span></span>
+                    </div>
+                    <div class="company-specialization">Red Teaming & Penetration Testing</div>
+                    <div class="company-description">Offensive security services including red teaming and advanced pentesting.</div>
+                    <div class="company-services">
+                        <span class="service-tag primary">Red Teaming</span>
+                        <span class="service-tag primary">Penetration Testing</span>
+                        <span class="service-tag">Offensive Security</span>
+                    </div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">37</span><span class="company-name">iValue InfoSolutions</span></div>
+                        <span class="tier-badge startup">FUNDED</span>
+                    </div>
+                    <div class="company-meta">
+                        <span class="meta-item">📍 <span>Bangalore</span></span>
+                    </div>
+                    <div class="company-specialization">Value-Added Distributor</div>
+                    <div class="company-description">Security VAD distributing enterprise cybersecurity solutions across India.</div>
+                    <div class="company-services">
+                        <span class="service-tag primary">Distribution</span>
+                        <span class="service-tag">VAD</span>
+                        <span class="service-tag">Channel Partner</span>
+                    </div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">38</span><span class="company-name">Seqrite (Quick Heal)</span></div>
+                        <span class="tier-badge startup">ENTERPRISE</span>
+                    </div>
+                    <div class="company-meta">
+                        <span class="meta-item">📍 <span>Pune</span></span>
+                    </div>
+                    <div class="company-specialization">Enterprise Security Suite</div>
+                    <div class="company-description">Enterprise security division of Quick Heal. Endpoint, network, and data security.</div>
+                    <div class="company-services">
+                        <span class="service-tag primary">Endpoint Security</span>
+                        <span class="service-tag primary">DLP</span>
+                        <span class="service-tag">Encryption</span>
+                    </div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">39</span><span class="company-name">Subex</span></div>
+                        <span class="tier-badge startup">PUBLIC</span>
+                    </div>
+                    <div class="company-meta">
+                        <span class="meta-item">📍 <span>Bangalore</span></span>
+                    </div>
+                    <div class="company-specialization">AI-Powered Business Assurance</div>
+                    <div class="company-description">Telecom analytics and IoT security with AI-driven solutions.</div>
+                    <div class="company-services">
+                        <span class="service-tag primary">Telecom Security</span>
+                        <span class="service-tag">IoT</span>
+                        <span class="service-tag">Analytics</span>
+                    </div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">40</span><span class="company-name">Netmonastery (DNIF)</span></div>
+                        <span class="tier-badge startup">FUNDED</span>
+                    </div>
+                    <div class="company-meta">
+                        <span class="meta-item">📍 <span>Mumbai</span></span>
+                    </div>
+                    <div class="company-specialization">SIEM & Big Data Security Analytics</div>
+                    <div class="company-description">DNIF HYPERCLOUD - open big data analytics platform for security.</div>
+                    <div class="company-services">
+                        <span class="service-tag primary">SIEM</span>
+                        <span class="service-tag primary">Big Data</span>
+                        <span class="service-tag">Security Analytics</span>
+                    </div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">41</span><span class="company-name">QNu Labs</span></div>
+                        <span class="tier-badge startup">FUNDED</span>
+                    </div>
+                    <div class="company-meta">
+                        <span class="meta-item">📍 <span>Bangalore</span></span>
+                    </div>
+                    <div class="company-specialization">Quantum Cryptography</div>
+                    <div class="company-description">Quantum-safe cryptography and quantum key distribution solutions.</div>
+                    <div class="company-services">
+                        <span class="service-tag primary">Quantum Crypto</span>
+                        <span class="service-tag primary">QKD</span>
+                        <span class="service-tag">Post-Quantum</span>
+                    </div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">42</span><span class="company-name">Seclore</span></div>
+                        <span class="tier-badge startup">FUNDED</span>
+                    </div>
+                    <div class="company-meta">
+                        <span class="meta-item">📍 <span>Mumbai</span></span>
+                    </div>
+                    <div class="company-specialization">Data-Centric Security</div>
+                    <div class="company-description">Enterprise rights management and data-centric security platform.</div>
+                    <div class="company-services">
+                        <span class="service-tag primary">DRM</span>
+                        <span class="service-tag primary">Data Security</span>
+                        <span class="service-tag">IRM</span>
+                    </div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">43</span><span class="company-name">IDfy</span></div>
+                        <span class="tier-badge startup">FUNDED</span>
+                    </div>
+                    <div class="company-meta">
+                        <span class="meta-item">📍 <span>Mumbai</span></span>
+                    </div>
+                    <div class="company-specialization">Identity Verification & KYC</div>
+                    <div class="company-description">AI-powered identity verification, KYC, and background verification.</div>
+                    <div class="company-services">
+                        <span class="service-tag primary">KYC</span>
+                        <span class="service-tag primary">Identity</span>
+                        <span class="service-tag">Background Check</span>
+                    </div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">44</span><span class="company-name">Druva</span></div>
+                        <span class="tier-badge startup">FUNDED</span>
+                    </div>
+                    <div class="company-meta">
+                        <span class="meta-item">📍 <span>Pune / USA</span></span>
+                        <span class="meta-item">💰 <span>$300M+ Raised</span></span>
+                    </div>
+                    <div class="company-specialization">Cloud Data Protection</div>
+                    <div class="company-description">SaaS platform for data protection, backup, and ransomware recovery.</div>
+                    <div class="company-services">
+                        <span class="service-tag primary">Data Protection</span>
+                        <span class="service-tag primary">Backup</span>
+                        <span class="service-tag">DR</span>
+                        <span class="service-tag">Ransomware Recovery</span>
+                    </div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">45</span><span class="company-name">Arete IR</span></div>
+                        <span class="tier-badge startup">PARTNER</span>
+                    </div>
+                    <div class="company-meta">
+                        <span class="meta-item">📍 <span>USA (CCoE Partner)</span></span>
+                    </div>
+                    <div class="company-specialization">Incident Response</div>
+                    <div class="company-description">CCoE corporate engagement partner. Incident response and forensics expertise.</div>
+                    <div class="company-services">
+                        <span class="service-tag primary">IR</span>
+                        <span class="service-tag primary">Forensics</span>
+                        <span class="service-tag">Breach Response</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== ACADEMIC & RESEARCH PARTNERS ==================== -->
+        <div class="category">
+            <div class="category-header academic">
+                <h2>🎓 ACADEMIC & RESEARCH PARTNERS</h2>
+                <span class="count">10+ Institutions</span>
+            </div>
+            <div class="company-grid">
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">46</span><span class="company-name">MIT Media Lab</span></div>
+                        <span class="tier-badge partner">RESEARCH</span>
+                    </div>
+                    <div class="company-specialization">AI/ML Research & Innovation</div>
+                    <div class="company-description">Prof. Ramesh Raskar leads NANDA integration and future tech advisory.</div>
+                    <div class="contact-info">📧 <a href="mailto:rameshboston@gmail.com">rameshboston@gmail.com</a></div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">47</span><span class="company-name">IIT Delhi</span></div>
+                        <span class="tier-badge partner">RESEARCH</span>
+                    </div>
+                    <div class="company-specialization">Cybersecurity Research</div>
+                    <div class="company-description">Premier research institute. DSCI has strong R&D relationships.</div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">48</span><span class="company-name">IIT Kanpur</span></div>
+                        <span class="tier-badge partner">RESEARCH</span>
+                    </div>
+                    <div class="company-specialization">Cybersecurity Research</div>
+                    <div class="company-description">Advanced cybersecurity research and talent development.</div>
+                    <div class="contact-info">📧 <a href="mailto:soumitra@iitk.ac.in">soumitra@iitk.ac.in</a></div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">49</span><span class="company-name">IIT Kharagpur</span></div>
+                        <span class="tier-badge partner">RESEARCH</span>
+                    </div>
+                    <div class="company-specialization">Cybersecurity Research</div>
+                    <div class="company-description">Research collaboration with DSCI for R&D capabilities.</div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">50</span><span class="company-name">IIT Hyderabad</span></div>
+                        <span class="tier-badge partner">RESEARCH</span>
+                    </div>
+                    <div class="company-specialization">Cybersecurity Research</div>
+                    <div class="company-description">Local Hyderabad research partner for CCoE initiatives.</div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">51</span><span class="company-name">BITS Pilani</span></div>
+                        <span class="tier-badge partner">ACADEMIC</span>
+                    </div>
+                    <div class="company-specialization">Academic Partnership</div>
+                    <div class="company-description">Prof. V.S. Rao and Sounak Roy lead academic collaboration.</div>
+                    <div class="contact-info">📧 <a href="mailto:vsr.bits@gmail.com">vsr.bits@gmail.com</a> | <a href="mailto:sounak.roy@hyderabad.bits-pilani.ac.in">sounak.roy@hyderabad.bits-pilani.ac.in</a></div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">52</span><span class="company-name">MRDU (Manav Rachna)</span></div>
+                        <span class="tier-badge partner">ACADEMIC</span>
+                    </div>
+                    <div class="company-specialization">Academic & Talent Pipeline</div>
+                    <div class="company-description">Curriculum development, student internships, and talent pipeline.</div>
+                    <div class="contact-info">📧 <a href="mailto:provc@mrdu.edu.in">provc@mrdu.edu.in</a></div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">53</span><span class="company-name">Texas Tech University</span></div>
+                        <span class="tier-badge partner">ACADEMIC</span>
+                    </div>
+                    <div class="company-specialization">Academic Partnership</div>
+                    <div class="company-description">International academic collaboration for research and talent.</div>
+                    <div class="contact-info">📧 <a href="mailto:y.liu@ttu.edu">y.liu@ttu.edu</a> | <a href="mailto:satheesh-kumar.harikrishnan@ttu.edu">satheesh-kumar.harikrishnan@ttu.edu</a> | <a href="mailto:pzambare@ttu.edu">pzambare@ttu.edu</a></div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">54</span><span class="company-name">ISB (Indian School of Business)</span></div>
+                        <span class="tier-badge partner">EXECUTIVE ED</span>
+                    </div>
+                    <div class="company-specialization">Executive Education</div>
+                    <div class="company-description">Cybersecurity executive programs and CXO networking.</div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">55</span><span class="company-name">C-DAC Hyderabad</span></div>
+                        <span class="tier-badge partner">GOVERNMENT</span>
+                    </div>
+                    <div class="company-specialization">R&D & Innovation</div>
+                    <div class="company-description">MeitY partner for Cyber Security Innovation Challenge (CSIC).</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== GOVERNMENT & INSTITUTIONAL ==================== -->
+        <div class="category">
+            <div class="category-header silver">
+                <h2>🏛️ GOVERNMENT & INSTITUTIONAL PARTNERS</h2>
+                <span class="count">5+ Organizations</span>
+            </div>
+            <div class="company-grid">
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">56</span><span class="company-name">Government of Telangana</span></div>
+                        <span class="tier-badge partner">GOVERNMENT</span>
+                    </div>
+                    <div class="company-specialization">State Cybersecurity Policy</div>
+                    <div class="company-description">Joint initiative partner for CCoE Hyderabad. First state with dedicated cybersecurity policy.</div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">57</span><span class="company-name">MeitY</span></div>
+                        <span class="tier-badge partner">GOVERNMENT</span>
+                    </div>
+                    <div class="company-specialization">National IT Policy</div>
+                    <div class="company-description">Ministry of Electronics and IT. Cyber Security Grand Challenge partner.</div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">58</span><span class="company-name">CERT-In</span></div>
+                        <span class="tier-badge partner">GOVERNMENT</span>
+                    </div>
+                    <div class="company-specialization">National Incident Response</div>
+                    <div class="company-description">Indian Computer Emergency Response Team. Threat feed integration.</div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">59</span><span class="company-name">NCIIPC</span></div>
+                        <span class="tier-badge partner">GOVERNMENT</span>
+                    </div>
+                    <div class="company-specialization">Critical Infrastructure Protection</div>
+                    <div class="company-description">National Critical Information Infrastructure Protection Centre.</div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">60</span><span class="company-name">NASSCOM</span></div>
+                        <span class="tier-badge partner">INDUSTRY BODY</span>
+                    </div>
+                    <div class="company-specialization">IT Industry Association</div>
+                    <div class="company-description">Parent organization of DSCI. IT-BPM industry advocacy.</div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-header">
+                        <div><span class="number-badge">61</span><span class="company-name">Republic of Estonia</span></div>
+                        <span class="tier-badge partner">INTERNATIONAL</span>
+                    </div>
+                    <div class="company-specialization">International Collaboration</div>
+                    <div class="company-description">MoU with Telangana for ICT, cybersecurity, and blockchain cooperation.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <h3>🛡️ DSCI-TCPWave Partner Network Syndicate</h3>
+            <p>Complete Directory of 60+ Cybersecurity Companies, Startups & Partners</p>
+            <p style="margin-top: 15px; color: var(--accent-gold);">
+                TCPWave is the #1 Flagship Partner and Command Center Core<br>
+                Powering India's Sovereign Cybersecurity Infrastructure
+            </p>
+            <p style="margin-top: 20px; font-size: 0.85rem;">
+                For partnership inquiries: <a href="mailto:pavan.gadi@tcpwave.com" style="color: var(--accent-blue);">pavan.gadi@tcpwave.com</a><br>
+                DSCI Membership: <a href="mailto:membership@dsci.in" style="color: var(--accent-blue);">membership@dsci.in</a><br>
+                CCoE Incubation: <a href="mailto:marketing.ccoe@dsci.in" style="color: var(--accent-blue);">marketing.ccoe@dsci.in</a>
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

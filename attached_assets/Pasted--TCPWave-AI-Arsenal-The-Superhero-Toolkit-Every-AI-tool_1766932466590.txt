@@ -1,0 +1,1553 @@
+
+TCPWave AI Arsenal
+The Superhero Toolkit
+Every AI tool you need to become unstoppable at TCPWave. From presentations to code, design to automation — master them all.
+
+115+
+Power Tools
+18
+Categories
+10x
+Productivity Boost
+🎬 Presentations
+💻 Code
+🎨 Design
+✍️ Writing
+🎥 Video
+🎙️ Audio
+⚡ Productivity
+🔍 Research
+📊 Data
+💬 Communication
+🔐 Security
+🚀 DevOps
+🤖 Automation
+📝 Documentation
+🎓 Learning
+🛡️ SSDLC
+🔧 DevSecOps
+🧠 MLOps
+🎬
+Presentations & Slides
+6 tools
+γ
+Elite
+Gamma
+AI-Powered Presentation Magic
+
+Create stunning presentations, documents, and webpages in seconds. Just describe what you want — Gamma generates beautiful, engaging content with perfect design.
+
+AI Generation
+Auto-Design
+One-Click Restyle
+Web Publish
+Launch Gamma →
+B
+Power
+Beautiful.ai
+Smart Slides, Zero Design Skills
+
+Presentation software that designs slides for you. AI automatically formats content, suggests layouts, and maintains brand consistency.
+
+Smart Templates
+Auto-Layout
+Team Collaboration
+Explore →
+C
+Power
+Canva
+Design Anything, Instantly
+
+All-in-one design platform with AI-powered features. Create presentations, social graphics, videos, and more with drag-and-drop simplicity.
+
+Magic Design
+Brand Kit
+10M+ Templates
+Explore →
+T
+Power
+Tome
+AI-Native Storytelling
+
+Generate entire presentations from a single prompt. Tome creates narratives with text, images, and layouts that flow together perfectly.
+
+Narrative AI
+DALL-E Integration
+Live Embeds
+Explore →
+P
+Essential
+Pitch
+Collaborative Deck Building
+
+Modern presentation software built for teams. Real-time collaboration, video conferencing integration, and beautiful templates.
+
+Real-time Collab
+Video Recording
+Analytics
+Explore →
+S
+Essential
+SlidesAI
+Text to Slides in Seconds
+
+Transform any text into presentation slides automatically. Works directly within Google Slides for seamless workflow integration.
+
+Google Slides Add-on
+Multi-Language
+Custom Themes
+Explore →
+💻
+Code & Development
+8 tools
+C
+Elite
+Claude Code
+The Ultimate AI Coding Partner
+
+Anthropic's CLI coding assistant. Understands entire codebases, writes production-ready code, debugs complex issues, and executes multi-file refactoring with superhuman accuracy.
+
+Full Codebase Context
+Multi-File Editing
+Terminal Integration
+Git-Aware
+Launch Claude Code →
+⌘
+Elite
+Cursor
+The AI-First Code Editor
+
+VS Code fork with native AI integration. Chat with your codebase, generate code inline, and let AI handle refactoring while you focus on architecture.
+
+Codebase Chat
+Inline Generation
+Multi-Model
+Tab Autocomplete
+Explore →
+🤖
+Power
+GitHub Copilot
+Your AI Pair Programmer
+
+AI-powered code suggestions right in your IDE. Understands context, completes functions, and writes tests based on your coding patterns.
+
+IDE Integration
+Context-Aware
+Multi-Language
+Explore →
+W
+Power
+Windsurf
+Flow State Coding with AI
+
+Codeium's AI-native IDE. Cascade feature enables multi-file, multi-step code generation with deep understanding of your project structure.
+
+Cascade AI
+Free Tier
+Multi-File Aware
+Explore →
+B
+Power
+Bolt.new
+Prompt to Full-Stack App
+
+Describe an app, get a working full-stack application instantly. Runs in browser with real package installation, database setup, and deployment.
+
+Full-Stack Generation
+In-Browser IDE
+One-Click Deploy
+Explore →
+v0
+Power
+v0 by Vercel
+UI Generation on Steroids
+
+Generate React components and full UI from descriptions. Creates production-ready code with Tailwind CSS, shadcn/ui, and modern best practices.
+
+React/Next.js
+Tailwind CSS
+Copy-Paste Ready
+Explore →
+R
+Essential
+Replit
+Code, Collaborate, Deploy
+
+Browser-based IDE with AI assistance. Write code in any language, collaborate in real-time, and deploy with one click. Ghostwriter AI handles completion.
+
+50+ Languages
+Ghostwriter AI
+Instant Deploy
+Explore →
+L
+Essential
+Lovable
+Ideas to Apps, No Code Required
+
+Describe your app idea in plain English. Lovable generates a complete, deployable web application with database, auth, and beautiful UI.
+
+No-Code
+Supabase Backend
+GitHub Sync
+Explore →
+🎨
+Design & Graphics
+7 tools
+M
+Elite
+Midjourney
+Imagination Rendered
+
+The gold standard in AI image generation. Create breathtaking visuals, concept art, and photorealistic images from text descriptions. Unmatched aesthetic quality.
+
+Photorealistic
+Artistic Styles
+V6 Quality
+Discord-Based
+Launch Midjourney →
+D
+Elite
+DALL-E 3
+OpenAI's Visual Genius
+
+State-of-the-art image generation integrated into ChatGPT. Understands complex prompts, handles text in images, and maintains consistency across iterations.
+
+Text-in-Image
+ChatGPT Native
+High Accuracy
+Explore →
+I
+Power
+Ideogram
+Text That Actually Works
+
+AI image generator with the best text rendering in the industry. Perfect for logos, posters, social graphics, and any design requiring readable text.
+
+Perfect Text
+Logo Design
+Magic Prompt
+Explore →
+A
+Power
+Adobe Firefly
+Generative AI for Creatives
+
+Adobe's AI integrated across Creative Cloud. Generate images, expand backgrounds, remove objects, and apply text effects — commercially safe and brand-approved.
+
+Commercial License
+Photoshop Native
+Generative Fill
+Explore →
+F
+Power
+Figma AI
+Design Intelligence Built-In
+
+AI features within Figma for faster design. Auto-layout suggestions, content generation, design system recommendations, and prototype interactions.
+
+Native Integration
+Auto-Layout
+Component AI
+Explore →
+R
+Essential
+Remove.bg
+Background Gone in 5 Seconds
+
+Instantly remove backgrounds from any image with AI precision. Perfect edges, transparent PNGs, and batch processing for product photos.
+
+Instant Removal
+API Available
+Batch Process
+Explore →
+L
+Essential
+Leonardo.ai
+Game-Ready Asset Generation
+
+Create game assets, textures, and concept art with specialized AI models. Train custom models on your style. Built for game developers and 3D artists.
+
+Custom Models
+Texture Generation
+Canvas Editor
+Explore →
+✍️
+Writing & Content
+6 tools
+C
+Elite
+Claude
+The Thinking AI
+
+Anthropic's conversational AI with exceptional writing ability. Long-form content, nuanced analysis, technical documentation, and creative writing with remarkable coherence.
+
+200K Context
+Nuanced Writing
+PDF Analysis
+Artifacts
+Launch Claude →
+G
+Power
+ChatGPT
+The Conversational Pioneer
+
+OpenAI's flagship AI assistant. Web browsing, image generation, code execution, and file analysis. GPT-4o delivers speed and capability.
+
+Web Browsing
+DALL-E Built-In
+Code Interpreter
+Explore →
+J
+Power
+Jasper
+Enterprise Marketing AI
+
+AI marketing platform for teams. Brand voice consistency, campaign creation, and content at scale. Templates for ads, emails, blogs, and social.
+
+Brand Voice
+Templates
+Team Features
+Explore →
+C
+Power
+Copy.ai
+Sales & Marketing Copy Engine
+
+Generate high-converting copy for any channel. Product descriptions, ad copy, email sequences, and landing pages optimized for conversion.
+
+90+ Templates
+Workflows
+API Access
+Explore →
+G
+Essential
+Grammarly
+Write with Confidence
+
+AI writing assistant for grammar, clarity, and tone. Works everywhere you write — browser, desktop, mobile. Enterprise-grade for teams.
+
+Tone Detection
+Plagiarism Check
+Style Guides
+Explore →
+H
+Essential
+Hemingway Editor
+Write Bold and Clear
+
+Makes your writing bold and clear. Highlights complex sentences, passive voice, and adverbs. Aims for readability that Hemingway would approve.
+
+Readability Score
+Simple Interface
+Desktop App
+Explore →
+🎥
+Video Creation
+7 tools
+S
+Elite
+Sora
+Text-to-Video Revolution
+
+OpenAI's groundbreaking video generation. Create cinematic, minute-long videos from text. Photorealistic quality, complex scenes, and coherent motion.
+
+60s Videos
+Photorealistic
+Scene Coherence
+Join Waitlist →
+R
+Elite
+Runway
+AI Video Tools Suite
+
+Complete AI video toolkit. Gen-2 text-to-video, motion brush, infinite image expansion, and green screen removal. Used by Hollywood studios.
+
+Gen-2 Video
+Motion Brush
+Inpainting
+Explore →
+P
+Power
+Pika
+Creative Video Generation
+
+Turn images and text into videos with unique AI. Modify existing videos, add effects, and create animations with intuitive controls.
+
+Image-to-Video
+Video Editing
+Quick Renders
+Explore →
+H
+Power
+HeyGen
+AI Avatar Videos
+
+Create professional videos with AI avatars. 100+ realistic digital humans, 40+ languages, and lip-sync that's indistinguishable from real footage.
+
+100+ Avatars
+40+ Languages
+Clone Your Voice
+Explore →
+S
+Power
+Synthesia
+Enterprise Video at Scale
+
+Create training videos and presentations with AI presenters. No cameras, no studios, no actors. Update videos by editing text.
+
+Enterprise Grade
+140+ Avatars
+120+ Languages
+Explore →
+D
+Essential
+Descript
+Edit Video Like a Doc
+
+Revolutionary video editing through text. Edit by deleting words in the transcript. Overdub for voice cloning, automatic filler word removal.
+
+Text-Based Editing
+Voice Clone
+Auto-Captions
+Explore →
+C
+Essential
+CapCut
+Free Pro Video Editing
+
+Free, feature-rich video editor from ByteDance. AI-powered effects, auto-captions, background removal, and templates for viral content.
+
+Free
+AI Effects
+Mobile + Desktop
+Explore →
+🎙️
+Audio & Voice
+6 tools
+XI
+Elite
+ElevenLabs
+Voices Indistinguishable from Human
+
+The most realistic AI voice synthesis. Clone any voice in minutes, generate speech in 29 languages, and create emotionally expressive audio.
+
+Voice Cloning
+29 Languages
+Emotional Control
+API Access
+Launch ElevenLabs →
+W
+Power
+Whisper
+OpenAI's Transcription Engine
+
+Industry-leading speech recognition. Transcribe audio in 99 languages with timestamps, speaker detection, and remarkable accuracy even with accents.
+
+99 Languages
+Open Source
+Timestamps
+Explore →
+M
+Power
+Murf AI
+Studio-Quality Voiceovers
+
+Create natural voiceovers for videos, podcasts, and presentations. 120+ voices, pitch/speed control, and enterprise team features.
+
+120+ Voices
+Video Sync
+Team Workspace
+Explore →
+S
+Power
+Suno
+Create Music with AI
+
+Generate complete songs with vocals from text prompts. Any genre, any style. Create jingles, background music, or full compositions in minutes.
+
+Full Songs
+Vocals + Instruments
+All Genres
+Explore →
+O
+Essential
+Otter.ai
+Meeting Notes on Autopilot
+
+AI meeting assistant that records, transcribes, and summarizes. Automatically joins Zoom/Teams, identifies speakers, and generates action items.
+
+Auto-Join Meetings
+Speaker ID
+Action Items
+Explore →
+P
+Essential
+Podcastle
+Podcast Studio in Your Browser
+
+Record, edit, and enhance podcasts with AI. Background noise removal, voice enhancement, and one-click publishing to all platforms.
+
+Noise Removal
+Magic Dust
+Multi-Track
+Explore →
+⚡
+Productivity & Workflow
+6 tools
+N
+Elite
+Notion AI
+Your Second Brain, Supercharged
+
+AI integrated into Notion workspace. Summarize pages, generate content, extract action items, and answer questions about your entire knowledge base.
+
+Q&A on Docs
+Auto-Fill Tables
+Meeting Summaries
+Writing Assist
+Launch Notion →
+L
+Power
+Linear
+Issue Tracking at Light Speed
+
+Modern project management with AI. Auto-generate issues from Slack, smart prioritization, and keyboard-first design for maximum velocity.
+
+Cycles & Sprints
+Git Sync
+Auto-Close Issues
+Explore →
+Z
+Power
+Zapier
+Automate Everything
+
+Connect 6,000+ apps with no-code automation. AI helps build Zaps from natural language descriptions. Automate workflows that run 24/7.
+
+6000+ Apps
+AI Builder
+Multi-Step
+Explore →
+R
+Power
+Raycast
+Launcher on Steroids
+
+Mac productivity launcher with built-in AI. Quick access to ChatGPT, clipboard history, window management, and 1000+ extensions.
+
+AI Chat Built-In
+Extensions
+Snippets
+Explore →
+M
+Essential
+Motion
+AI-Scheduled Productivity
+
+Intelligent calendar that auto-schedules tasks. AI prioritizes your work, blocks focus time, and reschedules when things change.
+
+Auto-Schedule
+Task Management
+Focus Time
+Explore →
+C
+Essential
+Cron Calendar
+Calendar Built for Teams
+
+Next-gen calendar with keyboard shortcuts, team scheduling, and cross-calendar visibility. Timezone intelligence for global teams.
+
+Menu Bar
+Team Overlays
+Time Zones
+Explore →
+🔍
+Research & Knowledge
+6 tools
+P
+Elite
+Perplexity
+AI-Powered Answer Engine
+
+Search reimagined with AI. Get direct answers with citations, not links. Research mode for deep dives. Pro Search for complex questions.
+
+Cited Answers
+Pro Search
+Focus Modes
+Collections
+Launch Perplexity →
+C
+Power
+Consensus
+Research Papers, Answered
+
+AI search engine for scientific research. Ask questions, get answers backed by peer-reviewed papers. Perfect for evidence-based decisions.
+
+200M+ Papers
+Copilot
+Consensus Meter
+Explore →
+E
+Power
+Elicit
+AI Research Assistant
+
+Automate literature reviews. Find relevant papers, extract key information, and synthesize findings across hundreds of sources.
+
+Paper Discovery
+Data Extraction
+Synthesis
+Explore →
+S
+Power
+Semantic Scholar
+AI-Powered Academic Search
+
+Free academic search engine with AI features. Find influential papers, discover connections, and track citations across 200M+ papers.
+
+TLDR Summaries
+Citation Analysis
+Research Feeds
+Explore →
+N
+Essential
+NotebookLM
+Google's Research Notebook
+
+Upload documents and chat with them. AI grounds all answers in your sources. Create study guides, FAQs, and summaries automatically.
+
+Source-Grounded
+Audio Overview
+Multi-Doc Chat
+Explore →
+C
+Essential
+ChatPDF
+Talk to Any PDF
+
+Upload a PDF and have a conversation with it. Extract insights, summarize sections, and get answers from lengthy documents instantly.
+
+PDF Upload
+Chat Interface
+Page Citations
+Explore →
+📊
+Data & Analytics
+5 tools
+J
+Elite
+Julius AI
+Data Analysis for Everyone
+
+Upload data, ask questions in plain English. AI creates visualizations, runs statistics, and builds models without code. Like having a data scientist on demand.
+
+No-Code Analysis
+Auto-Visualize
+Python/R Under Hood
+Launch Julius →
+T
+Power
+Tableau AI
+Enterprise BI with AI
+
+Ask questions about your data in natural language. AI suggests visualizations, explains trends, and surfaces insights you might miss.
+
+Einstein AI
+Explain Data
+Ask Data
+Explore →
+M
+Power
+Mode
+Collaborative Data Science
+
+SQL + Python + R in one platform. AI-assisted query writing, automated report insights, and interactive dashboards for data teams.
+
+SQL IDE
+Python Notebooks
+Report Insights
+Explore →
+A
+Essential
+Akkio
+Predictive AI for Business
+
+Build ML models without data science skills. Predict churn, forecast revenue, and score leads. Connects to your existing data stack.
+
+No-Code ML
+Predictions
+Integrations
+Explore →
+C
+Essential
+Count
+Visual Analytics Canvas
+
+Infinite canvas for data exploration. Drag-and-drop analysis with AI assistance. See your analytical journey as a connected story.
+
+Canvas UI
+AI Assistant
+Collaboration
+Explore →
+💬
+Communication & Meetings
+5 tools
+F
+Elite
+Fireflies.ai
+Never Miss a Meeting Moment
+
+AI meeting assistant that joins calls, transcribes conversations, extracts action items, and creates searchable meeting archives.
+
+Auto-Join
+AI Summaries
+Searchable
+CRM Sync
+Launch Fireflies →
+G
+Power
+Grain
+Clip & Share Meeting Moments
+
+Record meetings, create shareable clips, and build a library of customer insights. AI highlights key moments automatically.
+
+Video Clips
+AI Highlights
+Insight Library
+Explore →
+S
+Power
+Slack AI
+Intelligence in Your Workspace
+
+AI built into Slack. Summarize channels, search conversations with natural language, and get caught up on any thread instantly.
+
+Channel Summaries
+Thread Catch-Up
+Smart Search
+Explore →
+L
+Essential
+Loom
+Async Video Messaging
+
+Record quick videos instead of scheduling meetings. AI generates transcripts, summaries, and action items. Share with one click.
+
+Instant Recording
+AI Titles
+Auto-Chapters
+Explore →
+K
+Essential
+Krisp
+AI Noise Cancellation
+
+Remove background noise from calls in real-time. Works with any conferencing app. AI transcription and meeting notes included.
+
+Noise Cancel
+Any App
+Meeting Notes
+Explore →
+🔐
+Security & Compliance
+4 tools
+S
+Elite
+Snyk
+Developer-First Security
+
+Find and fix vulnerabilities in code, dependencies, containers, and IaC. AI-powered auto-remediation and priority scoring for security issues.
+
+Code Analysis
+Container Scan
+Auto-Fix PRs
+SBOM
+Launch Snyk →
+D
+Power
+Darktrace
+Self-Learning Cyber AI
+
+AI that learns your business to detect anomalies. Autonomous response to threats in real-time. Enterprise-grade security intelligence.
+
+Autonomous Response
+Network AI
+Email Security
+Explore →
+S
+Power
+Semgrep
+Code Security at Scale
+
+Static analysis that developers actually use. Write custom rules, find security bugs before production, integrate into any CI/CD.
+
+Custom Rules
+Multi-Language
+CI Integration
+Explore →
+V
+Essential
+Vanta
+Compliance on Autopilot
+
+Automate SOC 2, ISO 27001, HIPAA, and other compliance frameworks. Continuous monitoring, evidence collection, and audit readiness.
+
+Auto-Evidence
+Continuous Monitoring
+Vendor Risk
+Explore →
+🚀
+DevOps & Infrastructure
+5 tools
+V
+Elite
+Vercel
+Ship at the Speed of Frontend
+
+Deploy any frontend framework with zero configuration. Edge Functions, analytics, and AI SDK. The platform that invented DX.
+
+Zero Config
+Edge Runtime
+Preview Deploys
+AI SDK
+Launch Vercel →
+G
+Power
+GitHub Actions
+CI/CD Native to GitHub
+
+Automate workflows directly in GitHub. AI-powered Copilot for Actions suggests workflows. Matrix builds, artifact management, environments.
+
+YAML Workflows
+Marketplace
+Matrix Builds
+Explore →
+P
+Power
+Pulumi
+IaC in Real Languages
+
+Write infrastructure as code in TypeScript, Python, Go, or C#. AI Assist helps generate infrastructure. No YAML/DSL required.
+
+Real Languages
+AI Assist
+Multi-Cloud
+Explore →
+D
+Power
+Datadog
+Observability Unified
+
+Monitoring, APM, logs, and security in one platform. AI-powered anomaly detection, root cause analysis, and intelligent alerting.
+
+Watchdog AI
+APM
+Log Management
+Explore →
+R
+Essential
+Railway
+Deploy in Seconds
+
+The simplest way to deploy apps. Connect GitHub, Railway detects framework and deploys. Databases, cron jobs, and auto-scaling included.
+
+Auto-Detect
+Databases
+Generous Free Tier
+Explore →
+🤖
+Automation & AI Agents
+5 tools
+M
+Elite
+Make (Integromat)
+Visual Automation Platform
+
+Build complex automations visually. 1500+ app integrations, data transformation, and AI modules. More power than Zapier for complex workflows.
+
+Visual Builder
+1500+ Apps
+Data Transform
+Webhooks
+Launch Make →
+n8n
+Power
+n8n
+Self-Hostable Automation
+
+Open-source workflow automation. Self-host for data privacy, or use cloud. JavaScript nodes for custom logic. AI agent capabilities.
+
+Self-Hostable
+Open Source
+AI Agents
+Explore →
+A
+Power
+AgentGPT
+Autonomous AI Agents
+
+Create AI agents that accomplish goals autonomously. Breaks down tasks, executes steps, and iterates until the job is done.
+
+Autonomous
+Task Breakdown
+Web-Based
+Explore →
+L
+Power
+Langchain
+LLM Application Framework
+
+Build applications powered by LLMs. Chains, agents, memory, and tool integrations. The framework for AI-powered software.
+
+Chains
+Agents
+Vector Stores
+Explore →
+F
+Essential
+Flowise
+Visual LLM App Builder
+
+Drag-and-drop LangChain interface. Build chatbots, agents, and AI apps visually. Open-source and self-hostable.
+
+Visual Builder
+Open Source
+Deploy Anywhere
+Explore →
+📝
+Documentation & Knowledge
+5 tools
+G
+Elite
+GitBook
+Beautiful Documentation
+
+Create stunning documentation that stays in sync with your code. AI-powered search, Git integration, and customizable design.
+
+Git Sync
+AI Search
+Lens AI
+Custom Domains
+Launch GitBook →
+M
+Power
+Mintlify
+Docs That Convert
+
+Modern documentation with AI features. Auto-generate from code, interactive API playgrounds, and analytics to improve content.
+
+AI Writer
+API Playground
+Analytics
+Explore →
+C
+Power
+Confluence AI
+Enterprise Wiki Supercharged
+
+Atlassian's wiki with AI. Summarize pages, generate content, and find information across your entire knowledge base.
+
+Atlassian AI
+Page Summaries
+Enterprise Scale
+Explore →
+S
+Essential
+Scribe
+Auto-Generate How-To Guides
+
+Record your screen, Scribe creates step-by-step guides automatically. Perfect for SOPs, training docs, and process documentation.
+
+Auto-Capture
+Edit Steps
+Embed Anywhere
+Explore →
+S
+Essential
+Swimm
+Code-Coupled Documentation
+
+Documentation that stays up-to-date with code. AI generates explanations for code snippets. Integrates with IDE and PRs.
+
+Auto-Sync
+AI Explain
+IDE Plugin
+Explore →
+🎓
+Learning & Upskilling
+5 tools
+C
+Elite
+Coursera
+World-Class Learning
+
+Courses from top universities and companies. AI specializations, professional certificates, and degree programs. Learn from Stanford, Google, IBM.
+
+University Courses
+Certificates
+AI/ML Tracks
+Enterprise
+Start Learning →
+D
+Power
+DeepLearning.AI
+Andrew Ng's AI Academy
+
+Learn AI from the legend himself. Short courses on latest AI tools, specializations in ML, and hands-on projects. Industry-recognized.
+
+Expert Instruction
+Cutting Edge
+Hands-On
+Explore →
+P
+Power
+Pluralsight
+Tech Skills Platform
+
+7000+ courses for developers and IT pros. Skill assessments, learning paths, and hands-on labs. AI-powered recommendations.
+
+Skill IQ
+Learning Paths
+Hands-On Labs
+Explore →
+K
+Essential
+Khanmigo
+AI Tutor by Khan Academy
+
+Personal AI tutor that guides without giving answers. Socratic method learning, homework help, and personalized explanations.
+
+AI Tutor
+Socratic Method
+All Subjects
+Explore →
+B
+Essential
+Brilliant
+Learn by Doing
+
+Interactive courses in math, science, and computer science. Learn through problem-solving, not lectures. AI fundamentals included.
+
+Interactive
+Problem-Solving
+Daily Challenges
+Explore →
+🛡️
+Secure SDLC (SSDLC)
+12 tools
+SSDLC Phases Covered
+1. Requirements & Threat Modeling
+2. Secure Design
+3. Secure Coding
+4. Code Review & SAST
+5. Security Testing & DAST
+6. Deployment & Hardening
+7. Monitoring & Response
+TM
+Elite
+Microsoft Threat Modeling Tool
+Phase 1: Threat Modeling
+
+Identify security threats early in design. Create data flow diagrams, auto-generate threats using STRIDE methodology, and produce security requirements.
+
+STRIDE
+DFD Builder
+Auto-Threats
+Report Generation
+Download Tool →
+IQ
+Elite
+IriusRisk
+Automated Threat Modeling
+
+AI-powered threat modeling at scale. Integrates with Jira, generates security requirements, and provides countermeasure recommendations automatically.
+
+AI-Powered
+Jira Integration
+Compliance Mapping
+Explore →
+TT
+Power
+OWASP Threat Dragon
+Open Source Threat Modeling
+
+Free, open-source threat modeling tool from OWASP. Create threat model diagrams, document threats, and export for team collaboration.
+
+Free & Open Source
+OWASP Backed
+Web & Desktop
+Explore →
+SQ
+Elite
+SonarQube
+Phase 4: SAST & Code Quality
+
+Industry-standard static analysis. Detect bugs, vulnerabilities, and code smells across 30+ languages. Quality gates ensure only secure code ships.
+
+30+ Languages
+Quality Gates
+CI/CD Native
+Security Hotspots
+Launch SonarQube →
+CX
+Elite
+Checkmarx
+Enterprise Application Security
+
+Comprehensive AppSec platform. SAST, SCA, IAST, and API security in one solution. AI-powered remediation guidance and developer training.
+
+SAST + SCA + IAST
+AI Remediation
+IDE Plugins
+Explore →
+V
+Power
+Veracode
+Cloud-Native AppSec
+
+SaaS application security testing. Static, dynamic, and software composition analysis. Policy-based security enforcement across the SDLC.
+
+Cloud-Native
+Policy Engine
+Developer Sandbox
+Explore →
+D
+Power
+Dependabot
+Automated Dependency Updates
+
+GitHub-native dependency security. Automatic PRs for vulnerable dependencies, version updates, and security advisories.
+
+GitHub Native
+Auto-PRs
+Multi-Ecosystem
+Explore →
+🦉
+Power
+OWASP Dependency-Check
+Open Source SCA
+
+Free software composition analysis. Identify vulnerable components using NVD database. Integrates with Maven, Gradle, Jenkins, and more.
+
+Free
+NVD Database
+CI Integration
+Explore →
+BP
+Elite
+Burp Suite
+Phase 5: DAST & Pen Testing
+
+The gold standard for web security testing. Automated scanning, manual testing tools, and extensible with BApps. Essential for pen testers.
+
+Automated Scanner
+Manual Testing
+Intruder
+Repeater
+Launch Burp Suite →
+ZP
+Power
+OWASP ZAP
+Free DAST Scanner
+
+World's most popular free security scanner. Automated vulnerability detection, API testing, and CI/CD integration. Community-driven development.
+
+Free & Open Source
+API Testing
+Automation
+Explore →
+N
+Essential
+Nuclei
+Fast Vulnerability Scanner
+
+Template-based vulnerability scanner. Community-driven templates for CVEs, misconfigs, and exposures. Incredibly fast and customizable.
+
+Template Engine
+Community Templates
+Lightning Fast
+Explore →
+GG
+Power
+GitGuardian
+Secrets Detection
+
+Prevent secrets from leaking. Real-time scanning of commits, historical scanning of repos, and incident management for exposed credentials.
+
+Real-time Scanning
+350+ Detectors
+Remediation
+Explore →
+🔧
+DevSecOps Pipeline
+14 tools
+DevSecOps Pipeline Stages
+Plan
+→
+Code
+→
+Build
+→
+Test
+→
+Release
+→
+Deploy
+→
+Operate
+→
+Monitor
+🔒 Security integrated at every stage — Shift Left + Continuous Security
+
+GL
+Elite
+GitLab Ultimate
+Complete DevSecOps Platform
+
+All-in-one DevSecOps. SAST, DAST, container scanning, dependency scanning, license compliance, and secret detection built into CI/CD pipelines.
+
+Built-in Security
+Security Dashboard
+Compliance Pipelines
+Vulnerability Management
+Launch GitLab →
+GH
+Elite
+GitHub Advanced Security
+Security Native to GitHub
+
+CodeQL SAST, secret scanning, dependency review, and security advisories. Code scanning finds vulnerabilities before they reach production.
+
+CodeQL
+Secret Scanning
+Dependency Review
+Explore →
+AQ
+Elite
+Aqua Security
+Cloud Native Security
+
+Full lifecycle container and cloud security. Image scanning, runtime protection, Kubernetes security, and serverless protection.
+
+Container Scanning
+Runtime Protection
+K8s Security
+CSPM
+Launch Aqua →
+TR
+Power
+Trivy
+All-in-One Security Scanner
+
+Aqua's open-source scanner. Containers, filesystems, git repos, Kubernetes, and IaC. Blazing fast with comprehensive CVE database.
+
+Open Source
+Multi-Target
+CI/CD Ready
+Explore →
+SY
+Power
+Sysdig
+Container Intelligence
+
+Container security and monitoring. Runtime threat detection, forensics, compliance, and Prometheus-compatible monitoring.
+
+Runtime Security
+Forensics
+Falco Integration
+Explore →
+CH
+Power
+Checkov
+IaC Security Scanner
+
+Static analysis for infrastructure as code. Terraform, CloudFormation, Kubernetes, ARM templates, and more. 1000+ built-in policies.
+
+Terraform
+CloudFormation
+1000+ Policies
+Explore →
+TF
+Power
+Terrascan
+IaC Policy as Code
+
+Detect compliance and security violations in IaC. 500+ policies for AWS, Azure, GCP, and Kubernetes. OPA-based custom policies.
+
+Multi-Cloud
+OPA Policies
+CI/CD Hooks
+Explore →
+HV
+Elite
+HashiCorp Vault
+Secrets Management
+
+Industry-standard secrets management. Dynamic secrets, encryption as a service, PKI, and identity-based access. Zero trust security.
+
+Dynamic Secrets
+Encryption
+PKI
+Multi-Cloud
+Launch Vault →
+DP
+Power
+Doppler
+Modern Secrets Platform
+
+Universal secrets manager for developers. Sync secrets to any platform, environment-based configs, and team collaboration.
+
+Universal Sync
+Environments
+Audit Logs
+Explore →
+OPA
+Power
+Open Policy Agent
+Policy as Code
+
+Unified policy engine. Define and enforce policies across the entire stack — Kubernetes, Terraform, API gateways, microservices, and more.
+
+Rego Language
+Kubernetes Native
+API Authorization
+Explore →
+FA
+Power
+Falco
+Runtime Security
+
+Cloud-native runtime security. Detect anomalous behavior in containers, hosts, and Kubernetes. CNCF graduated project.
+
+Runtime Detection
+CNCF Graduated
+eBPF Powered
+Explore →
+KB
+Power
+Kubescape
+Kubernetes Security Platform
+
+K8s security from dev to production. NSA/CISA hardening checks, vulnerability scanning, RBAC analysis, and compliance frameworks.
+
+NSA Hardening
+RBAC Analyzer
+IDE Extension
+Explore →
+KV
+Essential
+kube-bench
+CIS Benchmark for K8s
+
+Check Kubernetes clusters against CIS benchmarks. Automated security assessment for control plane, nodes, and workloads.
+
+CIS Benchmarks
+Automated Checks
+Remediation Tips
+Explore →
+SY
+Essential
+Syft
+SBOM Generation
+
+Generate Software Bill of Materials from container images and filesystems. CycloneDX and SPDX formats. Foundation for supply chain security.
+
+SBOM Generator
+CycloneDX/SPDX
+Container Native
+Explore →
+🧠
+MLOps & AI Infrastructure
+15 tools
+MLOps Lifecycle Stages
+📊
+Data Management
+🔬
+Experimentation
+🏋️
+Training
+📦
+Model Registry
+🚀
+Deployment
+📈
+Monitoring
+ML
+Elite
+MLflow
+End-to-End ML Platform
+
+Open-source MLOps platform. Experiment tracking, model registry, deployment, and LLM evaluation. The most adopted MLOps framework.
+
+Experiment Tracking
+Model Registry
+LLM Evaluate
+Open Source
+Launch MLflow →
+W&B
+Elite
+Weights & Biases
+AI Developer Platform
+
+The ML developer's best friend. Experiment tracking, hyperparameter sweeps, model versioning, and collaborative dashboards. Used by OpenAI, NVIDIA.
+
+Experiments
+Sweeps
+Artifacts
+Reports
+Launch W&B →
+CM
+Power
+Comet ML
+Experiment Management
+
+Track, compare, and optimize ML experiments. Real-time collaboration, model registry, and production monitoring in one platform.
+
+Real-time Tracking
+Collaboration
+Model Registry
+Explore →
+⚡
+Elite
+Lightning AI
+Train & Deploy at Scale
+
+From PyTorch Lightning creators. Train models on any hardware, build AI apps with Lightning Apps, and deploy with one click.
+
+PyTorch Lightning
+Studios
+Multi-Cloud GPU
+Explore →
+MD
+Power
+Modal
+Serverless GPU Infrastructure
+
+Run any Python code on cloud GPUs. No infrastructure management. Pay per second. Perfect for training, inference, and batch jobs.
+
+Serverless GPU
+Pay-Per-Second
+Container Native
+Explore →
+AN
+Power
+Anyscale
+Ray at Scale
+
+Managed Ray platform. Distributed training, hyperparameter tuning, and LLM serving. Scale from laptop to thousands of GPUs.
+
+Ray Platform
+Distributed Training
+LLM Serving
+Explore →
+BT
+Elite
+BentoML
+Model Serving Framework
+
+Package and deploy ML models as production APIs. Framework-agnostic, GPU-accelerated inference, and Kubernetes-native deployment.
+
+Any Framework
+GPU Inference
+K8s Native
+Open Source
+Launch BentoML →
+RP
+Power
+Replicate
+Run ML Models via API
+
+Deploy and run ML models in the cloud. Thousands of pre-trained models available. Run your own models with one command.
+
+Model Library
+Custom Models
+API-First
+Explore →
+SL
+Power
+Seldon
+Enterprise ML Deployment
+
+Deploy, monitor, and explain ML models at scale. A/B testing, canary deployments, explainability, and drift detection.
+
+A/B Testing
+Explainability
+Drift Detection
+Explore →
+🦜
+Elite
+LangSmith
+LLMOps Platform
+
+Debug, test, evaluate, and monitor LLM applications. Trace every LLM call, build evaluation datasets, and catch regressions in production.
+
+LLM Tracing
+Evaluation
+Monitoring
+Datasets
+Launch LangSmith →
+HF
+Elite
+Hugging Face
+The AI Community Hub
+
+Home of 500K+ models. Transformers library, model hub, datasets, Spaces for demos, and Inference Endpoints for deployment.
+
+Model Hub
+Transformers
+Spaces
+Inference API
+Explore →
+FS
+Power
+Feast
+Open Source Feature Store
+
+Manage and serve ML features. Consistent feature engineering between training and serving. Registry, transformation, and online/offline stores.
+
+Feature Registry
+Online/Offline
+Open Source
+Explore →
+DV
+Power
+DVC
+Data Version Control
+
+Git for data and models. Version datasets, track experiments, and build reproducible ML pipelines. Works with any storage backend.
+
+Data Versioning
+Pipelines
+Experiments
+Explore →
+EV
+Power
+Evidently AI
+ML Monitoring & Testing
+
+Monitor ML models in production. Detect data drift, model performance degradation, and data quality issues. Beautiful reports and dashboards.
+
+Drift Detection
+Data Quality
+Reports
+Explore →
+AR
+Essential
+Arize AI
+ML Observability
+
+Observe and troubleshoot ML models. Root cause analysis, performance monitoring, and explainability for production AI systems.
+
+Observability
+Root Cause
+Explainability
+Explore →
+TCPWave Superhero Toolkit
+Empowering excellence through AI-powered tools
+
+TCPWave
+TCPWorld.ai
+Suggest a Tool
+Download PDF
+© 2025 TCPWave. Curated with 🧠 by the Innovation Team.
+

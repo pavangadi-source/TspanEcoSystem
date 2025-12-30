@@ -1,0 +1,1450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Securing Government Research Funding: MeitY & DST Grant Strategy for T-SPAN</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+        :root {
+            --saffron: #FF9933;
+            --white: #FFFFFF;
+            --green: #138808;
+            --navy: #000080;
+            --primary: #1e40af;
+            --primary-dark: #1e3a8a;
+            --success: #059669;
+            --warning: #d97706;
+            --danger: #dc2626;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-600: #4b5563;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 10pt;
+            line-height: 1.6;
+            color: var(--gray-800);
+            background: var(--white);
+            max-width: 8.5in;
+            margin: 0 auto;
+        }
+
+        /* Header with Indian Flag Colors */
+        .document-header {
+            background: linear-gradient(135deg, var(--navy) 0%, #1e3a5f 100%);
+            color: white;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .document-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--saffron) 33%, var(--white) 33%, var(--white) 66%, var(--green) 66%);
+        }
+
+        .document-header h1 {
+            font-size: 22pt;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .document-header .subtitle {
+            font-size: 12pt;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        .document-header .meta {
+            margin-top: 20px;
+            font-size: 9pt;
+            opacity: 0.7;
+        }
+
+        /* Main Content */
+        .content {
+            padding: 40px;
+        }
+
+        h2 {
+            font-size: 14pt;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 3px solid var(--saffron);
+        }
+
+        h3 {
+            font-size: 12pt;
+            font-weight: 600;
+            color: var(--gray-800);
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        h4 {
+            font-size: 10pt;
+            font-weight: 600;
+            color: var(--primary);
+            margin-top: 15px;
+            margin-bottom: 8px;
+        }
+
+        p {
+            margin-bottom: 12px;
+            text-align: justify;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 9pt;
+        }
+
+        th {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 10px 12px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 8pt;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            padding: 10px 12px;
+            border: 1px solid var(--gray-200);
+            vertical-align: top;
+        }
+
+        tr:nth-child(even) {
+            background: var(--gray-50);
+        }
+
+        /* Special Boxes */
+        .funding-card {
+            background: linear-gradient(135deg, var(--gray-50) 0%, white 100%);
+            border: 1px solid var(--gray-200);
+            border-left: 4px solid var(--primary);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .funding-card.meity {
+            border-left-color: var(--saffron);
+        }
+
+        .funding-card.dst {
+            border-left-color: var(--green);
+        }
+
+        .funding-card.critical {
+            border-left-color: var(--danger);
+            background: linear-gradient(135deg, #fef2f2 0%, white 100%);
+        }
+
+        .funding-card h4 {
+            margin-top: 0;
+            color: var(--gray-900);
+        }
+
+        .amount-box {
+            background: linear-gradient(135deg, var(--success) 0%, #047857 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 15px 0;
+        }
+
+        .amount-box .amount {
+            font-size: 24pt;
+            font-weight: 800;
+        }
+
+        .amount-box .label {
+            font-size: 9pt;
+            opacity: 0.9;
+        }
+
+        .timeline-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fef9c3 100%);
+            border: 1px solid #fbbf24;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .checklist {
+            background: var(--gray-50);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .checklist ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .checklist li {
+            padding: 8px 0;
+            padding-left: 30px;
+            position: relative;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .checklist li:last-child {
+            border-bottom: none;
+        }
+
+        .checklist li::before {
+            content: '☐';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-size: 14pt;
+        }
+
+        .tip-box {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            border: 1px solid #10b981;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin: 15px 0;
+        }
+
+        .tip-box::before {
+            content: '💡 PRO TIP: ';
+            font-weight: 700;
+            color: var(--success);
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+            border: 1px solid #ef4444;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin: 15px 0;
+        }
+
+        .warning-box::before {
+            content: '⚠️ WARNING: ';
+            font-weight: 700;
+            color: var(--danger);
+        }
+
+        .process-step {
+            display: flex;
+            margin: 15px 0;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            background: var(--primary);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14pt;
+            flex-shrink: 0;
+            margin-right: 15px;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-content h5 {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--gray-900);
+        }
+
+        /* Code/URLs */
+        code {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--gray-100);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 8pt;
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Lists */
+        ul, ol {
+            margin: 10px 0 10px 20px;
+        }
+
+        li {
+            margin-bottom: 6px;
+        }
+
+        /* Two Column Layout */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Contact Cards */
+        .contact-card {
+            background: white;
+            border: 1px solid var(--gray-200);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+
+        .contact-card h5 {
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 8px;
+        }
+
+        .contact-card p {
+            font-size: 9pt;
+            margin-bottom: 5px;
+        }
+
+        /* Budget Table */
+        .budget-table td:nth-child(2),
+        .budget-table td:nth-child(3),
+        .budget-table td:nth-child(4) {
+            text-align: right;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Highlight */
+        .highlight {
+            background: linear-gradient(120deg, #fef3c7 0%, #fef3c7 100%);
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+
+        mark {
+            background: #fef08a;
+            padding: 1px 4px;
+        }
+
+        /* Print */
+        @media print {
+            .document-header {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+        /* Scheme Comparison */
+        .scheme-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .scheme-card {
+            border: 2px solid var(--gray-200);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .scheme-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .scheme-card .icon {
+            font-size: 32pt;
+            margin-bottom: 10px;
+        }
+
+        .scheme-card .name {
+            font-weight: 700;
+            font-size: 11pt;
+            color: var(--gray-900);
+            margin-bottom: 5px;
+        }
+
+        .scheme-card .amount {
+            color: var(--success);
+            font-weight: 700;
+            font-size: 12pt;
+        }
+
+        .scheme-card .ministry {
+            font-size: 8pt;
+            color: var(--gray-600);
+            margin-top: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="document-header">
+    <h1>Securing Government Research Funding</h1>
+    <div class="subtitle">A Strategic Guide to MeitY & DST Grants for T-SPAN Cybersecurity Research</div>
+    <div class="meta">
+        T-SPAN Research Consortium | Version 1.0 | December 2025<br>
+        Prepared for: Leadership Planning Session | Classification: Internal Strategy Document
+    </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+<h2>Executive Summary: The Funding Landscape</h2>
+
+<p>The Government of India allocates approximately <strong>₹14,000+ Crores annually</strong> for science and technology research through various ministries and departments. For T-SPAN's cybersecurity and AI research agenda, two primary funding sources are most relevant: the <strong>Ministry of Electronics and Information Technology (MeitY)</strong> and the <strong>Department of Science and Technology (DST)</strong>. This guide provides a comprehensive roadmap for accessing these funds.</p>
+
+<div class="scheme-grid">
+    <div class="scheme-card">
+        <div class="icon">🔐</div>
+        <div class="name">MeitY Cybersecurity R&D</div>
+        <div class="amount">₹50 Lakhs - ₹25 Crores</div>
+        <div class="ministry">Ministry of Electronics & IT</div>
+    </div>
+    <div class="scheme-card">
+        <div class="icon">🔬</div>
+        <div class="name">DST SERB Grants</div>
+        <div class="amount">₹30 Lakhs - ₹5 Crores</div>
+        <div class="ministry">Dept of Science & Technology</div>
+    </div>
+    <div class="scheme-card">
+        <div class="icon">🤖</div>
+        <div class="name">ANRF AI/ML Programs</div>
+        <div class="amount">₹1 Crore - ₹50 Crores</div>
+        <div class="ministry">Anusandhan National Research Foundation</div>
+    </div>
+</div>
+
+<h2>Part I: MeitY Funding Programs</h2>
+
+<div class="funding-card meity">
+    <h4>🏛️ About MeitY</h4>
+    <p>The Ministry of Electronics and Information Technology (MeitY) is the apex body for IT policy and e-governance in India. It funds research aligned with Digital India, cybersecurity, AI/ML, and indigenous technology development. MeitY operates through multiple divisions and autonomous bodies that offer various funding schemes.</p>
+    <p><strong>Website:</strong> <a href="https://www.meity.gov.in">https://www.meity.gov.in</a></p>
+    <p><strong>R&D Portal:</strong> <a href="https://www.meity.gov.in/research-development">https://www.meity.gov.in/research-development</a></p>
+</div>
+
+<h3>1.1 Key MeitY Funding Schemes for T-SPAN</h3>
+
+<table>
+    <tr>
+        <th>Scheme Name</th>
+        <th>Focus Area</th>
+        <th>Funding Range</th>
+        <th>Duration</th>
+        <th>Relevance</th>
+    </tr>
+    <tr>
+        <td><strong>Cyber Security R&D Program</strong></td>
+        <td>Threat detection, secure systems, cryptography</td>
+        <td>₹50 L - ₹10 Cr</td>
+        <td>2-3 years</td>
+        <td>⭐⭐⭐⭐⭐</td>
+    </tr>
+    <tr>
+        <td><strong>National Supercomputing Mission (NSM)</strong></td>
+        <td>HPC applications, AI workloads</td>
+        <td>₹1 Cr - ₹25 Cr</td>
+        <td>3-5 years</td>
+        <td>⭐⭐⭐⭐</td>
+    </tr>
+    <tr>
+        <td><strong>AI/ML Research Program</strong></td>
+        <td>Applied AI, ML for national priorities</td>
+        <td>₹50 L - ₹5 Cr</td>
+        <td>2-3 years</td>
+        <td>⭐⭐⭐⭐⭐</td>
+    </tr>
+    <tr>
+        <td><strong>STPI Centres of Excellence</strong></td>
+        <td>Domain-specific tech development</td>
+        <td>₹5 Cr - ₹50 Cr</td>
+        <td>5 years</td>
+        <td>⭐⭐⭐⭐</td>
+    </tr>
+    <tr>
+        <td><strong>Semiconductor Design Initiative</strong></td>
+        <td>VLSI, embedded systems</td>
+        <td>₹1 Cr - ₹10 Cr</td>
+        <td>2-4 years</td>
+        <td>⭐⭐⭐</td>
+    </tr>
+    <tr>
+        <td><strong>Multiplier Grants Scheme (MGS)</strong></td>
+        <td>Industry-academia collaboration</td>
+        <td>Up to ₹2 Cr (matching)</td>
+        <td>2-3 years</td>
+        <td>⭐⭐⭐⭐⭐</td>
+    </tr>
+</table>
+
+<h3>1.2 MeitY Cyber Security R&D Program — Deep Dive</h3>
+
+<div class="funding-card">
+    <h4>Program Overview</h4>
+    <p>The Cyber Security R&D program is administered by MeitY's <strong>Cyber Security Division</strong> and aims to develop indigenous cybersecurity solutions. This is the <mark>most relevant program for T-SPAN</mark> given our focus on DNS threat intelligence and sovereign security.</p>
+</div>
+
+<h4>Thrust Areas (2024-2027)</h4>
+<ul>
+    <li><strong>Threat Intelligence Platforms</strong> — Real-time threat detection, IOC sharing, STIX/TAXII integration</li>
+    <li><strong>AI/ML for Cybersecurity</strong> — Anomaly detection, malware classification, behavioral analysis</li>
+    <li><strong>DNS Security</strong> — DNSSEC, DNS-over-HTTPS, DNS-based threat blocking</li>
+    <li><strong>Network Security</strong> — DDoS mitigation, intrusion detection, traffic analysis</li>
+    <li><strong>Critical Infrastructure Protection</strong> — SCADA/ICS security, power grid, financial systems</li>
+    <li><strong>Cryptographic Solutions</strong> — Post-quantum cryptography, homomorphic encryption</li>
+    <li><strong>Security Operations Centers</strong> — SOC automation, SIEM development, incident response</li>
+</ul>
+
+<div class="tip-box">
+T-SPAN's ATLANTIS AI engine and SIEP protocol align perfectly with MeitY's thrust areas on "Threat Intelligence Platforms" and "AI/ML for Cybersecurity." Frame proposals around sovereign, indigenous solutions to maximize alignment.
+</div>
+
+<h4>Eligibility Criteria</h4>
+<div class="checklist">
+    <ul>
+        <li>Indian academic institution (AICTE/UGC recognized) — <strong>MRDU qualifies</strong></li>
+        <li>R&D organization registered in India</li>
+        <li>Industry partner with 51%+ Indian ownership (for joint projects)</li>
+        <li>Principal Investigator must be Indian citizen with PhD/equivalent</li>
+        <li>Institution must have existing research infrastructure</li>
+        <li>No pending utilization certificates from previous grants</li>
+    </ul>
+</div>
+
+<h4>Funding Components Allowed</h4>
+<table>
+    <tr>
+        <th>Component</th>
+        <th>Max %</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>Manpower</td>
+        <td>40%</td>
+        <td>Research staff, JRF/SRF, RA salaries (DST scales)</td>
+    </tr>
+    <tr>
+        <td>Equipment</td>
+        <td>35%</td>
+        <td>Servers, GPUs, networking equipment, licenses</td>
+    </tr>
+    <tr>
+        <td>Consumables</td>
+        <td>10%</td>
+        <td>Cloud credits, data storage, minor items</td>
+    </tr>
+    <tr>
+        <td>Travel</td>
+        <td>5%</td>
+        <td>Conferences, workshops, collaboration visits</td>
+    </tr>
+    <tr>
+        <td>Contingency</td>
+        <td>5%</td>
+        <td>Unforeseen expenses</td>
+    </tr>
+    <tr>
+        <td>Overhead</td>
+        <td>15%</td>
+        <td>Institutional overhead (to host institution)</td>
+    </tr>
+</table>
+
+<h3>1.3 Application Process — MeitY Cyber Security R&D</h3>
+
+<div class="process-step">
+    <div class="step-number">1</div>
+    <div class="step-content">
+        <h5>Expression of Interest (EOI)</h5>
+        <p>Submit 2-3 page concept note through MeitY portal when call is announced. Include problem statement, proposed approach, expected outcomes, and team credentials. <strong>Timeline: 2-4 weeks from call announcement.</strong></p>
+    </div>
+</div>
+
+<div class="process-step">
+    <div class="step-number">2</div>
+    <div class="step-content">
+        <h5>Full Proposal Submission</h5>
+        <p>If EOI shortlisted, submit detailed proposal (15-25 pages) including technical approach, methodology, work packages, deliverables, timeline, budget, and team CVs. Use MeitY prescribed format. <strong>Timeline: 4-6 weeks.</strong></p>
+    </div>
+</div>
+
+<div class="process-step">
+    <div class="step-number">3</div>
+    <div class="step-content">
+        <h5>Expert Committee Evaluation</h5>
+        <p>Technical proposal reviewed by domain experts. May require presentation to committee (in-person at Delhi or virtual). Prepare demo of existing work. <strong>Timeline: 2-3 months.</strong></p>
+    </div>
+</div>
+
+<div class="process-step">
+    <div class="step-number">4</div>
+    <div class="step-content">
+        <h5>Budget Negotiation</h5>
+        <p>If technically approved, budget scrutinized by finance division. Be prepared for 15-30% cuts. Justify each line item with quotations. <strong>Timeline: 1-2 months.</strong></p>
+    </div>
+</div>
+
+<div class="process-step">
+    <div class="step-number">5</div>
+    <div class="step-content">
+        <h5>Sanction & MoU</h5>
+        <p>Formal sanction letter issued. Sign MoU with MeitY specifying deliverables, timelines, IP ownership, and reporting requirements. <strong>Timeline: 1 month.</strong></p>
+    </div>
+</div>
+
+<div class="process-step">
+    <div class="step-number">6</div>
+    <div class="step-content">
+        <h5>Fund Release</h5>
+        <p>First installment (typically 50%) released after MoU signing. Subsequent releases based on milestone completion and utilization certificate submission. <strong>Timeline: 2-4 weeks after MoU.</strong></p>
+    </div>
+</div>
+
+<div class="timeline-box">
+    <h4>⏱️ Total Timeline: 8-14 months from call to fund release</h4>
+    <p>Plan applications 12-18 months before funds are needed. MeitY typically announces 2-3 calls per year in cybersecurity.</p>
+</div>
+
+<h3>1.4 Multiplier Grants Scheme (MGS) — Industry-Academia</h3>
+
+<div class="funding-card meity">
+    <h4>Why MGS is Perfect for T-SPAN</h4>
+    <p>The Multiplier Grants Scheme provides <strong>matching funds</strong> for industry-sponsored academic research. If TCPWave commits ₹1 Crore to MRDU research, MeitY will match with ₹1 Crore (up to ₹2 Crore total from government). This is the <mark>fastest and most flexible</mark> MeitY funding mechanism.</p>
+</div>
+
+<h4>MGS Structure</h4>
+<table>
+    <tr>
+        <th>Industry Contribution</th>
+        <th>MeitY Matching</th>
+        <th>Total Project Size</th>
+    </tr>
+    <tr>
+        <td>₹25 Lakhs</td>
+        <td>₹25 Lakhs (1:1)</td>
+        <td>₹50 Lakhs</td>
+    </tr>
+    <tr>
+        <td>₹50 Lakhs</td>
+        <td>₹50 Lakhs (1:1)</td>
+        <td>₹1 Crore</td>
+    </tr>
+    <tr>
+        <td>₹1 Crore</td>
+        <td>₹1 Crore (1:1)</td>
+        <td>₹2 Crores</td>
+    </tr>
+    <tr>
+        <td>₹2 Crores+</td>
+        <td>₹2 Crores (capped)</td>
+        <td>₹4 Crores+</td>
+    </tr>
+</table>
+
+<div class="tip-box">
+Structure TCPWave's R&D commitment to MRDU as MGS-eligible industry sponsorship. This doubles the available research budget at no additional cost to TCPWave.
+</div>
+
+<h4>MGS Application Requirements</h4>
+<ul>
+    <li>Joint proposal from industry (TCPWave) and academia (MRDU)</li>
+    <li>Industry partner must commit funds in escrow before MeitY approval</li>
+    <li>Research must address MeitY priority areas</li>
+    <li>IP sharing agreement must be pre-defined (typically 50:50 or as negotiated)</li>
+    <li>Industry partner must be registered in India (TCPWave India subsidiary qualifies)</li>
+</ul>
+
+<h3>1.5 Key MeitY Contacts</h3>
+
+<div class="two-col">
+    <div class="contact-card">
+        <h5>Cyber Security Division</h5>
+        <p><strong>Director:</strong> Cyber Security Group</p>
+        <p><strong>Email:</strong> cybersecurity-meity@gov.in</p>
+        <p><strong>Phone:</strong> 011-2430 1851</p>
+        <p><strong>Address:</strong> Electronics Niketan, 6 CGO Complex, New Delhi - 110003</p>
+    </div>
+    <div class="contact-card">
+        <h5>R&D Division</h5>
+        <p><strong>Director:</strong> R&D in Electronics Group</p>
+        <p><strong>Email:</strong> rnd-meity@gov.in</p>
+        <p><strong>Phone:</strong> 011-2430 1454</p>
+        <p><strong>Address:</strong> Electronics Niketan, 6 CGO Complex, New Delhi - 110003</p>
+    </div>
+</div>
+
+<h2>Part II: DST Funding Programs</h2>
+
+<div class="funding-card dst">
+    <h4>🔬 About DST</h4>
+    <p>The Department of Science and Technology (DST) is the nodal department for science and technology policy. It funds fundamental and applied research across all scientific disciplines through multiple schemes administered by the <strong>Science and Engineering Research Board (SERB)</strong> and other divisions.</p>
+    <p><strong>Website:</strong> <a href="https://dst.gov.in">https://dst.gov.in</a></p>
+    <p><strong>SERB Portal:</strong> <a href="https://serb.gov.in">https://serb.gov.in</a></p>
+</div>
+
+<h3>2.1 Key DST/SERB Schemes for T-SPAN</h3>
+
+<table>
+    <tr>
+        <th>Scheme</th>
+        <th>Focus</th>
+        <th>Funding</th>
+        <th>Duration</th>
+        <th>For T-SPAN</th>
+    </tr>
+    <tr>
+        <td><strong>Core Research Grant (CRG)</strong></td>
+        <td>Fundamental research in S&T</td>
+        <td>₹30 L - ₹60 L</td>
+        <td>3 years</td>
+        <td>Gadi-Chinnam Bound proof</td>
+    </tr>
+    <tr>
+        <td><strong>Mathematical Research Impact (MATRICS)</strong></td>
+        <td>Mathematical sciences</td>
+        <td>₹6.6 L/year</td>
+        <td>3 years</td>
+        <td>Information-theoretic foundations</td>
+    </tr>
+    <tr>
+        <td><strong>Intensification of Research in High Priority Areas (IRHPA)</strong></td>
+        <td>National priority research</td>
+        <td>₹1 Cr - ₹5 Cr</td>
+        <td>5 years</td>
+        <td>Sovereign threat intelligence</td>
+    </tr>
+    <tr>
+        <td><strong>Fund for Improvement of S&T Infrastructure (FIST)</strong></td>
+        <td>Lab infrastructure</td>
+        <td>₹1 Cr - ₹3 Cr</td>
+        <td>5 years</td>
+        <td>T-SPAN lab at MRDU</td>
+    </tr>
+    <tr>
+        <td><strong>Technology Development Programme</strong></td>
+        <td>Applied technology development</td>
+        <td>₹50 L - ₹2 Cr</td>
+        <td>2-3 years</td>
+        <td>ATLANTIS commercialization</td>
+    </tr>
+    <tr>
+        <td><strong>Startup Research Grant (SRG)</strong></td>
+        <td>Early career researchers</td>
+        <td>₹30 L</td>
+        <td>2 years</td>
+        <td>New faculty hires at MRDU</td>
+    </tr>
+</table>
+
+<h3>2.2 SERB Core Research Grant (CRG) — Deep Dive</h3>
+
+<div class="funding-card">
+    <h4>Best Fit for Foundational Research</h4>
+    <p>The CRG scheme funds investigator-driven research proposals. This is ideal for the theoretical foundations of T-SPAN — proving the Gadi-Chinnam Bound, developing SIEP protocol specifications, and publishing in top-tier venues.</p>
+</div>
+
+<h4>CRG Eligibility</h4>
+<ul>
+    <li>Principal Investigator must hold PhD and regular faculty position</li>
+    <li>Age limit: Below 60 years at time of submission</li>
+    <li>PI cannot hold more than 2 ongoing SERB projects</li>
+    <li>Institution must be recognized academic/research organization</li>
+    <li>No pending project completion reports from PI</li>
+</ul>
+
+<h4>CRG Budget Guidelines</h4>
+<table class="budget-table">
+    <tr>
+        <th>Component</th>
+        <th>Year 1</th>
+        <th>Year 2</th>
+        <th>Year 3</th>
+    </tr>
+    <tr>
+        <td>Manpower (JRF/SRF/RA)</td>
+        <td>₹6,00,000</td>
+        <td>₹6,50,000</td>
+        <td>₹7,00,000</td>
+    </tr>
+    <tr>
+        <td>Equipment</td>
+        <td>₹15,00,000</td>
+        <td>₹2,00,000</td>
+        <td>₹1,00,000</td>
+    </tr>
+    <tr>
+        <td>Consumables</td>
+        <td>₹3,00,000</td>
+        <td>₹3,00,000</td>
+        <td>₹3,00,000</td>
+    </tr>
+    <tr>
+        <td>Travel (Domestic)</td>
+        <td>₹1,00,000</td>
+        <td>₹1,00,000</td>
+        <td>₹1,00,000</td>
+    </tr>
+    <tr>
+        <td>Travel (International)</td>
+        <td>₹2,50,000</td>
+        <td>₹2,50,000</td>
+        <td>₹2,50,000</td>
+    </tr>
+    <tr>
+        <td>Contingency</td>
+        <td>₹1,00,000</td>
+        <td>₹1,00,000</td>
+        <td>₹1,00,000</td>
+    </tr>
+    <tr>
+        <td>Overhead (20%)</td>
+        <td>₹5,70,000</td>
+        <td>₹3,20,000</td>
+        <td>₹3,10,000</td>
+    </tr>
+    <tr style="background: var(--gray-200);">
+        <td><strong>Total</strong></td>
+        <td><strong>₹34,20,000</strong></td>
+        <td><strong>₹19,20,000</strong></td>
+        <td><strong>₹18,60,000</strong></td>
+    </tr>
+</table>
+<p style="font-size: 8pt; color: var(--gray-600);">Sample budget for ₹72 Lakh CRG project. Adjust based on actual requirements.</p>
+
+<h4>CRG Application Process</h4>
+
+<div class="process-step">
+    <div class="step-number">1</div>
+    <div class="step-content">
+        <h5>Online Registration</h5>
+        <p>Register on SERB online portal (<a href="https://serbonline.in">serbonline.in</a>). Create account, verify institution details, and link ORCID/Scopus IDs.</p>
+    </div>
+</div>
+
+<div class="process-step">
+    <div class="step-number">2</div>
+    <div class="step-content">
+        <h5>Proposal Preparation</h5>
+        <p>Prepare proposal following SERB format: Summary, Introduction, Objectives, Methodology, Work Plan, Expected Outcomes, Budget Justification, and PI CV. <strong>15-20 pages max.</strong></p>
+    </div>
+</div>
+
+<div class="process-step">
+    <div class="step-number">3</div>
+    <div class="step-content">
+        <h5>Online Submission</h5>
+        <p>Submit through SERB portal. System generates unique proposal ID. Download submission receipt. <strong>Calls are typically open year-round; rolling review.</strong></p>
+    </div>
+</div>
+
+<div class="process-step">
+    <div class="step-number">4</div>
+    <div class="step-content">
+        <h5>Expert Review</h5>
+        <p>Proposal sent to 3 external reviewers (blind). Based on reviews, may be: Recommended, Recommended with Revision, or Not Recommended. <strong>Timeline: 3-6 months.</strong></p>
+    </div>
+</div>
+
+<div class="process-step">
+    <div class="step-number">5</div>
+    <div class="step-content">
+        <h5>Programme Advisory Committee (PAC)</h5>
+        <p>If reviewer-recommended, proposal goes to PAC for final decision. PI may be called for presentation. <strong>Timeline: 2-3 months.</strong></p>
+    </div>
+</div>
+
+<div class="process-step">
+    <div class="step-number">6</div>
+    <div class="step-content">
+        <h5>Sanction & Fund Release</h5>
+        <p>Sanction letter issued. Institution signs bond. First installment (Year 1 + 50% equipment) released. <strong>Timeline: 1-2 months.</strong></p>
+    </div>
+</div>
+
+<h3>2.3 IRHPA — For Large-Scale National Priority Projects</h3>
+
+<div class="funding-card dst">
+    <h4>Intensification of Research in High Priority Areas</h4>
+    <p>IRHPA provides larger grants (₹1-5 Crores) for multi-institutional projects addressing national priorities. T-SPAN's "Sovereign Threat Intelligence" agenda qualifies under national security priorities. This scheme allows consortium applications with MRDU + BITS Pilani + industry partners.</p>
+</div>
+
+<div class="amount-box">
+    <div class="amount">₹5 Crores</div>
+    <div class="label">Maximum IRHPA Grant for Multi-Institutional Cybersecurity Project</div>
+</div>
+
+<h4>IRHPA Thrust Areas Relevant to T-SPAN</h4>
+<ul>
+    <li>Cyber-Physical Systems Security</li>
+    <li>AI/ML for Critical Infrastructure Protection</li>
+    <li>Indigenous Technology Development for National Security</li>
+    <li>Large-Scale Data Analytics for Threat Detection</li>
+</ul>
+
+<h3>2.4 DST-FIST — Infrastructure Funding</h3>
+
+<div class="funding-card">
+    <h4>Fund for Improvement of S&T Infrastructure in Universities</h4>
+    <p>FIST provides grants for <strong>lab infrastructure, equipment, and facilities</strong>. For T-SPAN, this can fund the MahaaAI Lab infrastructure at MRDU — servers, GPUs, networking equipment, and physical lab setup.</p>
+</div>
+
+<h4>FIST Levels</h4>
+<table>
+    <tr>
+        <th>Level</th>
+        <th>Grant Amount</th>
+        <th>Institution Type</th>
+        <th>Infrastructure</th>
+    </tr>
+    <tr>
+        <td>Level 0</td>
+        <td>₹50 Lakhs</td>
+        <td>New departments</td>
+        <td>Basic equipment</td>
+    </tr>
+    <tr>
+        <td>Level I</td>
+        <td>₹1 Crore</td>
+        <td>UG teaching departments</td>
+        <td>Teaching + research labs</td>
+    </tr>
+    <tr>
+        <td>Level II</td>
+        <td>₹1.5 Crores</td>
+        <td>PG departments</td>
+        <td>Advanced research equipment</td>
+    </tr>
+    <tr>
+        <td>Level III</td>
+        <td>₹3 Crores</td>
+        <td>Departments with PhD programs</td>
+        <td>State-of-art facilities</td>
+    </tr>
+</table>
+
+<div class="tip-box">
+Apply for FIST Level III to establish the T-SPAN Cybersecurity Research Center at MRDU. Use for GPU clusters, network security labs, and SOC simulation environments.
+</div>
+
+<h2>Part III: ANRF — The New National Research Foundation</h2>
+
+<div class="funding-card">
+    <h4>🆕 Anusandhan National Research Foundation (ANRF)</h4>
+    <p>Established in 2023 with ₹50,000 Crore corpus, ANRF is India's largest research funding body. It aims to fund <strong>₹1 Lakh Crore</strong> in research over 5 years. ANRF consolidates funding from multiple ministries and introduces new large-scale programs.</p>
+    <p><strong>Website:</strong> <a href="https://anrf.res.in">https://anrf.res.in</a> (launching 2025)</p>
+</div>
+
+<h3>3.1 ANRF Programs Relevant to T-SPAN</h3>
+
+<table>
+    <tr>
+        <th>Program</th>
+        <th>Focus</th>
+        <th>Funding Scale</th>
+        <th>T-SPAN Application</th>
+    </tr>
+    <tr>
+        <td><strong>Mission Mode Programs</strong></td>
+        <td>National priority areas</td>
+        <td>₹50 Cr - ₹500 Cr</td>
+        <td>National Sovereign Cyber Mission</td>
+    </tr>
+    <tr>
+        <td><strong>Centers of Excellence</strong></td>
+        <td>World-class research centers</td>
+        <td>₹25 Cr - ₹100 Cr</td>
+        <td>T-SPAN Center of Excellence at MRDU</td>
+    </tr>
+    <tr>
+        <td><strong>Industry-Academia Partnership</strong></td>
+        <td>Joint R&D with industry</td>
+        <td>Matching grants up to ₹25 Cr</td>
+        <td>TCPWave-MRDU collaboration</td>
+    </tr>
+    <tr>
+        <td><strong>Research Chair Positions</strong></td>
+        <td>Endowed faculty positions</td>
+        <td>₹1 Cr/year for 5 years</td>
+        <td>T-SPAN Research Chair at MRDU</td>
+    </tr>
+</table>
+
+<div class="warning-box">
+ANRF is newly operational. Scheme details are still being finalized. Monitor announcements closely. Early applicants in new schemes often have higher success rates.
+</div>
+
+<h2>Part IV: Proposal Writing Strategy</h2>
+
+<h3>4.1 The Winning Proposal Structure</h3>
+
+<div class="checklist">
+    <ul>
+        <li><strong>Executive Summary (1 page)</strong> — Problem, approach, outcomes, budget in plain language</li>
+        <li><strong>Problem Statement (2 pages)</strong> — Why this matters nationally, current gaps, urgency</li>
+        <li><strong>Literature Review (2 pages)</strong> — What exists, why it's insufficient, your differentiation</li>
+        <li><strong>Objectives (1 page)</strong> — 3-5 specific, measurable objectives</li>
+        <li><strong>Methodology (4-5 pages)</strong> — Technical approach, algorithms, architectures, datasets</li>
+        <li><strong>Work Plan (2 pages)</strong> — Gantt chart, milestones, deliverables by quarter</li>
+        <li><strong>Expected Outcomes (1 page)</strong> — Publications, patents, prototypes, deployments</li>
+        <li><strong>Team & Facilities (2 pages)</strong> — PI/Co-PI CVs, existing infrastructure, institutional support</li>
+        <li><strong>Budget Justification (2 pages)</strong> — Line-item justification with quotations</li>
+        <li><strong>References (1-2 pages)</strong> — Cite recent, relevant literature</li>
+    </ul>
+</div>
+
+<h3>4.2 Magic Words That Reviewers Love</h3>
+
+<table>
+    <tr>
+        <th>Phrase</th>
+        <th>Signals</th>
+        <th>Use In</th>
+    </tr>
+    <tr>
+        <td>"Indigenous development"</td>
+        <td>Atmanirbhar Bharat alignment</td>
+        <td>Problem statement, outcomes</td>
+    </tr>
+    <tr>
+        <td>"Sovereign capability"</td>
+        <td>National security relevance</td>
+        <td>Problem statement, justification</td>
+    </tr>
+    <tr>
+        <td>"Technology readiness level (TRL)"</td>
+        <td>Practical orientation</td>
+        <td>Methodology, outcomes</td>
+    </tr>
+    <tr>
+        <td>"Proof of concept demonstrated"</td>
+        <td>De-risked project</td>
+        <td>Team capabilities</td>
+    </tr>
+    <tr>
+        <td>"Industry deployment pathway"</td>
+        <td>Beyond academic exercise</td>
+        <td>Expected outcomes</td>
+    </tr>
+    <tr>
+        <td>"Capacity building"</td>
+        <td>Training next generation</td>
+        <td>Broader impacts</td>
+    </tr>
+    <tr>
+        <td>"Critical infrastructure protection"</td>
+        <td>National priority alignment</td>
+        <td>Problem statement</td>
+    </tr>
+</table>
+
+<h3>4.3 Common Rejection Reasons & How to Avoid</h3>
+
+<table>
+    <tr>
+        <th>Rejection Reason</th>
+        <th>Frequency</th>
+        <th>Avoidance Strategy</th>
+    </tr>
+    <tr>
+        <td>Vague objectives</td>
+        <td>35%</td>
+        <td>Use SMART criteria: Specific, Measurable, Achievable, Relevant, Time-bound</td>
+    </tr>
+    <tr>
+        <td>Insufficient preliminary work</td>
+        <td>25%</td>
+        <td>Include proof-of-concept results, even if limited. Show you've started.</td>
+    </tr>
+    <tr>
+        <td>Weak team qualifications</td>
+        <td>15%</td>
+        <td>Add co-PIs from IITs/IISc if needed. List relevant publications prominently.</td>
+    </tr>
+    <tr>
+        <td>Unjustified budget</td>
+        <td>10%</td>
+        <td>Attach vendor quotations. Explain each line item's necessity.</td>
+    </tr>
+    <tr>
+        <td>Not aligned with call</td>
+        <td>10%</td>
+        <td>Mirror the call language. Use exact thrust area terminology.</td>
+    </tr>
+    <tr>
+        <td>Poor presentation</td>
+        <td>5%</td>
+        <td>Professional formatting, clear figures, no typos. Have others review.</td>
+    </tr>
+</table>
+
+<h3>4.4 Sample T-SPAN Proposal Outline for MeitY</h3>
+
+<div class="funding-card">
+    <h4>Proposal Title</h4>
+    <p><strong>"ATLANTIS: An Indigenous AI-Native Threat Intelligence System for Sovereign DNS Security"</strong></p>
+
+    <h4>Problem Statement (Key Points)</h4>
+    <ul>
+        <li>India's critical infrastructure depends on foreign DNS security solutions</li>
+        <li>Current threat detection has 197-day average detection time</li>
+        <li>No indigenous, production-grade DNS threat intelligence platform exists</li>
+        <li>National security requires sovereign control over threat intelligence</li>
+    </ul>
+
+    <h4>Objectives</h4>
+    <ol>
+        <li>Develop ATLANTIS neural architecture achieving >99% DGA detection accuracy</li>
+        <li>Create T-SPAN-1B labeled dataset for Indian DNS threat landscape</li>
+        <li>Deploy prototype at 2 Indian banks for validation</li>
+        <li>Publish 3 papers in IEEE S&P / USENIX Security / ACM CCS</li>
+        <li>Train 10 PhD students and 50 MTech students in DNS security</li>
+    </ol>
+
+    <h4>Budget Request</h4>
+    <p><strong>₹8.5 Crores over 3 years</strong></p>
+    <ul>
+        <li>Manpower: ₹2.5 Crores (10 researchers, 20 students)</li>
+        <li>Equipment: ₹3.0 Crores (GPU cluster, network lab)</li>
+        <li>Data collection: ₹1.0 Crore (DNS sensors, cloud infrastructure)</li>
+        <li>Travel & dissemination: ₹0.75 Crores</li>
+        <li>Overhead & contingency: ₹1.25 Crores</li>
+    </ul>
+</div>
+
+<h2>Part V: Timeline & Action Plan</h2>
+
+<h3>5.1 Recommended Application Timeline for T-SPAN</h3>
+
+<table>
+    <tr>
+        <th>Quarter</th>
+        <th>Action</th>
+        <th>Target Scheme</th>
+        <th>Amount</th>
+    </tr>
+    <tr>
+        <td><strong>Q1 2026</strong></td>
+        <td>Submit MGS proposal (TCPWave + MRDU)</td>
+        <td>MeitY MGS</td>
+        <td>₹4 Cr (2+2 matching)</td>
+    </tr>
+    <tr>
+        <td><strong>Q1 2026</strong></td>
+        <td>Submit CRG for theoretical research</td>
+        <td>SERB CRG</td>
+        <td>₹60 Lakhs</td>
+    </tr>
+    <tr>
+        <td><strong>Q2 2026</strong></td>
+        <td>Apply for FIST infrastructure grant</td>
+        <td>DST FIST</td>
+        <td>₹3 Cr</td>
+    </tr>
+    <tr>
+        <td><strong>Q2 2026</strong></td>
+        <td>Submit Cyber Security R&D proposal</td>
+        <td>MeitY Cyber R&D</td>
+        <td>₹8.5 Cr</td>
+    </tr>
+    <tr>
+        <td><strong>Q3 2026</strong></td>
+        <td>Apply for IRHPA multi-institutional project</td>
+        <td>DST IRHPA</td>
+        <td>₹5 Cr</td>
+    </tr>
+    <tr>
+        <td><strong>Q4 2026</strong></td>
+        <td>Register for ANRF programs when open</td>
+        <td>ANRF CoE</td>
+        <td>₹25 Cr</td>
+    </tr>
+    <tr style="background: var(--gray-200);">
+        <td colspan="3"><strong>Total Potential Government Funding (2026-2027)</strong></td>
+        <td><strong>₹46.1 Crores</strong></td>
+    </tr>
+</table>
+
+<h3>5.2 Immediate Actions (Next 90 Days)</h3>
+
+<div class="checklist">
+    <ul>
+        <li>Register MRDU on SERB online portal (serbonline.in)</li>
+        <li>Register MRDU on MeitY R&D portal</li>
+        <li>Identify PI (Dr. Yuvaraju Chinnam or designated faculty)</li>
+        <li>Establish TCPWave India R&D subsidiary (if not exists) for MGS eligibility</li>
+        <li>Draft MGS concept note (TCPWave-MRDU partnership)</li>
+        <li>Collect vendor quotations for equipment budget</li>
+        <li>Secure institutional endorsement letters from MRDU administration</li>
+        <li>Identify IIT/IISc co-PI for stronger team credentials</li>
+        <li>Subscribe to MeitY/DST tender notification services</li>
+        <li>Schedule meeting with MeitY Cyber Security Division</li>
+    </ul>
+</div>
+
+<h2>Part VI: Key Contacts & Resources</h2>
+
+<h3>6.1 Essential Government Contacts</h3>
+
+<div class="two-col">
+    <div class="contact-card">
+        <h5>MeitY — Cyber Security Division</h5>
+        <p>Electronics Niketan, 6 CGO Complex</p>
+        <p>Lodhi Road, New Delhi - 110003</p>
+        <p>📧 cybersecurity-meity@gov.in</p>
+        <p>📞 011-2430 1851</p>
+    </div>
+    <div class="contact-card">
+        <h5>MeitY — R&D Division</h5>
+        <p>Electronics Niketan, 6 CGO Complex</p>
+        <p>Lodhi Road, New Delhi - 110003</p>
+        <p>📧 rnd-meity@gov.in</p>
+        <p>📞 011-2430 1454</p>
+    </div>
+    <div class="contact-card">
+        <h5>SERB — Computer Science PAC</h5>
+        <p>5 & 5A, Lower Ground Floor</p>
+        <p>Vasant Square Mall, Vasant Kunj</p>
+        <p>New Delhi - 110070</p>
+        <p>📧 js@serb.gov.in</p>
+        <p>📞 011-4078 1718</p>
+    </div>
+    <div class="contact-card">
+        <h5>DST — FIST Division</h5>
+        <p>Technology Bhawan</p>
+        <p>New Mehrauli Road, New Delhi - 110016</p>
+        <p>📧 fist@nic.in</p>
+        <p>📞 011-2659 0319</p>
+    </div>
+</div>
+
+<h3>6.2 Online Portals</h3>
+
+<table>
+    <tr>
+        <th>Portal</th>
+        <th>URL</th>
+        <th>Purpose</th>
+    </tr>
+    <tr>
+        <td>SERB Online</td>
+        <td><a href="https://serbonline.in">serbonline.in</a></td>
+        <td>CRG, SRG, MATRICS applications</td>
+    </tr>
+    <tr>
+        <td>MeitY R&D</td>
+        <td><a href="https://www.meity.gov.in/research-development">meity.gov.in/research-development</a></td>
+        <td>MeitY scheme information</td>
+    </tr>
+    <tr>
+        <td>DST e-PMS</td>
+        <td><a href="https://onlinedst.gov.in">onlinedst.gov.in</a></td>
+        <td>DST project monitoring</td>
+    </tr>
+    <tr>
+        <td>Central Public Procurement Portal</td>
+        <td><a href="https://eprocure.gov.in">eprocure.gov.in</a></td>
+        <td>Tender notifications</td>
+    </tr>
+    <tr>
+        <td>GeM</td>
+        <td><a href="https://gem.gov.in">gem.gov.in</a></td>
+        <td>Government e-Marketplace (equipment procurement)</td>
+    </tr>
+</table>
+
+<h3>6.3 Useful Documents to Download</h3>
+
+<ul>
+    <li>SERB CRG Guidelines 2024 — <a href="https://serb.gov.in/page/english/crg">serb.gov.in/page/english/crg</a></li>
+    <li>MeitY R&D Proposal Format — Available on request from R&D Division</li>
+    <li>DST FIST Guidelines — <a href="https://dst.gov.in/scientific-programmes/st-and-socio-economic-development/fund-improvement-st-infrastructure-fist">dst.gov.in/fist</a></li>
+    <li>GFR 2017 (General Financial Rules) — Governs all government funding</li>
+    <li>UC Format (Utilization Certificate) — Required for fund release</li>
+</ul>
+
+<h2>Part VII: Advanced Strategies</h2>
+
+<h3>7.1 Building Relationships Before Applying</h3>
+
+<div class="tip-box">
+Don't submit proposals cold. Schedule meetings with Program Directors 3-6 months before application. Understand their priorities. Get feedback on concept notes. This dramatically improves success rates.
+</div>
+
+<h4>Relationship Building Actions</h4>
+<ul>
+    <li>Attend MeitY/DST workshops and conferences</li>
+    <li>Invite Program Directors to T-SPAN events</li>
+    <li>Offer to review proposals for the ministry (builds credibility)</li>
+    <li>Publish op-eds on cybersecurity in national media (visibility)</li>
+    <li>Brief ministry officials on T-SPAN progress (keep them informed)</li>
+</ul>
+
+<h3>7.2 Leveraging DSCI CCoE Connection</h3>
+
+<div class="funding-card">
+    <h4>DSCI as Force Multiplier</h4>
+    <p>DSCI (Data Security Council of India) has strong relationships with MeitY and industry. Use DSCI CCoE connection to:</p>
+    <ul>
+        <li>Get introductions to MeitY officials</li>
+        <li>Participate in DSCI-organized ministry consultations</li>
+        <li>Co-brand proposals as "DSCI CCoE supported"</li>
+        <li>Access DSCI industry network for MGS partnerships</li>
+    </ul>
+</div>
+
+<h3>7.3 International Funding Complement</h3>
+
+<p>While focusing on Indian government funding, also pursue:</p>
+
+<table>
+    <tr>
+        <th>Source</th>
+        <th>Program</th>
+        <th>Funding</th>
+        <th>Strategy</th>
+    </tr>
+    <tr>
+        <td>European Union</td>
+        <td>Horizon Europe</td>
+        <td>€1-5 Million</td>
+        <td>Partner with TU Delft for EU consortium</td>
+    </tr>
+    <tr>
+        <td>Indo-US S&T Forum</td>
+        <td>Joint R&D</td>
+        <td>$100K-500K</td>
+        <td>Partner with US university</td>
+    </tr>
+    <tr>
+        <td>Indo-Dutch Bilateral</td>
+        <td>Joint Research</td>
+        <td>€200K-500K</td>
+        <td>Leverage Netherlands partnership</td>
+    </tr>
+    <tr>
+        <td>World Bank</td>
+        <td>Digital Development</td>
+        <td>$1-10 Million</td>
+        <td>Through government project route</td>
+    </tr>
+</table>
+
+<h2>Summary: The Funding Roadmap</h2>
+
+<div class="amount-box">
+    <div class="amount">₹50+ Crores</div>
+    <div class="label">Total Accessible Government Funding for T-SPAN Research (2026-2030)</div>
+</div>
+
+<table>
+    <tr>
+        <th>Scheme</th>
+        <th>Amount</th>
+        <th>Timeline</th>
+        <th>Priority</th>
+    </tr>
+    <tr>
+        <td>MeitY Multiplier Grants (MGS)</td>
+        <td>₹4 Cr</td>
+        <td>Q1 2026</td>
+        <td>🔴 Highest</td>
+    </tr>
+    <tr>
+        <td>MeitY Cyber Security R&D</td>
+        <td>₹8.5 Cr</td>
+        <td>Q2 2026</td>
+        <td>🔴 Highest</td>
+    </tr>
+    <tr>
+        <td>SERB Core Research Grant</td>
+        <td>₹60 L</td>
+        <td>Q1 2026</td>
+        <td>🟡 High</td>
+    </tr>
+    <tr>
+        <td>DST FIST Infrastructure</td>
+        <td>₹3 Cr</td>
+        <td>Q2 2026</td>
+        <td>🟡 High</td>
+    </tr>
+    <tr>
+        <td>DST IRHPA</td>
+        <td>₹5 Cr</td>
+        <td>Q3 2026</td>
+        <td>🟡 High</td>
+    </tr>
+    <tr>
+        <td>ANRF Center of Excellence</td>
+        <td>₹25 Cr</td>
+        <td>2027</td>
+        <td>🟢 Strategic</td>
+    </tr>
+    <tr>
+        <td>International (EU, Indo-US)</td>
+        <td>₹5 Cr</td>
+        <td>2026-2027</td>
+        <td>🟢 Strategic</td>
+    </tr>
+</table>
+
+<div class="tip-box">
+Start with MGS (fastest, highest certainty) to establish track record. Use initial success to build credibility for larger ANRF and MeitY applications. Government funding begets more government funding.
+</div>
+
+<!-- Footer -->
+<div style="margin-top: 40px; padding-top: 20px; border-top: 3px solid var(--primary); text-align: center;">
+    <p><strong>T-SPAN Research Consortium</strong></p>
+    <p>TCPWave, Inc. | Malla Reddy (MR) Deemed to be University | BITS Pilani | DSCI CCoE</p>
+    <p style="font-size: 8pt; color: var(--gray-600);">Document Classification: Internal Strategy | Version 1.0 | December 2025</p>
+</div>
+
+</div>
+
+</body>
+</html>

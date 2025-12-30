@@ -1,0 +1,46 @@
+# T-SPAN University - Robots.txt
+# Telangana Secure Private Area Network - Cybersecurity Education Platform
+# https://tspan.replit.app
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://tspan.replit.app/sitemap.xml
+
+# Allow all major search engine crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+# Disallow private/admin areas
+Disallow: /api/
+Disallow: /dashboard
+Disallow: /kyc
+Disallow: /checkout/
+
+# Allow CSS, JS, and images for rendering
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.gif$
+Allow: /*.svg$
+Allow: /*.webp$
+
+# Crawl-delay for politeness (in seconds)
+Crawl-delay: 1

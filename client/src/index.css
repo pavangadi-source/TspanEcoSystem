@@ -1,0 +1,213 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: 'Inter', sans-serif;
+  --font-display: 'Orbitron', sans-serif;
+  --font-tech: 'Rajdhani', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-classic: 'Cinzel', serif;
+
+  --color-background: 222 47% 11%; /* Slate 950 */
+  --color-foreground: 210 40% 98%; /* Slate 50 */
+  
+  --color-card: 222 47% 11%;
+  --color-card-foreground: 210 40% 98%;
+  
+  --color-popover: 222 47% 11%;
+  --color-popover-foreground: 210 40% 98%;
+  
+  --color-primary: 199 89% 48%; /* Sky 500 - Electric Blue */
+  --color-primary-foreground: 222 47% 11%;
+  
+  --color-secondary: 45 93% 47%; /* Amber 400 - Gold */
+  --color-secondary-foreground: 222 47% 11%;
+  
+  --color-muted: 217 33% 17%; /* Slate 900 */
+  --color-muted-foreground: 215 20.2% 65.1%;
+  
+  --color-accent: 199 89% 48%;
+  --color-accent-foreground: 222 47% 11%;
+  
+  --color-destructive: 0 84% 60%;
+  --color-destructive-foreground: 210 40% 98%;
+
+  --color-border: 217 33% 17%;
+  --color-input: 217 33% 17%;
+  --color-ring: 199 89% 48%;
+  
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  background-color: hsl(222 47% 11%);
+  color: hsl(210 40% 98%);
+  font-family: var(--font-sans);
+  background-image: 
+    radial-gradient(at 0% 0%, hsl(222 47% 15%) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, hsl(222 47% 15%) 0px, transparent 50%);
+  background-attachment: fixed;
+}
+
+.font-display { font-family: var(--font-display); }
+.font-tech { font-family: var(--font-tech); }
+.font-mono { font-family: var(--font-mono); }
+.font-classic { font-family: var(--font-classic); }
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(222 47% 11%);
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(217 33% 25%);
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(199 89% 48%);
+}
+
+.glass-panel {
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(199, 210, 254, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.text-gradient-gold {
+  background: linear-gradient(to right, #fbbf24, #f59e0b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-cyan {
+  background: linear-gradient(to right, #22d3ee, #0ea5e9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.cyber-grid {
+  background-size: 50px 50px;
+  background-image: linear-gradient(to right, rgba(56, 189, 248, 0.05) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(56, 189, 248, 0.05) 1px, transparent 1px);
+}
+
+/* 3D Flip Card */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+/* Parallax Layers */
+.parallax-container {
+  transform-style: preserve-3d;
+  perspective: 1px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.parallax-layer {
+  position: absolute;
+  inset: 0;
+  transform-origin: center center;
+}
+
+.parallax-back {
+  transform: translateZ(-1px) scale(2);
+}
+
+.parallax-front {
+  transform: translateZ(0);
+}
+
+/* Smooth scroll for parallax */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Animated gradient border */
+@keyframes gradient-border {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animated-border {
+  background: linear-gradient(90deg, #06b6d4, #22d3ee, #0ea5e9, #06b6d4);
+  background-size: 300% 300%;
+  animation: gradient-border 3s ease infinite;
+}
+
+/* Glowing text effect */
+.glow-text {
+  text-shadow: 0 0 10px rgba(6, 182, 212, 0.5),
+               0 0 20px rgba(6, 182, 212, 0.3),
+               0 0 30px rgba(6, 182, 212, 0.2);
+}
+
+/* Cyber scan line animation */
+@keyframes scan-line {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+.scan-line {
+  animation: scan-line 3s linear infinite;
+}
+
+/* Particle pulse */
+@keyframes particle-pulse {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.2); }
+}
+
+.particle-pulse {
+  animation: particle-pulse 2s ease-in-out infinite;
+}
+
+/* Matrix rain effect for backgrounds */
+@keyframes matrix-rain {
+  0% { transform: translateY(-100%); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+/* Hover lift effect */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(6, 182, 212, 0.2);
+}
+
+/* Cyber card hover */
+.cyber-card {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.cyber-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 0 30px rgba(6, 182, 212, 0.3),
+              0 0 60px rgba(6, 182, 212, 0.1);
+}

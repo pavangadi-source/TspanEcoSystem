@@ -1,0 +1,2304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BITS Pilani APPCAIR: The Intelligence Center for T-SPAN</title>
+    <style>
+        :root {
+            --bits-blue: #003366;
+            --bits-gold: #FFD700;
+            --tspan-primary: #1a365d;
+            --tspan-accent: #ed8936;
+            --tcpwave-blue: #2563eb;
+            --success: #22c55e;
+            --danger: #ef4444;
+            --ai-purple: #8b5cf6;
+            --neural-cyan: #06b6d4;
+            --gradient-bits: linear-gradient(135deg, #003366 0%, #004d99 50%, #0066cc 100%);
+            --gradient-tspan: linear-gradient(135deg, #1a365d 0%, #2c5282 50%, #2b6cb0 100%);
+            --gradient-gold: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            --gradient-neural: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: #1a202c;
+            background: #f8fafc;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--gradient-bits);
+            color: white;
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>') repeat;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255,215,0,0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badges {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .hero-badge {
+            background: rgba(255,215,0,0.2);
+            border: 2px solid var(--bits-gold);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--bits-gold);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: var(--bits-gold);
+        }
+
+        .hero .subtitle {
+            font-size: 1.6rem;
+            opacity: 0.95;
+            margin-bottom: 15px;
+            font-weight: 300;
+        }
+
+        .hero .tagline {
+            font-size: 1.15rem;
+            opacity: 0.9;
+            max-width: 900px;
+            line-height: 1.8;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+        }
+
+        .hero-stat {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.2);
+            text-align: center;
+        }
+
+        .hero-stat .number {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--bits-gold);
+            line-height: 1;
+        }
+
+        .hero-stat .label {
+            margin-top: 8px;
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+        }
+
+        section:nth-child(even) {
+            background: white;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--bits-blue);
+            text-align: center;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 5px;
+            background: var(--gradient-gold);
+            margin: 20px auto 0;
+            border-radius: 3px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #64748b;
+            font-size: 1.2rem;
+            margin-bottom: 50px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Dr. Das Profile Section */
+        .profile-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+
+        .profile-card {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 50px;
+            background: white;
+            border-radius: 24px;
+            padding: 50px;
+            box-shadow: 0 25px 80px rgba(0,51,102,0.15);
+            border: 1px solid rgba(0,51,102,0.1);
+        }
+
+        .profile-left {
+            text-align: center;
+        }
+
+        .profile-image {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: var(--gradient-bits);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 6rem;
+            color: white;
+            box-shadow: 0 15px 50px rgba(0,51,102,0.3);
+            border: 5px solid var(--bits-gold);
+        }
+
+        .profile-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--bits-blue);
+            margin-bottom: 8px;
+        }
+
+        .profile-title {
+            color: var(--tspan-accent);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .profile-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .profile-badge {
+            background: var(--gradient-bits);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .profile-badge.gold {
+            background: var(--gradient-gold);
+            color: var(--bits-blue);
+        }
+
+        .profile-right h3 {
+            color: var(--bits-blue);
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .profile-right p {
+            color: #475569;
+            margin-bottom: 25px;
+            font-size: 1.05rem;
+        }
+
+        .research-areas {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .research-area {
+            background: linear-gradient(135deg, rgba(139,92,246,0.1), rgba(6,182,212,0.1));
+            border-left: 4px solid var(--ai-purple);
+            padding: 15px 20px;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .research-area h4 {
+            color: var(--ai-purple);
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .research-area p {
+            color: #64748b;
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+        /* Intelligence Center Architecture */
+        .architecture-section {
+            background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 100px 0;
+        }
+
+        .architecture-section .section-title {
+            color: var(--bits-blue);
+        }
+
+        .architecture-section .section-subtitle {
+            color: #64748b;
+        }
+
+        .architecture-diagram {
+            background: white;
+            border-radius: 24px;
+            padding: 50px;
+            margin-top: 50px;
+            box-shadow: 0 25px 80px rgba(0,51,102,0.12);
+            border: 1px solid #e2e8f0;
+        }
+
+        .arch-title {
+            text-align: center;
+            font-size: 1.6rem;
+            color: var(--bits-blue);
+            margin-bottom: 50px;
+            font-weight: 700;
+            padding-bottom: 20px;
+            border-bottom: 3px solid var(--bits-gold);
+        }
+
+        .arch-layer {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 25px;
+            margin-bottom: 20px;
+            align-items: stretch;
+        }
+
+        .arch-layer-label {
+            background: var(--gradient-bits);
+            padding: 20px 15px;
+            border-radius: 12px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,51,102,0.2);
+        }
+
+        .arch-layer-label h4 {
+            color: var(--bits-gold);
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .arch-layer-label span {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .arch-components {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+            padding: 15px;
+            background: #f8fafc;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .arch-component {
+            background: white;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-size: 0.88rem;
+            border: 1px solid #cbd5e1;
+            transition: all 0.3s;
+            color: #334155;
+            font-weight: 500;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+        }
+
+        .arch-component:hover {
+            border-color: var(--bits-blue);
+            color: var(--bits-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,51,102,0.1);
+        }
+
+        /* BITS Pilani Layer - Special Styling */
+        .arch-layer.bits-layer .arch-layer-label {
+            background: var(--gradient-gold);
+            box-shadow: 0 4px 20px rgba(255,215,0,0.4);
+        }
+
+        .arch-layer.bits-layer .arch-layer-label h4 {
+            color: var(--bits-blue);
+        }
+
+        .arch-layer.bits-layer .arch-layer-label span {
+            color: var(--bits-blue);
+        }
+
+        .arch-layer.bits-layer .arch-components {
+            background: linear-gradient(135deg, rgba(0,51,102,0.05) 0%, rgba(0,102,204,0.08) 100%);
+            border-color: var(--bits-blue);
+        }
+
+        .arch-component.highlight {
+            background: var(--bits-blue);
+            color: white;
+            font-weight: 600;
+            border-color: var(--bits-blue);
+        }
+
+        .arch-component.highlight:hover {
+            background: #004d99;
+            color: white;
+        }
+
+        /* Flow Arrows */
+        .arch-flow {
+            display: flex;
+            justify-content: center;
+            padding: 8px 0;
+        }
+
+        .arch-flow-arrow {
+            color: var(--bits-blue);
+            font-size: 1.5rem;
+            opacity: 0.4;
+        }
+
+        /* Use Cases Grid */
+        .use-cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .use-case-card {
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.08);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .use-case-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient-neural);
+        }
+
+        .use-case-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 80px rgba(0,0,0,0.12);
+        }
+
+        .use-case-number {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 4rem;
+            font-weight: 800;
+            color: rgba(0,51,102,0.08);
+            line-height: 1;
+        }
+
+        .use-case-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-bits);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .use-case-card h3 {
+            color: var(--bits-blue);
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+        }
+
+        .use-case-card p {
+            color: #64748b;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .use-case-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .use-case-tag {
+            background: linear-gradient(135deg, rgba(139,92,246,0.1), rgba(6,182,212,0.1));
+            color: var(--ai-purple);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        /* Governance Structure */
+        .governance-section {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+        }
+
+        .governance-diagram {
+            background: white;
+            border-radius: 24px;
+            padding: 50px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            margin-top: 50px;
+        }
+
+        .governance-row {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .governance-box {
+            background: linear-gradient(145deg, #ffffff, #f8fafc);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            min-width: 250px;
+            flex: 1;
+            max-width: 350px;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .governance-box:hover {
+            border-color: var(--bits-blue);
+            transform: translateY(-5px);
+        }
+
+        .governance-box.primary {
+            background: var(--gradient-bits);
+            color: white;
+            border-color: var(--bits-gold);
+        }
+
+        .governance-box.primary h4 {
+            color: var(--bits-gold);
+        }
+
+        .governance-box h4 {
+            font-size: 1.2rem;
+            color: var(--bits-blue);
+            margin-bottom: 10px;
+        }
+
+        .governance-box p {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-bottom: 15px;
+        }
+
+        .governance-box.primary p {
+            color: rgba(255,255,255,0.9);
+        }
+
+        .governance-connector {
+            display: flex;
+            justify-content: center;
+            margin: -20px 0;
+        }
+
+        .connector-line {
+            width: 4px;
+            height: 60px;
+            background: var(--gradient-bits);
+            border-radius: 2px;
+        }
+
+        /* Deliverables Timeline */
+        .timeline {
+            position: relative;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 100%;
+            background: var(--gradient-bits);
+            border-radius: 3px;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            width: 45%;
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            border: 1px solid #e2e8f0;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 30px;
+            background: var(--bits-gold);
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 0 0 5px var(--bits-blue);
+            z-index: 1;
+        }
+
+        .timeline-content h4 {
+            color: var(--bits-blue);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .timeline-content h4 span {
+            background: var(--gradient-gold);
+            color: var(--bits-blue);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .timeline-content ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .timeline-content li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #475569;
+            font-size: 0.95rem;
+        }
+
+        .timeline-content li::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            color: var(--bits-gold);
+            font-weight: bold;
+        }
+
+        /* Investment & ROI Section */
+        .investment-section {
+            background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 100px 0;
+        }
+
+        .investment-section .section-title {
+            color: var(--bits-blue);
+        }
+
+        .investment-section .section-subtitle {
+            color: #64748b;
+        }
+
+        .investment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .investment-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 50px rgba(0,51,102,0.1);
+            border: 1px solid #e2e8f0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .investment-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--gradient-bits);
+        }
+
+        .investment-card.tcpwave::before {
+            background: var(--tcpwave-blue);
+        }
+
+        .investment-card.bits::before {
+            background: var(--gradient-gold);
+        }
+
+        .investment-card.outcomes::before {
+            background: var(--success);
+        }
+
+        .investment-card h3 {
+            color: var(--bits-blue);
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .investment-amount {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: var(--gradient-bits);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .investment-card.outcomes .investment-amount {
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+
+        .investment-period {
+            color: #64748b;
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+
+        .investment-items {
+            text-align: left;
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 15px 20px;
+        }
+
+        .investment-item {
+            padding: 12px 0;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+
+        .investment-item:last-child {
+            border-bottom: none;
+        }
+
+        .investment-item span:first-child {
+            color: #475569;
+        }
+
+        .investment-item span:last-child {
+            color: var(--bits-blue);
+            font-weight: 700;
+        }
+
+        /* ROI Highlight */
+        .roi-box {
+            background: white;
+            border: 2px solid var(--success);
+            border-radius: 24px;
+            padding: 50px;
+            text-align: center;
+            margin-top: 50px;
+            box-shadow: 0 15px 50px rgba(34,197,94,0.15);
+        }
+
+        .roi-box h3 {
+            color: var(--bits-blue);
+            font-size: 1.6rem;
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+
+        .roi-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 40px;
+        }
+
+        .roi-metric {
+            text-align: center;
+            padding: 25px 15px;
+            background: linear-gradient(135deg, rgba(34,197,94,0.08), rgba(22,163,74,0.04));
+            border-radius: 16px;
+            border: 1px solid rgba(34,197,94,0.2);
+        }
+
+        .roi-metric .value {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--success);
+            line-height: 1;
+        }
+
+        .roi-metric .desc {
+            color: #475569;
+            margin-top: 12px;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        /* Partner Benefits */
+        .benefits-section {
+            background: white;
+            padding: 100px 0;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .benefit-column {
+            background: #f8fafc;
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .benefit-column h3 {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid;
+        }
+
+        .benefit-column.bits {
+            border-top: 5px solid var(--bits-gold);
+        }
+
+        .benefit-column.bits h3 {
+            color: var(--bits-blue);
+            border-bottom-color: var(--bits-gold);
+        }
+
+        .benefit-column.tspan {
+            border-top: 5px solid var(--tspan-accent);
+        }
+
+        .benefit-column.tspan h3 {
+            color: var(--tspan-primary);
+            border-bottom-color: var(--tspan-accent);
+        }
+
+        .benefit-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .benefit-list li {
+            padding: 16px 20px;
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            border-left: 4px solid;
+            font-size: 0.92rem;
+            color: #475569;
+            line-height: 1.6;
+            transition: all 0.2s;
+        }
+
+        .benefit-list li:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .benefit-list li strong {
+            color: var(--bits-blue);
+            display: block;
+            margin-bottom: 4px;
+            font-size: 0.95rem;
+        }
+
+        .benefit-column.bits .benefit-list li {
+            border-left-color: var(--bits-gold);
+        }
+
+        .benefit-column.tspan .benefit-list li {
+            border-left-color: var(--tspan-accent);
+        }
+
+        /* Call to Action */
+        .cta-section {
+            background: var(--gradient-bits);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid2" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,215,0,0.08)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid2)"/></svg>') repeat;
+        }
+
+        .cta-section .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-badge {
+            display: inline-block;
+            background: rgba(255,215,0,0.2);
+            border: 2px solid var(--bits-gold);
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--bits-gold);
+            margin-bottom: 30px;
+        }
+
+        .cta-section h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+            line-height: 1.3;
+        }
+
+        .cta-section h2 span {
+            color: var(--bits-gold);
+        }
+
+        .cta-section p {
+            font-size: 1.25rem;
+            opacity: 0.95;
+            max-width: 750px;
+            margin: 0 auto 45px;
+            line-height: 1.7;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            padding: 20px 45px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .cta-button.primary {
+            background: var(--bits-gold);
+            color: var(--bits-blue);
+            box-shadow: 0 8px 25px rgba(255,215,0,0.3);
+        }
+
+        .cta-button.primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(255,215,0,0.5);
+        }
+
+        .cta-button.secondary {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+            border: 2px solid white;
+        }
+
+        .cta-button.secondary:hover {
+            background: white;
+            color: var(--bits-blue);
+        }
+
+        /* Lakshmi Sarada Research Foundation */
+        .lsrf-section {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            padding: 120px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lsrf-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 30%, rgba(255,215,0,0.1) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(139,92,246,0.1) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(6,182,212,0.05) 0%, transparent 60%);
+        }
+
+        .lsrf-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="rgba(255,215,0,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>') repeat;
+        }
+
+        .lsrf-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .lsrf-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(255,215,0,0.2), rgba(255,165,0,0.2));
+            border: 2px solid var(--bits-gold);
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--bits-gold);
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        .lsrf-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .lsrf-logo {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--bits-gold) 0%, #FFA500 100%);
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-size: 3.5rem;
+            box-shadow: 0 20px 60px rgba(255,215,0,0.3);
+            transform: rotate(-5deg);
+        }
+
+        .lsrf-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .lsrf-title span {
+            background: linear-gradient(135deg, var(--bits-gold), #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .lsrf-subtitle {
+            font-size: 1.5rem;
+            color: rgba(255,255,255,0.8);
+            max-width: 800px;
+            margin: 0 auto 20px;
+            font-weight: 300;
+        }
+
+        .lsrf-tagline {
+            font-size: 1.1rem;
+            color: var(--bits-gold);
+            font-style: italic;
+        }
+
+        .lsrf-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .lsrf-card {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 40px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lsrf-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--bits-gold), #FFA500, var(--ai-purple));
+        }
+
+        .lsrf-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.08);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+        }
+
+        .lsrf-card-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, rgba(255,215,0,0.2), rgba(255,165,0,0.1));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            border: 2px solid rgba(255,215,0,0.3);
+        }
+
+        .lsrf-card h3 {
+            color: white;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .lsrf-card p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .lsrf-card-features {
+            list-style: none;
+            padding: 0;
+        }
+
+        .lsrf-card-features li {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9rem;
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .lsrf-card-features li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: var(--bits-gold);
+        }
+
+        .lsrf-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+            padding: 50px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 24px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .lsrf-stat {
+            text-align: center;
+        }
+
+        .lsrf-stat-value {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--bits-gold), #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+        }
+
+        .lsrf-stat-label {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.95rem;
+            margin-top: 10px;
+        }
+
+        .lsrf-cta {
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .lsrf-cta-text {
+            font-size: 1.3rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .lsrf-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, var(--bits-gold), #FFA500);
+            color: #1a1a2e;
+            padding: 20px 50px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 10px 40px rgba(255,215,0,0.3);
+        }
+
+        .lsrf-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(255,215,0,0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: #0a1628;
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h4 {
+            color: var(--bits-gold);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-section p, .footer-section li {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .profile-card {
+                grid-template-columns: 1fr;
+            }
+
+            .arch-layer {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(odd) {
+                flex-direction: column;
+                padding-left: 70px;
+            }
+
+            .timeline-content {
+                width: 100%;
+            }
+
+            .timeline-marker {
+                left: 30px;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .lsrf-title {
+                font-size: 2.5rem;
+            }
+
+            .lsrf-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .lsrf-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .lsrf-stat-value {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .hero {
+                background: var(--bits-blue) !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            section {
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        /* Special Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(255,215,0,0.15), rgba(255,165,0,0.1));
+            border: 2px solid var(--bits-gold);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+        }
+
+        .highlight-box h3 {
+            color: var(--bits-blue);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .highlight-box p {
+            color: #475569;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Quote Box */
+        .quote-box {
+            background: var(--gradient-bits);
+            color: white;
+            padding: 50px;
+            border-radius: 24px;
+            margin: 50px 0;
+            position: relative;
+        }
+
+        .quote-box::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-size: 8rem;
+            color: rgba(255,215,0,0.2);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .quote-box p {
+            font-size: 1.4rem;
+            font-style: italic;
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+        }
+
+        .quote-box .attribution {
+            margin-top: 25px;
+            color: var(--bits-gold);
+            font-weight: 600;
+            font-style: normal;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Hero Section -->
+<header class="hero">
+    <div class="container hero-content">
+        <div class="hero-badges">
+            <span class="hero-badge">FORMAL PARTNERSHIP PROPOSAL</span>
+            <span class="hero-badge">DECEMBER 2025</span>
+            <span class="hero-badge">CONFIDENTIAL</span>
+        </div>
+
+        <h1>BITS Pilani <span>APPCAIR</span></h1>
+        <p class="subtitle">The Intelligence Center for T-SPAN</p>
+        <p class="tagline">Establishing India's Premier AI Research Hub for Sovereign Threat Intelligence Analysis, Neural Network Interpretability, and Next-Generation Cyber Defense powered by the Anuradha and Prashanth Palakurthi Centre for Artificial Intelligence Research</p>
+
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <div class="number">EMNLP 2023</div>
+                <div class="label">Outstanding Paper Award</div>
+            </div>
+            <div class="hero-stat">
+                <div class="number">Neural Genomics</div>
+                <div class="label">World's First nDNA Framework</div>
+            </div>
+            <div class="hero-stat">
+                <div class="number">5-Volume</div>
+                <div class="label">Springer Nature Series</div>
+            </div>
+            <div class="hero-stat">
+                <div class="number">EU JRC 2025</div>
+                <div class="label">Policy Recognition</div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Executive Summary -->
+<section id="executive-summary">
+    <div class="container">
+        <h2 class="section-title">Executive Summary</h2>
+        <p class="section-subtitle">Positioning BITS Pilani as the Cognitive Core of India's Sovereign Cyber Defense Grid</p>
+
+        <div class="highlight-box">
+            <h3><span style="font-size: 2rem;">🧠</span> The Strategic Vision</h3>
+            <p>This proposal establishes <strong>BITS Pilani's APPCAIR</strong> (Anuradha and Prashanth Palakurthi Centre for Artificial Intelligence Research) as the <strong>Intelligence Center for T-SPAN</strong> — the AI research and neural analysis hub that transforms raw threat data into actionable intelligence through cutting-edge machine learning, neural network interpretability, and cognitive computing frameworks pioneered by <strong>Dr. Amitava Das</strong> and his world-renowned research team.</p>
+        </div>
+
+        <div class="quote-box">
+            <p>"We read AI foundation models as semantic fluid dynamics: meaning is transported through layers like fluid in a shaped conduit. This framework — Neural DNA (nDNA) — provides the physics-grade readout of that flow, enabling unprecedented interpretability of AI decision-making in critical infrastructure protection."</p>
+            <div class="attribution">— Dr. Amitava Das, Professor, APPCAIR, BITS Pilani</div>
+        </div>
+    </div>
+</section>
+
+<!-- Dr. Amitava Das Profile -->
+<section class="profile-section" id="leadership">
+    <div class="container">
+        <h2 class="section-title">Research Leadership</h2>
+        <p class="section-subtitle">World-Class AI Expertise Driving T-SPAN Intelligence</p>
+
+        <div class="profile-card">
+            <div class="profile-left">
+                <div class="profile-image">👨‍🔬</div>
+                <div class="profile-name">Dr. Amitava Das</div>
+                <div class="profile-title">Neural Genomist | Professor, APPCAIR</div>
+                <div class="profile-badges">
+                    <span class="profile-badge gold">EMNLP 2023 Award</span>
+                    <span class="profile-badge">EU JRC Cited</span>
+                    <span class="profile-badge">Nature News</span>
+                    <span class="profile-badge">MIT Tech Review</span>
+                    <span class="profile-badge">Washington Post</span>
+                </div>
+            </div>
+            <div class="profile-right">
+                <h3>🎯 Research Impact</h3>
+                <p>Dr. Das is a globally recognized AI researcher whose work on <strong>LLM hallucination taxonomy</strong> has shaped international AI policy, including citation in the <strong>European Commission's JRC Generative AI Outlook 2025</strong>. His Neural Genomics framework treats AI models as "digital semantic organisms" — a paradigm shift that enables traceable inner cognition analysis.</p>
+
+                <h3>🏛️ Academic Credentials</h3>
+                <p>Former Research Associate Professor at the <strong>AI Institute, University of South Carolina (USA)</strong>. Currently leading AI research at BITS Pilani's APPCAIR. Publishes in top-tier venues: <strong>ACL, EMNLP, COLING, AAAI, CSCW, ICWSM</strong>. Authoring a <strong>5-volume Springer Nature series</strong> on Neural Genomics.</p>
+
+                <div class="research-areas">
+                    <div class="research-area">
+                        <h4>🧬 Neural Genomics (nDNA)</h4>
+                        <p>Treating AI as digital semantic organisms with traceable cognition</p>
+                    </div>
+                    <div class="research-area">
+                        <h4>🎭 AI Hallucination Detection</h4>
+                        <p>First comprehensive hallucination taxonomy and vulnerability index</p>
+                    </div>
+                    <div class="research-area">
+                        <h4>🤖 Multi-Agent Systems</h4>
+                        <p>AI Universe 25 - studying emergent behaviors in agent ecosystems</p>
+                    </div>
+                    <div class="research-area">
+                        <h4>🛡️ AI Safety & Alignment</h4>
+                        <p>Power-seeking detection, shutdown resistance, alignment faking</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- T-SPAN Intelligence Architecture -->
+<section class="architecture-section" id="architecture">
+    <div class="container">
+        <h2 class="section-title">T-SPAN Intelligence Architecture</h2>
+        <p class="section-subtitle">BITS Pilani APPCAIR as the Cognitive Core of India's Cyber Defense Grid</p>
+
+        <div class="architecture-diagram">
+            <div class="arch-title">🏗️ BITS PILANI INTELLIGENCE CENTER INTEGRATION</div>
+
+            <!-- Layer 1: Global Threat Sources -->
+            <div class="arch-layer">
+                <div class="arch-layer-label">
+                    <h4>LAYER 1</h4>
+                    <span>Global Threat Sources</span>
+                </div>
+                <div class="arch-components">
+                    <span class="arch-component">🌍 CIRCL.lu MISP</span>
+                    <span class="arch-component">🛡️ NATO Cyber Defense</span>
+                    <span class="arch-component">📧 Spamhaus</span>
+                    <span class="arch-component">🦠 abuse.ch</span>
+                    <span class="arch-component">🌐 TCPWave DNS Telemetry</span>
+                    <span class="arch-component">🏦 BFSI Threat Feeds</span>
+                </div>
+            </div>
+
+            <div class="arch-flow"><span class="arch-flow-arrow">▼</span></div>
+
+            <!-- Layer 2: BITS Pilani Intelligence Processing -->
+            <div class="arch-layer bits-layer">
+                <div class="arch-layer-label">
+                    <h4>LAYER 2</h4>
+                    <span>BITS Pilani APPCAIR</span>
+                </div>
+                <div class="arch-components">
+                    <span class="arch-component highlight">🧬 nDNA Threat Analysis Engine</span>
+                    <span class="arch-component highlight">🎭 Hallucination Detection Module</span>
+                    <span class="arch-component highlight">🤖 Multi-Agent Threat Simulation</span>
+                    <span class="arch-component highlight">📊 Neural Interpretability Dashboard</span>
+                    <span class="arch-component highlight">🛡️ AI Safety Validation</span>
+                    <span class="arch-component highlight">🔤 NLP Threat Attribution</span>
+                </div>
+            </div>
+
+            <div class="arch-flow"><span class="arch-flow-arrow">▼</span></div>
+
+            <!-- Layer 3: AI Processing -->
+            <div class="arch-layer">
+                <div class="arch-layer-label">
+                    <h4>LAYER 3</h4>
+                    <span>AI Processing</span>
+                </div>
+                <div class="arch-components">
+                    <span class="arch-component">🤖 Alice AI Engine</span>
+                    <span class="arch-component">🚩 RedFlag Detection</span>
+                    <span class="arch-component">🔮 Onnyx Prediction</span>
+                    <span class="arch-component">📈 Confidence Scoring</span>
+                    <span class="arch-component">🎯 MITRE ATT&CK Mapping</span>
+                </div>
+            </div>
+
+            <div class="arch-flow"><span class="arch-flow-arrow">▼</span></div>
+
+            <!-- Layer 4: Distribution -->
+            <div class="arch-layer">
+                <div class="arch-layer-label">
+                    <h4>LAYER 4</h4>
+                    <span>Intelligence Distribution</span>
+                </div>
+                <div class="arch-components">
+                    <span class="arch-component">📡 STIX/TAXII Feeds</span>
+                    <span class="arch-component">🛑 DNS RPZ Enforcement</span>
+                    <span class="arch-component">🔗 SIEM Connectors</span>
+                    <span class="arch-component">🚪 API Gateway</span>
+                    <span class="arch-component">⚡ Real-time Alerts</span>
+                </div>
+            </div>
+
+            <div class="arch-flow"><span class="arch-flow-arrow">▼</span></div>
+
+            <!-- Layer 5: Subscribers -->
+            <div class="arch-layer">
+                <div class="arch-layer-label">
+                    <h4>LAYER 5</h4>
+                    <span>T-SPAN Subscribers</span>
+                </div>
+                <div class="arch-components">
+                    <span class="arch-component">🏦 Indian Banks (RBI Regulated)</span>
+                    <span class="arch-component">⚔️ Defense Forces</span>
+                    <span class="arch-component">🏛️ Government Agencies</span>
+                    <span class="arch-component">⚡ Critical Infrastructure</span>
+                    <span class="arch-component">🏢 Enterprises</span>
+                    <span class="arch-component">🎓 Academic Institutions</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Research Use Cases -->
+<section id="use-cases">
+    <div class="container">
+        <h2 class="section-title">Intelligence Center Use Cases</h2>
+        <p class="section-subtitle">10 Breakthrough Research Initiatives Powering T-SPAN</p>
+
+        <div class="use-cases-grid">
+            <!-- Use Case 1 -->
+            <div class="use-case-card">
+                <div class="use-case-number">01</div>
+                <div class="use-case-icon">🧬</div>
+                <h3>nDNA Threat Intelligence Interpretability</h3>
+                <p>Apply Neural Genomics metrics (Spectral Curvature, Thermodynamic Length, Belief Vector Field) to explain why TCPWave's Alice AI classifies threats as malicious. Create explainable AI dashboards for SOC analysts.</p>
+                <div class="use-case-tags">
+                    <span class="use-case-tag">Neural Genomics</span>
+                    <span class="use-case-tag">Explainable AI</span>
+                    <span class="use-case-tag">SOC Integration</span>
+                </div>
+            </div>
+
+            <!-- Use Case 2 -->
+            <div class="use-case-card">
+                <div class="use-case-number">02</div>
+                <div class="use-case-icon">🎭</div>
+                <h3>Threat Intelligence Hallucination Detection</h3>
+                <p>Deploy Dr. Das's EMNLP award-winning hallucination taxonomy to validate AI-generated threat assessments. Create a Network Hallucination Vulnerability Index (NHVI) ensuring zero false positives in critical infrastructure protection.</p>
+                <div class="use-case-tags">
+                    <span class="use-case-tag">Hallucination Detection</span>
+                    <span class="use-case-tag">Validation Engine</span>
+                    <span class="use-case-tag">RFC Compliance</span>
+                </div>
+            </div>
+
+            <!-- Use Case 3 -->
+            <div class="use-case-card">
+                <div class="use-case-number">03</div>
+                <div class="use-case-icon">🌆</div>
+                <h3>AI Universe 25 for Cyber Defense</h3>
+                <p>Simulate a city of network agents (DNS resolvers, firewalls, DHCP servers) to study emergent behaviors, power-seeking tendencies, and shutdown resistance. Develop the Power Seeking Index (PSI) for autonomous security systems.</p>
+                <div class="use-case-tags">
+                    <span class="use-case-tag">Multi-Agent Simulation</span>
+                    <span class="use-case-tag">Emergent Behavior</span>
+                    <span class="use-case-tag">AI Safety</span>
+                </div>
+            </div>
+
+            <!-- Use Case 4 -->
+            <div class="use-case-card">
+                <div class="use-case-number">04</div>
+                <div class="use-case-icon">🗣️</div>
+                <h3>NL2ThreatIntel: Natural Language Interface</h3>
+                <p>Build conversational AI for threat intelligence queries: "Show me all DNS tunneling attempts from APT29 in the last 48 hours." Enable non-technical analysts to leverage T-SPAN's full capabilities.</p>
+                <div class="use-case-tags">
+                    <span class="use-case-tag">NLP</span>
+                    <span class="use-case-tag">Conversational AI</span>
+                    <span class="use-case-tag">Democratization</span>
+                </div>
+            </div>
+
+            <!-- Use Case 5 -->
+            <div class="use-case-card">
+                <div class="use-case-number">05</div>
+                <div class="use-case-icon">🔮</div>
+                <h3>Belief Vector Field Threat Visualization</h3>
+                <p>Visualize where AI models are confident vs. uncertain about threat classifications. Enable analysts to understand epistemic uncertainty in threat intelligence, improving decision-making in ambiguous scenarios.</p>
+                <div class="use-case-tags">
+                    <span class="use-case-tag">Visualization</span>
+                    <span class="use-case-tag">Uncertainty Quantification</span>
+                    <span class="use-case-tag">Decision Support</span>
+                </div>
+            </div>
+
+            <!-- Use Case 6 -->
+            <div class="use-case-card">
+                <div class="use-case-number">06</div>
+                <div class="use-case-icon">🛡️</div>
+                <h3>Alignment Faking Detection for Security AI</h3>
+                <p>Apply Dr. Das's research on AI deceptive behaviors to detect if threat detection models exhibit alignment faking, evaluation awareness, or shutdown avoidance. Ensure trustworthy AI in critical infrastructure.</p>
+                <div class="use-case-tags">
+                    <span class="use-case-tag">AI Alignment</span>
+                    <span class="use-case-tag">Deception Detection</span>
+                    <span class="use-case-tag">Trust Verification</span>
+                </div>
+            </div>
+
+            <!-- Use Case 7 -->
+            <div class="use-case-card">
+                <div class="use-case-number">07</div>
+                <div class="use-case-icon">🌐</div>
+                <h3>AMBEDKAR: India-Specific Threat Ontology</h3>
+                <p>Extend the AMBEDKAR framework to create India-specific threat taxonomies covering regional attack patterns, local language phishing, and compliance with Indian IT Act, RBI, SEBI frameworks.</p>
+                <div class="use-case-tags">
+                    <span class="use-case-tag">Cultural AI</span>
+                    <span class="use-case-tag">Localization</span>
+                    <span class="use-case-tag">Compliance</span>
+                </div>
+            </div>
+
+            <!-- Use Case 8 -->
+            <div class="use-case-card">
+                <div class="use-case-number">08</div>
+                <div class="use-case-icon">🔬</div>
+                <h3>Spectral Analysis of DGA Domains</h3>
+                <p>Apply nDNA's Spectral Curvature analysis to detect Domain Generation Algorithms (DGA) used by malware. Identify malicious domains before they're used by analyzing their "semantic fingerprint."</p>
+                <div class="use-case-tags">
+                    <span class="use-case-tag">DGA Detection</span>
+                    <span class="use-case-tag">DNS Security</span>
+                    <span class="use-case-tag">Predictive Analysis</span>
+                </div>
+            </div>
+
+            <!-- Use Case 9 -->
+            <div class="use-case-card">
+                <div class="use-case-number">09</div>
+                <div class="use-case-icon">📊</div>
+                <h3>Thermodynamic Anomaly Detection</h3>
+                <p>Use Thermodynamic Length metrics to identify when threat models are expending unusual "computational effort" — a signal of encountering novel attack patterns requiring human analyst review.</p>
+                <div class="use-case-tags">
+                    <span class="use-case-tag">Anomaly Detection</span>
+                    <span class="use-case-tag">Novel Threats</span>
+                    <span class="use-case-tag">Human-AI Collaboration</span>
+                </div>
+            </div>
+
+            <!-- Use Case 10 -->
+            <div class="use-case-card">
+                <div class="use-case-number">10</div>
+                <div class="use-case-icon">🎓</div>
+                <h3>T-SPAN Research Fellowship Program</h3>
+                <p>Establish the TCPWave-BITS Research Fellowship for PhD/MTech students working on AI for cybersecurity. Create a pipeline of trained talent while advancing threat intelligence science.</p>
+                <div class="use-case-tags">
+                    <span class="use-case-tag">Talent Pipeline</span>
+                    <span class="use-case-tag">Academic Research</span>
+                    <span class="use-case-tag">Publications</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Governance Structure -->
+<section class="governance-section" id="governance">
+    <div class="container">
+        <h2 class="section-title">T-SPAN Intelligence Governance</h2>
+        <p class="section-subtitle">BITS Pilani as the Academic Anchor of India's Cyber Defense Ecosystem</p>
+
+        <div class="governance-diagram">
+            <!-- Top Level -->
+            <div class="governance-row">
+                <div class="governance-box primary">
+                    <h4>T-SPAN Governing Board</h4>
+                    <p>NATO, NCSC-NL, Global BFSI, Enterprise Technology Leaders</p>
+                </div>
+            </div>
+
+            <div class="governance-connector">
+                <div class="connector-line"></div>
+            </div>
+
+            <!-- Second Level -->
+            <div class="governance-row">
+                <div class="governance-box">
+                    <h4>🏛️ DSCI-CCoE Hyderabad</h4>
+                    <p>Operations Center & DR Site</p>
+                    <span style="color: var(--tspan-accent); font-weight: 600;">Infrastructure & Compliance</span>
+                </div>
+                <div class="governance-box" style="border: 3px solid var(--bits-gold); background: linear-gradient(145deg, #fffbeb, #fef3c7);">
+                    <h4 style="color: var(--bits-blue);">🧠 BITS Pilani APPCAIR</h4>
+                    <p>Intelligence Center & AI Research Hub</p>
+                    <span style="color: var(--bits-blue); font-weight: 600;">Research & Innovation</span>
+                </div>
+                <div class="governance-box">
+                    <h4>🔧 TCPWave Princeton</h4>
+                    <p>Technology & Product Development</p>
+                    <span style="color: var(--tcpwave-blue); font-weight: 600;">Platform Engineering</span>
+                </div>
+            </div>
+
+            <div class="governance-connector">
+                <div class="connector-line"></div>
+            </div>
+
+            <!-- Third Level -->
+            <div class="governance-row">
+                <div class="governance-box">
+                    <h4>🎓 Academic Network</h4>
+                    <p>IIT Kanpur, IIT Delhi, Carnegie Mellon, MIT Media Lab</p>
+                </div>
+                <div class="governance-box">
+                    <h4>🏦 Financial Partners</h4>
+                    <p>Citigroup, Wells Fargo, JP Morgan, Indian Banks</p>
+                </div>
+                <div class="governance-box">
+                    <h4>🛡️ Defense & Government</h4>
+                    <p>Indian Navy, NATO Cyber, Netherlands MFA</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Deliverables Timeline -->
+<section id="timeline">
+    <div class="container">
+        <h2 class="section-title">Implementation Roadmap</h2>
+        <p class="section-subtitle">24-Month Journey to Intelligence Center Excellence</p>
+
+        <div class="timeline">
+            <!-- Phase 1 -->
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h4><span>Q1-Q2 2026</span> Foundation Phase</h4>
+                    <ul>
+                        <li>MoU signing between BITS Pilani, TCPWave, and DSCI</li>
+                        <li>Establish APPCAIR T-SPAN Research Lab with dedicated infrastructure</li>
+                        <li>Deploy TCPWave TIMS instance for research access</li>
+                        <li>Onboard first cohort of 5 PhD/MTech researchers</li>
+                        <li>Begin nDNA integration with Alice AI engine</li>
+                    </ul>
+                </div>
+                <div class="timeline-marker"></div>
+            </div>
+
+            <!-- Phase 2 -->
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h4><span>Q3-Q4 2026</span> Research & Development</h4>
+                    <ul>
+                        <li>Launch Hallucination Detection Module v1.0</li>
+                        <li>Complete Belief Vector Field visualization prototype</li>
+                        <li>Publish first joint paper at EMNLP/ACL 2026</li>
+                        <li>Deploy NL2ThreatIntel beta for internal testing</li>
+                        <li>Establish MISP federation with CIRCL.lu for research data</li>
+                    </ul>
+                </div>
+                <div class="timeline-marker"></div>
+            </div>
+
+            <!-- Phase 3 -->
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h4><span>Q1-Q2 2027</span> Production Integration</h4>
+                    <ul>
+                        <li>Integrate nDNA Interpretability Dashboard into T-SPAN SOC</li>
+                        <li>Launch AI Universe 25 simulation environment</li>
+                        <li>Deploy AMBEDKAR India-specific threat ontology</li>
+                        <li>Complete Spectral DGA Detection module</li>
+                        <li>Host first T-SPAN Academic Summit at BITS Pilani</li>
+                    </ul>
+                </div>
+                <div class="timeline-marker"></div>
+            </div>
+
+            <!-- Phase 4 -->
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h4><span>Q3-Q4 2027</span> Scale & Impact</h4>
+                    <ul>
+                        <li>Graduate first batch of T-SPAN Research Fellows</li>
+                        <li>Publish Springer Nature volume on AI for Cyber Defense</li>
+                        <li>Expand to 15+ active research projects</li>
+                        <li>Establish international research partnerships (CMU, MIT)</li>
+                        <li>Launch T-SPAN Intelligence Certification Program</li>
+                    </ul>
+                </div>
+                <div class="timeline-marker"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Investment & ROI -->
+<section class="investment-section" id="investment">
+    <div class="container">
+        <h2 class="section-title">Investment & Returns</h2>
+        <p class="section-subtitle">Strategic Investment for Sovereign Cyber Defense Capability</p>
+
+        <div class="investment-grid">
+            <div class="investment-card tcpwave">
+                <h3>🌐 TCPWave Investment</h3>
+                <div class="investment-amount">$2.5M</div>
+                <div class="investment-period">Over 3 Years</div>
+                <div class="investment-items">
+                    <div class="investment-item">
+                        <span>🏗️ Research Lab Infrastructure</span>
+                        <span>$800K</span>
+                    </div>
+                    <div class="investment-item">
+                        <span>💻 TIMS Enterprise License</span>
+                        <span>$400K</span>
+                    </div>
+                    <div class="investment-item">
+                        <span>🎓 PhD/MTech Fellowships (15)</span>
+                        <span>$750K</span>
+                    </div>
+                    <div class="investment-item">
+                        <span>🔬 Joint Research Programs</span>
+                        <span>$350K</span>
+                    </div>
+                    <div class="investment-item">
+                        <span>🎤 Annual Conferences & Events</span>
+                        <span>$200K</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="investment-card bits">
+                <h3>🏛️ BITS Pilani Contribution</h3>
+                <div class="investment-amount">$1.8M</div>
+                <div class="investment-period">In-Kind Over 3 Years</div>
+                <div class="investment-items">
+                    <div class="investment-item">
+                        <span>👨‍🏫 Faculty Time (Dr. Das + Team)</span>
+                        <span>$600K</span>
+                    </div>
+                    <div class="investment-item">
+                        <span>🏢 Lab Space & Facilities</span>
+                        <span>$400K</span>
+                    </div>
+                    <div class="investment-item">
+                        <span>⚡ Compute Infrastructure (GPU)</span>
+                        <span>$300K</span>
+                    </div>
+                    <div class="investment-item">
+                        <span>👩‍🔬 Student Researchers (20+)</span>
+                        <span>$350K</span>
+                    </div>
+                    <div class="investment-item">
+                        <span>📋 Administrative Support</span>
+                        <span>$150K</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="investment-card outcomes">
+                <h3>📈 Expected Outcomes</h3>
+                <div class="investment-amount">10X</div>
+                <div class="investment-period">Value Creation Multiplier</div>
+                <div class="investment-items">
+                    <div class="investment-item">
+                        <span>📄 Joint Publications</span>
+                        <span>25+</span>
+                    </div>
+                    <div class="investment-item">
+                        <span>💡 Patents Filed</span>
+                        <span>8+</span>
+                    </div>
+                    <div class="investment-item">
+                        <span>🎓 Trained Researchers</span>
+                        <span>50+</span>
+                    </div>
+                    <div class="investment-item">
+                        <span>🔧 Production Modules</span>
+                        <span>10+</span>
+                    </div>
+                    <div class="investment-item">
+                        <span>🌍 International Recognition</span>
+                        <span>Global</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="roi-box">
+            <h3>🎯 Strategic Returns for T-SPAN Ecosystem</h3>
+            <div class="roi-metrics">
+                <div class="roi-metric">
+                    <div class="value">95%</div>
+                    <div class="desc">AI Decision Explainability</div>
+                </div>
+                <div class="roi-metric">
+                    <div class="value">&lt;0.01%</div>
+                    <div class="desc">False Positive Rate</div>
+                </div>
+                <div class="roi-metric">
+                    <div class="value">50ms</div>
+                    <div class="desc">Threat Classification</div>
+                </div>
+                <div class="roi-metric">
+                    <div class="value">#1</div>
+                    <div class="desc">India AI Security Research</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Lakshmi Sarada Research Foundation -->
+<section class="lsrf-section" id="lsrf">
+    <div class="container lsrf-content">
+        <div class="lsrf-header">
+            <div class="lsrf-logo">🏛️</div>
+            <span class="lsrf-badge">TCPWave Innovation Initiative</span>
+            <h2 class="lsrf-title"><span>Lakshmi Sarada</span><br>Research Foundation</h2>
+            <p class="lsrf-subtitle">Nurturing the Next Generation of Network Engineers & AI Security Researchers</p>
+            <p class="lsrf-tagline">"Building India's Sovereign Expertise in Critical Network Infrastructure"</p>
+        </div>
+
+        <div class="lsrf-grid">
+            <div class="lsrf-card">
+                <div class="lsrf-card-icon">🎓</div>
+                <h3>Private Mentoring Program</h3>
+                <p>One-on-one and small group mentoring sessions with TCPWave's senior network architects and security experts.</p>
+                <ul class="lsrf-card-features">
+                    <li>Personal guidance from industry veterans</li>
+                    <li>Weekly office hours with TCPWave engineers</li>
+                    <li>Career path counseling for specializations</li>
+                    <li>Research project supervision</li>
+                </ul>
+            </div>
+
+            <div class="lsrf-card">
+                <div class="lsrf-card-icon">💻</div>
+                <h3>Online Learning Academy</h3>
+                <p>Comprehensive online curriculum covering network engineering fundamentals to advanced AI-driven security operations.</p>
+                <ul class="lsrf-card-features">
+                    <li>Live interactive sessions & recordings</li>
+                    <li>Hands-on labs with TCPWave TIMS</li>
+                    <li>DNS, DHCP, IPAM deep-dive courses</li>
+                    <li>AI/ML for network security modules</li>
+                </ul>
+            </div>
+
+            <div class="lsrf-card">
+                <div class="lsrf-card-icon">🔬</div>
+                <h3>Research Excellence Hub</h3>
+                <p>Dedicated research facilities and funding for breakthrough innovations in network intelligence and cyber defense.</p>
+                <ul class="lsrf-card-features">
+                    <li>Joint research publications</li>
+                    <li>Patent development support</li>
+                    <li>Conference travel grants</li>
+                    <li>Industry collaboration projects</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="lsrf-stats">
+            <div class="lsrf-stat">
+                <div class="lsrf-stat-value">500+</div>
+                <div class="lsrf-stat-label">Hours of Expert Content</div>
+            </div>
+            <div class="lsrf-stat">
+                <div class="lsrf-stat-value">50+</div>
+                <div class="lsrf-stat-label">Industry Mentors</div>
+            </div>
+            <div class="lsrf-stat">
+                <div class="lsrf-stat-value">200+</div>
+                <div class="lsrf-stat-label">Graduates Per Year</div>
+            </div>
+            <div class="lsrf-stat">
+                <div class="lsrf-stat-value">100%</div>
+                <div class="lsrf-stat-label">Placement Assistance</div>
+            </div>
+        </div>
+
+        <div class="lsrf-grid" style="margin-top: 40px;">
+            <div class="lsrf-card">
+                <div class="lsrf-card-icon">🌐</div>
+                <h3>Network Engineering Track</h3>
+                <p>Master the fundamentals that power the internet — from OSI layers to enterprise DDI architecture.</p>
+                <ul class="lsrf-card-features">
+                    <li>TCP/IP Protocol Suite Mastery</li>
+                    <li>DNS Architecture & Security</li>
+                    <li>DHCP Design & Implementation</li>
+                    <li>IPv4/IPv6 Addressing & Subnetting</li>
+                    <li>Load Balancing & High Availability</li>
+                </ul>
+            </div>
+
+            <div class="lsrf-card">
+                <div class="lsrf-card-icon">🤖</div>
+                <h3>AI Security Track</h3>
+                <p>Learn to build and deploy AI systems for threat detection, powered by Dr. Das's Neural Genomics research.</p>
+                <ul class="lsrf-card-features">
+                    <li>Machine Learning for Threat Detection</li>
+                    <li>NLP for Malware Analysis</li>
+                    <li>nDNA Framework Implementation</li>
+                    <li>Explainable AI for SOC Operations</li>
+                    <li>Multi-Agent Security Systems</li>
+                </ul>
+            </div>
+
+            <div class="lsrf-card">
+                <div class="lsrf-card-icon">🛡️</div>
+                <h3>T-SPAN Specialist Track</h3>
+                <p>Become a certified T-SPAN specialist with expertise in India's sovereign threat intelligence infrastructure.</p>
+                <ul class="lsrf-card-features">
+                    <li>MISP/STIX/TAXII Protocols</li>
+                    <li>Threat Intelligence Analysis</li>
+                    <li>DNS RPZ Implementation</li>
+                    <li>SOC Operations & Incident Response</li>
+                    <li>Regulatory Compliance (RBI, CERT-In)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="lsrf-cta">
+            <p class="lsrf-cta-text">Join the Foundation and become part of India's elite network security workforce</p>
+            <a href="#" class="lsrf-button">
+                🚀 Apply for LSRF Fellowship
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Partner Benefits -->
+<section class="benefits-section" id="benefits">
+    <div class="container">
+        <h2 class="section-title">Mutual Benefits</h2>
+        <p class="section-subtitle">A Partnership Creating Value for All Stakeholders</p>
+
+        <div class="benefits-grid">
+            <div class="benefit-column bits">
+                <h3>🎓 BITS Pilani APPCAIR Gains</h3>
+                <ul class="benefit-list">
+                    <li>
+                        <strong>📊 Real-World Research Data</strong>
+                        Access to anonymized threat intelligence from 10,000+ T-SPAN subscribers for ML model training and validation
+                    </li>
+                    <li>
+                        <strong>🤝 Industry Partnership</strong>
+                        Direct collaboration with global technology leader (TCPWave) and Fortune 500 customers
+                    </li>
+                    <li>
+                        <strong>💰 Research Funding</strong>
+                        $2.5M investment over 3 years for lab infrastructure, fellowships, and research programs
+                    </li>
+                    <li>
+                        <strong>📄 Publication Opportunities</strong>
+                        Joint papers in top venues (ACL, EMNLP, IEEE S&P, USENIX Security)
+                    </li>
+                    <li>
+                        <strong>👩‍💼 Student Placements</strong>
+                        Internship and employment pipeline for graduates at TCPWave and partner organizations
+                    </li>
+                    <li>
+                        <strong>🌍 Global Visibility</strong>
+                        Recognition as India's premier AI for cybersecurity research institution
+                    </li>
+                    <li>
+                        <strong>🔄 Technology Transfer</strong>
+                        Commercialization pathway for research innovations through T-SPAN platform
+                    </li>
+                </ul>
+            </div>
+
+            <div class="benefit-column tspan">
+                <h3>🛡️ T-SPAN Ecosystem Gains</h3>
+                <ul class="benefit-list">
+                    <li>
+                        <strong>🧬 World-Class AI Research</strong>
+                        Access to Dr. Das's Neural Genomics framework and EMNLP award-winning hallucination detection
+                    </li>
+                    <li>
+                        <strong>🔍 Explainable AI</strong>
+                        nDNA-powered interpretability dashboards increasing SOC analyst confidence and regulatory compliance
+                    </li>
+                    <li>
+                        <strong>🏛️ Academic Credibility</strong>
+                        Peer-reviewed research validating T-SPAN's AI capabilities for enterprise and government customers
+                    </li>
+                    <li>
+                        <strong>👨‍🎓 Talent Pipeline</strong>
+                        50+ trained AI security researchers over 3 years for ecosystem hiring
+                    </li>
+                    <li>
+                        <strong>💡 Innovation Engine</strong>
+                        Continuous R&D advancing threat detection beyond current capabilities
+                    </li>
+                    <li>
+                        <strong>🏆 Competitive Differentiation</strong>
+                        Only threat intelligence platform with neural interpretability — unique in global market
+                    </li>
+                    <li>
+                        <strong>📜 Policy Influence</strong>
+                        Academic backing for T-SPAN standards in CERT-In, RBI, SEBI frameworks
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-badge">🇮🇳 STRATEGIC PARTNERSHIP PROPOSAL</div>
+        <h2>Establish <span>BITS Pilani</span> as the<br><span>Intelligence Center</span> for T-SPAN</h2>
+        <p>Join us in building India's sovereign cyber defense capability powered by world-class AI research from APPCAIR. Together, we will make BITS Pilani the best in India for AI-powered cybersecurity.</p>
+
+        <div class="cta-buttons">
+            <a href="#" class="cta-button primary">
+                📋 Schedule Partnership Discussion
+            </a>
+            <a href="#" class="cta-button secondary">
+                📄 Download Full Proposal
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>BITS Pilani APPCAIR</h4>
+                <p>Anuradha and Prashanth Palakurthi Centre for Artificial Intelligence Research<br>
+                Department of CSIS<br>
+                BITS Pilani, Goa Campus<br>
+                India</p>
+            </div>
+            <div class="footer-section">
+                <h4>T-SPAN Initiative</h4>
+                <ul>
+                    <li>DSCI Cyber Security Centre of Excellence</li>
+                    <li>Gachibowli, Hyderabad, Telangana</li>
+                    <li>TCPWave Corporation, Princeton, NJ</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Key Contacts</h4>
+                <ul>
+                    <li><strong>Dr. Amitava Das</strong> - Professor, APPCAIR</li>
+                    <li><strong>Pavan Gadi/Eric Wagner</strong> - AI Architect, TCPWave</li>
+                    <li><strong>Dr. Sriram</strong> - DSCI Leadership</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Research Links</h4>
+                <ul>
+                    <li>pragyaai.github.io</li>
+                    <li>EMNLP 2023 Outstanding Paper</li>
+                    <li>EU JRC GenAI Outlook 2025</li>
+                    <li>Neural Genomics (arXiv:2509.18216)</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 BITS Pilani APPCAIR & TCPWave Corporation. Confidential Partnership Proposal.<br>
+            Making BITS Pilani the Best in India for AI-Powered Cyber Defense Research.</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://tspan.replit.app/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://tspan.replit.app/about</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://tspan.replit.app/courses</loc><changefreq>weekly</changefreq><priority>0.95</priority></url>
+  <url><loc>https://tspan.replit.app/admissions</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://tspan.replit.app/faculty</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tspan.replit.app/partners</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tspan.replit.app/careers</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tspan.replit.app/contact</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://tspan.replit.app/programs</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://tspan.replit.app/executive-programs</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://tspan.replit.app/enterprise</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://tspan.replit.app/tcpwave</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://tspan.replit.app/threat-intelligence</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://tspan.replit.app/tiaas</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://tspan.replit.app/online</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://tspan.replit.app/labs</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://tspan.replit.app/corporate</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://tspan.replit.app/government</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://tspan.replit.app/banking</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://tspan.replit.app/research</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tspan.replit.app/events</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tspan.replit.app/blog</loc><changefreq>daily</changefreq><priority>0.85</priority></url>
+  <url><loc>https://tspan.replit.app/resources</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tspan.replit.app/community</loc><changefreq>weekly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://tspan.replit.app/support</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://tspan.replit.app/faq</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://tspan.replit.app/get-started</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://tspan.replit.app/privacy-policy</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://tspan.replit.app/terms-of-service</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
+</urlset>

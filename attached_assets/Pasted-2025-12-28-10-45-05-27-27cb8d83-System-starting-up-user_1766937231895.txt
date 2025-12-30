@@ -1,0 +1,107 @@
+2025-12-28 10:45:05.27
+27cb8d83
+System
+starting up user application
+2025-12-28 10:45:05.27
+27cb8d83
+System
+metasidecar: loaded enterprise status from environment is_enterprise=false
+2025-12-28 10:45:05.27
+27cb8d83
+System
+forwarding local port 5000 to external port 80 (mapped as 1104)
+2025-12-28 10:45:05.88
+27cb8d83
+User
+3:45:05 PM [express] serving on port 5000
+2025-12-28 10:47:13.18
+0537118a
+System
+starting up user application
+2025-12-28 10:47:13.18
+0537118a
+System
+metasidecar: loaded enterprise status from environment is_enterprise=false
+2025-12-28 10:47:13.18
+0537118a
+System
+forwarding local port 5000 to external port 80 (mapped as 1104)
+2025-12-28 10:47:14.11
+0537118a
+User
+3:47:14 PM [express] serving on port 5000
+2025-12-28 10:49:51.96
+bb1a361d
+System
+system: received signal terminated
+2025-12-28 10:49:51.96
+bb1a361d
+System
+command finished with error [node ./dist/index.cjs]: signal: terminated
+2025-12-28 10:49:51.98
+bb1a361d
+System
+main done, exiting
+2025-12-28 10:50:10.68
+0537118a
+User
+3:50:10 PM [express] GET /api/courses 200 in 2158ms :: []
+2025-12-28 10:50:18.82
+27cb8d83
+System
+system: received signal terminated
+2025-12-28 10:50:18.83
+27cb8d83
+System
+command finished with error [node ./dist/index.cjs]: signal: terminated
+2025-12-28 10:50:18.87
+27cb8d83
+System
+main done, exiting
+2025-12-28 10:51:17.80
+d6ffdc99
+System
+starting up user application
+2025-12-28 10:51:17.80
+d6ffdc99
+System
+forwarding local port 5000 to external port 80 (mapped as 1104)
+2025-12-28 10:51:17.80
+d6ffdc99
+System
+metasidecar: loaded enterprise status from environment is_enterprise=false
+2025-12-28 10:51:18.39
+d6ffdc99
+User
+3:51:18 PM [express] serving on port 5000
+2025-12-28 10:51:21.71
+d6ffdc99
+System
+metasidecar: loaded enterprise status from environment is_enterprise=false
+2025-12-28 10:51:21.71
+d6ffdc99
+System
+starting up user application
+2025-12-28 10:51:21.71
+d6ffdc99
+System
+forwarding local port 5000 to external port 80 (mapped as 1104)
+2025-12-28 10:51:22.29
+d6ffdc99
+User
+3:51:22 PM [express] serving on port 5000
+2025-12-28 10:51:39.06
+d6ffdc99
+User
+3:51:39 PM [express] GET /api/courses 200 in 179ms :: []
+2025-12-28 10:52:13.55
+d6ffdc99
+User
+3:52:13 PM [express] GET /api/courses 200 in 155ms :: []
+2025-12-28 10:52:20.60
+d6ffdc99
+User
+3:52:20 PM [express] GET /api/courses 200 in 23ms :: []
+2025-12-28 10:52:26.88
+d6ffdc99
+User

@@ -1,0 +1,716 @@
+```ts
+// routes.ts (drop-in replacement for your current file)
+//
+// ✅ Fixes implemented:
+// - Seed only in dev (or when explicitly enabled), idempotent by slug
+// - Strong request validation via Zod everywhere
+// - Stripe checkout accepts ONLY courseId (server looks up correct priceId)
+// - Stripe webhook with signature verification creates enrollment + payment record
+// - /verify-session actually verifies Stripe session status (not just "enrollment exists")
+// - KYC: strict schema, payload size control, encrypt-at-rest, no auto-verify
+// - RBAC helpers (admin/instructor/ta-ready), safer base URL from env
+// - Adds /api/events (minimal growth analytics collector)
+// - Adds referralCode issuance + UTM capture hooks (lightweight)
+//
+// ⚠️ Requires small schema/storage additions (listed at bottom).
+
+import type { Express, Request, Response, NextFunction } from "express";
+import express from "express";
+import crypto from "crypto";
+import Stripe from "stripe";
+import { type Server } from "http";
+import { z } from "zod";
+
+import { storage } from "./storage";
+import { isAuthenticated } from "./replit_integrations/auth";
+import { db } from "./db";
+import { courses as coursesTable } from "@shared/schema"; // keep your existing schema import
+import { eq } from "drizzle-orm";
+
+/** -----------------------------
+ * Environment
+ * ------------------------------ */
+const APP_BASE_URL = process.env.APP_BASE_URL; // e.g. https://tspan.mrdu.edu.in
+const NODE_ENV = process.env.NODE_ENV || "development";
+
+const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY;
+const STRIPE_WEBHOOK_SECRET = process.env.STRIPE_WEBHOOK_SECRET;
+
+if (!STRIPE_SECRET_KEY) {
+  console.warn("[WARN] STRIPE_SECRET_KEY is not set. Stripe endpoints will fail.");
+}
+const stripe = STRIPE_SECRET_KEY
+  ? new Stripe(STRIPE_SECRET_KEY, { apiVersion: "2024-06-20" as any })
+  : (null as any);
+
+/**
+ * 32-byte (256-bit) key encoded as base64. Generate once and store as secret.
+ * node -e "console.log(require('crypto').randomBytes(32).toString('base64'))"
+ */
+const KYC_ENCRYPTION_KEY_B64 = process.env.KYC_ENCRYPTION_KEY;
+
+/** -----------------------------
+ * Helpers: base URL
+ * ------------------------------ */
+function getBaseUrl(req: Request) {
+  // Safer than trusting Host headers
+  if (APP_BASE_URL && /^https?:\/\//i.test(APP_BASE_URL)) return APP_BASE_URL.replace(/\/+$/, "");
+  // fallback (dev only)
+  const proto = req.protocol;
+  const host = req.get("host") || "localhost";
+  return `${proto}://${host}`.replace(/\/+$/, "");
+}
+
+/** -----------------------------
+ * Helpers: RBAC
+ * ------------------------------ */
+type Role = "student" | "ta" | "instructor" | "admin" | "partner_admin";
+function requireRole(allowed: Role[]) {
+  return async (req: any, res: Response, next: NextFunction) => {
+    try {
+      const userId = req.user?.claims?.sub;
+      if (!userId) return res.status(401).json({ message: "Unauthorized" });
+
+      const profile = await storage.getUserProfile(userId);
+      const role = (profile?.role || "student") as Role;
+
+      if (!allowed.includes(role)) {
+        return res.status(403).json({ message: "Forbidden", required: allowed, role });
+      }
+      (req as any).profile = profile;
+      next();
+    } catch (e) {
+      console.error("[RBAC] Error:", e);
+      res.status(500).json({ message: "Authorization failed" });
+    }
+  };
+}
+
+/** -----------------------------
+ * Helpers: Encryption (KYC)
+ * ------------------------------ */
+function requireKycKey() {
+  if (!KYC_ENCRYPTION_KEY_B64) {
+    throw new Error("KYC_ENCRYPTION_KEY is not configured (base64 32 bytes)");
+  }
+  const key = Buffer.from(KYC_ENCRYPTION_KEY_B64, "base64");
+  if (key.length !== 32) throw new Error("KYC_ENCRYPTION_KEY must decode to 32 bytes");
+  return key;
+}
+
+function encryptJson(obj: any) {
+  const key = requireKycKey();
+  const iv = crypto.randomBytes(12);
+  const cipher = crypto.createCipheriv("aes-256-gcm", key, iv);
+  const plaintext = Buffer.from(JSON.stringify(obj), "utf8");
+  const ciphertext = Buffer.concat([cipher.update(plaintext), cipher.final()]);
+  const tag = cipher.getAuthTag();
+
+  // compact envelope
+  return Buffer.concat([iv, tag, ciphertext]).toString("base64");
+}
+
+/** -----------------------------
+ * Seed: dev-only, idempotent
+ * ------------------------------ */
+const seedCourse = z.object({
+  slug: z.string().min(3).max(80).regex(/^[a-z0-9-]+$/),
+  title: z.string().min(3).max(200),
+  description: z.string().min(10).max(2000),
+  category: z.string().min(2).max(60),
+  duration: z.string().min(2).max(40),
+  price: z.number().int().nonnegative(),
+  level: z.enum(["beginner", "intermediate", "advanced"]),
+  imageUrl: z.string().optional(),
+  tags: z.array(z.string().min(1).max(40)).default([]),
+  curriculum: z.any(), // keep flexible; consider a strict schema later
+  // Use real timestamps later (cohorts). For now "upcoming" label.
+  startDate: z.string().optional(),
+  endDate: z.string().optional(),
+  // Stripe mapping MUST exist to prevent priceId/courseId mismatch
+  stripePriceId: z.string().min(4).optional(),
+});
+
+async function autoSeedIfEmpty() {
+  // Only seed in development OR when explicitly enabled
+  const allowSeed = NODE_ENV === "development" || process.env.ALLOW_PROD_SEED === "true";
+  if (!allowSeed) return;
+
+  const existing = await storage.getCourses();
+  if (existing.length > 0) {
+    console.log(`[Seed] Found ${existing.length} courses; skipping.`);
+    return;
+  }
+
+  console.log("[Seed] DB empty, seeding courses (dev-only).");
+
+  const seedCourses = [
+    {
+      slug: "dns-security-tcpwave-ddi",
+      title: "DNS Security & TCPWave DDI",
+      description:
+        "Master DNS security fundamentals and TCPWave's DDI platform. Learn DNS tunneling detection, fast-flux identification, and enterprise-grade DNS operations.",
+      category: "DNS Security",
+      duration: "10 Weekends",
+      price: 2500,
+      level: "advanced",
+      imageUrl: "/attached_assets/generated_images/dns-security-visualization_af5e47c0.png",
+      tags: ["DNS", "TCPWave", "DDI", "Cybersecurity"],
+      curriculum: {
+        weeks: [
+          { title: "Week 1-2: DNS Architecture & TCPWave Fundamentals", topics: ["DNS protocol deep-dive", "TCPWave DDI setup", "Zone management"] },
+          { title: "Week 3-4: DNS Threat Landscape", topics: ["DNS tunneling", "Fast-flux networks", "DDoS via DNS"] },
+          { title: "Week 5-6: TCPWave Security Features", topics: ["DNSSEC implementation", "RPZ", "Threat intel feeds"] },
+          { title: "Week 7-8: SOC Operations", topics: ["Monitoring", "Incident response", "Forensics"] },
+          { title: "Week 9-10: Capstone", topics: ["Threat hunting", "Hardening", "Certification"] },
+        ],
+      },
+      startDate: "Upcoming",
+      endDate: "Upcoming",
+      // stripePriceId: "price_..." // add later
+    },
+    // Add more as needed with slug + stripePriceId mapping
+  ].map((c) => seedCourse.parse(c));
+
+  // Idempotent insert by slug (requires unique index on slug)
+  for (const c of seedCourses) {
+    await storage.upsertCourseBySlug(c); // <-- REQUIRED storage method (see bottom)
+  }
+
+  console.log(`[Seed] Seeded ${seedCourses.length} courses successfully.`);
+}
+
+/** -----------------------------
+ * Validation schemas
+ * ------------------------------ */
+const zCourseId = z.string().min(1).max(64);
+const zPriceId = z.string().min(3).max(128);
+
+const zCheckoutBody = z.object({
+  courseId: zCourseId,
+});
+
+const zEnrollmentAdminBody = z.object({
+  courseId: zCourseId,
+  targetUserId: z.string().min(1).max(128).optional(),
+});
+
+const zStripeVerifyQuery = z.object({
+  courseId: zCourseId,
+  sessionId: z.string().min(8).max(256).optional(),
+});
+
+const zApplicationBody = z.any(); // keep using your shared schema in storage; this is a placeholder
+
+const kycSchema = z.object({
+  fullName: z.string().min(2).max(120),
+  dateOfBirth: z.string().min(6).max(20), // consider ISO date validation on frontend + here
+  nationality: z.string().min(2).max(60),
+  idType: z.enum(["passport", "national_id", "driver_license", "other"]),
+  idNumber: z.string().min(4).max(40),
+  address: z.string().min(5).max(200),
+  city: z.string().min(2).max(80),
+  country: z.string().min(2).max(80),
+  phone: z.string().min(6).max(30).optional(),
+}).strict();
+
+const zKycBody = z.object({
+  kycData: kycSchema,
+});
+
+const zEventBody = z.object({
+  name: z.string().min(2).max(80),
+  properties: z.record(z.any()).optional(),
+  ts: z.number().int().optional(),
+});
+
+/** -----------------------------
+ * Main
+ * ------------------------------ */
+export async function registerRoutes(httpServer: Server, app: Express): Promise<Server> {
+  // Safer JSON limit to prevent large-body abuse (especially on KYC)
+  app.use(express.json({ limit: "200kb" }));
+
+  // Seed (dev-only)
+  await autoSeedIfEmpty();
+
+  /** Public: list courses */
+  app.get("/api/courses", async (_req, res) => {
+    try {
+      const list = await storage.getCourses();
+      res.json(list);
+    } catch (e) {
+      console.error("[Courses] list error:", e);
+      res.status(500).json({ message: "Failed to fetch courses" });
+    }
+  });
+
+  /** Public: get course */
+  app.get("/api/courses/:id", async (req, res) => {
+    try {
+      const id = zCourseId.parse(req.params.id);
+      const course = await storage.getCourse(id);
+      if (!course) return res.status(404).json({ message: "Course not found" });
+      res.json(course);
+    } catch (e) {
+      console.error("[Courses] get error:", e);
+      res.status(500).json({ message: "Failed to fetch course" });
+    }
+  });
+
+  /** Protected: profile (auto-create) */
+  app.get("/api/profile", isAuthenticated, async (req: any, res) => {
+    try {
+      const userId = req.user.claims.sub;
+      let profile = await storage.getUserProfile(userId);
+
+      if (!profile) {
+        // Minimal profile + referralCode creation
+        const referralCode = crypto.randomBytes(6).toString("hex"); // simple
+        profile = await storage.createUserProfile({
+          userId,
+          role: "student",
+          kycStatus: "not_started",
+          referralCode,
+          utm: null,
+        });
+      }
+      res.json(profile);
+    } catch (e) {
+      console.error("[Profile] get error:", e);
+      res.status(500).json({ message: "Failed to fetch profile" });
+    }
+  });
+
+  /** Protected: capture UTM (growth) */
+  app.post("/api/profile/utm", isAuthenticated, async (req: any, res) => {
+    try {
+      const userId = req.user.claims.sub;
+      const utm = z
+        .object({
+          utm_source: z.string().max(120).optional(),
+          utm_medium: z.string().max(120).optional(),
+          utm_campaign: z.string().max(120).optional(),
+          utm_term: z.string().max(120).optional(),
+          utm_content: z.string().max(120).optional(),
+          ref: z.string().max(120).optional(), // referral code
+        })
+        .strict()
+        .parse(req.body);
+
+      const updated = await storage.updateUserProfile(userId, { utm });
+      res.json(updated);
+    } catch (e: any) {
+      if (e instanceof z.ZodError) return res.status(400).json({ message: "Invalid data", errors: e.errors });
+      console.error("[Profile] utm error:", e);
+      res.status(500).json({ message: "Failed to save UTM" });
+    }
+  });
+
+  /** Protected: update KYC (encrypted, not auto-verified) */
+  app.patch("/api/profile/kyc", isAuthenticated, async (req: any, res) => {
+    try {
+      const userId = req.user.claims.sub;
+      const { kycData } = zKycBody.parse(req.body);
+
+      // Ensure profile exists
+      let profile = await storage.getUserProfile(userId);
+      if (!profile) {
+        const referralCode = crypto.randomBytes(6).toString("hex");
+        profile = await storage.createUserProfile({
+          userId,
+          role: "student",
+          kycStatus: "not_started",
+          referralCode,
+          utm: null,
+        });
+      }
+
+      // Encrypt at rest; store only encrypted blob + non-sensitive summary
+      const encrypted = encryptJson(kycData);
+      const summary = {
+        fullName: kycData.fullName,
+        nationality: kycData.nationality,
+        country: kycData.country,
+        idType: kycData.idType,
+        idLast4: kycData.idNumber.slice(-4),
+      };
+
+      const updated = await storage.updateUserProfile(userId, {
+        kycEncrypted: encrypted,
+        kycSummary: summary,
+        kycStatus: "pending_review", // ✅ no auto-verify
+      });
+
+      res.json(updated);
+    } catch (e: any) {
+      if (e instanceof z.ZodError) return res.status(400).json({ message: "Invalid data", errors: e.errors });
+      console.error("[KYC] update error:", e);
+      res.status(500).json({ message: "Failed to update KYC" });
+    }
+  });
+
+  /** Protected: enrollments */
+  app.get("/api/enrollments", isAuthenticated, async (req: any, res) => {
+    try {
+      const userId = req.user.claims.sub;
+      const enrollments = await storage.getEnrollmentsByUser(userId);
+      res.json(enrollments);
+    } catch (e) {
+      console.error("[Enrollments] list error:", e);
+      res.status(500).json({ message: "Failed to fetch enrollments" });
+    }
+  });
+
+  /** Admin: manual enrollment */
+  app.post("/api/enrollments", isAuthenticated, requireRole(["admin"]), async (req: any, res) => {
+    try {
+      const userId = req.user.claims.sub;
+      const { courseId, targetUserId } = zEnrollmentAdminBody.parse(req.body);
+      const enrollUserId = targetUserId || userId;
+
+      // DB-level unique constraint should protect, but we still check
+      const existing = await storage.getEnrollmentsByUser(enrollUserId);
+      if (existing.some((e: any) => e.courseId === courseId)) {
+        return res.status(409).json({ message: "Already enrolled" });
+      }
+
+      const enrollment = await storage.createEnrollment({
+        userId: enrollUserId,
+        courseId,
+        status: "active",
+        source: "admin",
+      });
+
+      res.status(201).json(enrollment);
+    } catch (e: any) {
+      if (e instanceof z.ZodError) return res.status(400).json({ message: "Invalid data", errors: e.errors });
+      console.error("[Admin Enrollment] error:", e);
+      res.status(500).json({ message: "Failed to create enrollment" });
+    }
+  });
+
+  /** Applications (keep your existing behavior but validate body sizes) */
+  app.get("/api/applications", isAuthenticated, async (req: any, res) => {
+    try {
+      const userId = req.user.claims.sub;
+      const applications = await storage.getApplicationsByUser(userId);
+      res.json(applications);
+    } catch (e) {
+      console.error("[Applications] list error:", e);
+      res.status(500).json({ message: "Failed to fetch applications" });
+    }
+  });
+
+  app.post("/api/applications", isAuthenticated, async (req: any, res) => {
+    try {
+      const userId = req.user.claims.sub;
+
+      // If you already have insertApplicationSchema in shared schema, use that in storage layer.
+      // Here we just do a basic sanity check to prevent absurd payloads.
+      const body = z.record(z.any()).parse(req.body);
+      const application = await storage.createApplication({
+        ...body,
+        userId,
+        status: "pending",
+      });
+
+      res.status(201).json(application);
+    } catch (e: any) {
+      if (e instanceof z.ZodError) return res.status(400).json({ message: "Invalid data", errors: e.errors });
+      console.error("[Applications] create error:", e);
+      res.status(500).json({ message: "Failed to create application" });
+    }
+  });
+
+  /** Admin: create course (recommended: enforce slug + stripePriceId mapping) */
+  app.post("/api/admin/courses", isAuthenticated, requireRole(["admin"]), async (req: any, res) => {
+    try {
+      const data = seedCourse.parse(req.body); // reuse strict course schema
+      const created = await storage.upsertCourseBySlug(data);
+      res.status(201).json(created);
+    } catch (e: any) {
+      if (e instanceof z.ZodError) return res.status(400).json({ message: "Invalid data", errors: e.errors });
+      console.error("[Admin Courses] create error:", e);
+      res.status(500).json({ message: "Failed to create course" });
+    }
+  });
+
+  /** -----------------------------
+   * Stripe: checkout (server-trusted priceId)
+   * ------------------------------ */
+  app.post("/api/stripe/checkout", isAuthenticated, async (req: any, res) => {
+    try {
+      if (!stripe) return res.status(500).json({ message: "Stripe not configured" });
+
+      const userId = req.user.claims.sub;
+      const { courseId } = zCheckoutBody.parse(req.body);
+
+      // Always fetch course server-side (never accept priceId from client)
+      const course = await storage.getCourse(courseId);
+      if (!course) return res.status(404).json({ message: "Course not found" });
+
+      const priceId = course.stripePriceId;
+      if (!priceId) {
+        return res.status(400).json({ message: "Course is not purchasable (missing Stripe price mapping)" });
+      }
+
+      // Ensure profile exists
+      let profile = await storage.getUserProfile(userId);
+      if (!profile) {
+        const referralCode = crypto.randomBytes(6).toString("hex");
+        profile = await storage.createUserProfile({
+          userId,
+          role: "student",
+          kycStatus: "not_started",
+          referralCode,
+          utm: null,
+        });
+      }
+
+      // Get or create Stripe customer
+      let customerId = profile.stripeCustomerId;
+      if (!customerId) {
+        const userEmail = req.user.claims.email || `user-${userId}@tspan.edu`;
+        const userName = req.user.claims.name || "T-SPAN Student";
+
+        const customer = await stripe.customers.create({
+          email: userEmail,
+          name: userName,
+          metadata: { userId },
+        });
+
+        await storage.updateUserProfile(userId, { stripeCustomerId: customer.id });
+        customerId = customer.id;
+      }
+
+      const baseUrl = getBaseUrl(req);
+
+      // Create checkout session
+      const session = await stripe.checkout.sessions.create({
+        mode: "payment",
+        customer: customerId,
+        line_items: [{ price: priceId, quantity: 1 }],
+        success_url: `${baseUrl}/checkout/success?courseId=${encodeURIComponent(courseId)}&session_id={CHECKOUT_SESSION_ID}`,
+        cancel_url: `${baseUrl}/courses/${encodeURIComponent(courseId)}`,
+        metadata: {
+          courseId,
+          userId,
+          // You can also attach referral/UTM info here if stored on profile
+        },
+      });
+
+      // Record pending payment (so webhook failures can be recovered)
+      await storage.createPaymentRecord({
+        userId,
+        courseId,
+        stripeCheckoutSessionId: session.id,
+        status: "pending",
+        amount: course.price,
+        currency: "usd",
+      });
+
+      res.json({ url: session.url });
+    } catch (e: any) {
+      if (e instanceof z.ZodError) return res.status(400).json({ message: "Invalid data", errors: e.errors });
+      console.error("[Stripe] checkout error:", e);
+      res.status(500).json({ message: "Failed to create checkout session" });
+    }
+  });
+
+  /** Stripe: verify session (actually checks Stripe + reconciles enrollment) */
+  app.get("/api/stripe/verify-session", isAuthenticated, async (req: any, res) => {
+    try {
+      if (!stripe) return res.status(500).json({ message: "Stripe not configured" });
+
+      const userId = req.user.claims.sub;
+      const { courseId, sessionId } = zStripeVerifyQuery.parse(req.query);
+
+      // If sessionId is provided, verify it
+      if (sessionId) {
+        const session = await stripe.checkout.sessions.retrieve(sessionId);
+
+        if (session?.metadata?.userId && session.metadata.userId !== userId) {
+          return res.status(403).json({ message: "Session does not belong to user" });
+        }
+        if (session?.metadata?.courseId && session.metadata.courseId !== courseId) {
+          return res.status(400).json({ message: "Session does not match course" });
+        }
+
+        const paid = session.payment_status === "paid";
+        if (paid) {
+          // Ensure payment record updated and enrollment exists
+          await storage.updatePaymentBySessionId(session.id, {
+            status: "paid",
+            stripePaymentIntentId: (session.payment_intent as string) || null,
+          });
+
+          const enrollments = await storage.getEnrollmentsByUser(userId);
+          const existing = enrollments.find((e: any) => e.courseId === courseId);
+
+          if (!existing) {
+            // Create enrollment idempotently (unique constraint recommended)
+            const enrollment = await storage.createEnrollment({
+              userId,
+              courseId,
+              status: "active",
+              source: "stripe_verify",
+            });
+            return res.json({ enrolled: true, enrollment, message: "Payment confirmed; enrollment created" });
+          }
+          return res.json({ enrolled: true, enrollment: existing, message: "Payment confirmed; enrollment active" });
+        }
+
+        return res.json({ enrolled: false, message: `Payment status: ${session.payment_status}` });
+      }
+
+      // No sessionId: fallback to enrollment presence
+      const enrollments = await storage.getEnrollmentsByUser(userId);
+      const enrollment = enrollments.find((e: any) => e.courseId === courseId);
+      return res.json({
+        enrolled: Boolean(enrollment),
+        enrollment: enrollment || null,
+        message: enrollment ? "Enrollment active" : "Not enrolled",
+      });
+    } catch (e: any) {
+      if (e instanceof z.ZodError) return res.status(400).json({ message: "Invalid query", errors: e.errors });
+      console.error("[Stripe] verify-session error:", e);
+      res.status(500).json({ message: "Failed to verify session" });
+    }
+  });
+
+  /** Stripe: customer portal */
+  app.post("/api/stripe/portal", isAuthenticated, async (req: any, res) => {
+    try {
+      if (!stripe) return res.status(500).json({ message: "Stripe not configured" });
+
+      const userId = req.user.claims.sub;
+      const profile = await storage.getUserProfile(userId);
+      if (!profile?.stripeCustomerId) return res.status(400).json({ message: "No Stripe customer found" });
+
+      const baseUrl = getBaseUrl(req);
+      const session = await stripe.billingPortal.sessions.create({
+        customer: profile.stripeCustomerId,
+        return_url: `${baseUrl}/dashboard`,
+      });
+
+      res.json({ url: session.url });
+    } catch (e) {
+      console.error("[Stripe] portal error:", e);
+      res.status(500).json({ message: "Failed to create portal session" });
+    }
+  });
+
+  /** Stripe: webhook (RAW BODY REQUIRED) */
+  // IMPORTANT: Stripe webhooks require raw body; do not use express.json here.
+  app.post(
+    "/api/stripe/webhook",
+    express.raw({ type: "application/json" }),
+    async (req: Request, res: Response) => {
+      try {
+        if (!stripe) return res.status(500).send("Stripe not configured");
+        if (!STRIPE_WEBHOOK_SECRET) return res.status(500).send("Missing STRIPE_WEBHOOK_SECRET");
+
+        const sig = req.headers["stripe-signature"];
+        if (!sig || typeof sig !== "string") return res.status(400).send("Missing stripe-signature");
+
+        const event = stripe.webhooks.constructEvent(req.body, sig, STRIPE_WEBHOOK_SECRET);
+
+        if (event.type === "checkout.session.completed") {
+          const session = event.data.object as Stripe.Checkout.Session;
+          const courseId = session.metadata?.courseId;
+          const userId = session.metadata?.userId;
+
+          if (!courseId || !userId) {
+            console.warn("[Webhook] Missing metadata; ignoring");
+            return res.status(200).json({ received: true });
+          }
+
+          // Update payment record
+          await storage.updatePaymentBySessionId(session.id, {
+            status: session.payment_status === "paid" ? "paid" : "unknown",
+            stripePaymentIntentId: (session.payment_intent as string) || null,
+          });
+
+          // Create enrollment idempotently
+          if (session.payment_status === "paid") {
+            await storage.ensureEnrollment(userId, courseId); // <-- REQUIRED (idempotent)
+          }
+        }
+
+        res.json({ received: true });
+      } catch (err: any) {
+        console.error("[Stripe Webhook] Error:", err?.message || err);
+        res.status(400).send(`Webhook Error: ${err?.message || "unknown"}`);
+      }
+    }
+  );
+
+  /** Growth: minimal event collector */
+  app.post("/api/events", isAuthenticated, async (req: any, res) => {
+    try {
+      const userId = req.user.claims.sub;
+      const ev = zEventBody.parse(req.body);
+
+      await storage.writeEvent({
+        userId,
+        name: ev.name,
+        properties: ev.properties || {},
+        ts: ev.ts || Date.now(),
+      });
+
+      res.status(201).json({ ok: true });
+    } catch (e: any) {
+      if (e instanceof z.ZodError) return res.status(400).json({ message: "Invalid event", errors: e.errors });
+      console.error("[Events] error:", e);
+      res.status(500).json({ message: "Failed to write event" });
+    }
+  });
+
+  return httpServer;
+}
+
+/**
+ * -----------------------------
+ * REQUIRED small schema/storage updates (quick + worth it)
+ * -----------------------------
+ *
+ * 1) Courses table:
+ *    - add `slug` (unique)
+ *    - add `stripePriceId` (string, nullable)
+ *    - (optional) enforce `title` unique if you want
+ *
+ * 2) Enrollments table:
+ *    - add unique index on (userId, courseId)
+ *    - add `source` (admin / stripe_webhook / stripe_verify)
+ *
+ * 3) User profiles table:
+ *    - add `referralCode` (unique)
+ *    - add `utm` (json)
+ *    - add `kycEncrypted` (text)
+ *    - add `kycSummary` (json)
+ *    - tighten `kycStatus` enum: not_started | pending_review | verified | rejected
+ *
+ * 4) Payments table (new):
+ *    - id, userId, courseId, stripeCheckoutSessionId (unique), stripePaymentIntentId, status, amount, currency, createdAt
+ *
+ * 5) Events table (new, optional but recommended for growth):
+ *    - id, userId, name, properties(json), ts, createdAt
+ *
+ * 6) Storage methods you must add (simple wrappers):
+ *    - upsertCourseBySlug(course)
+ *    - createPaymentRecord(payload)
+ *    - updatePaymentBySessionId(sessionId, patch)
+ *    - ensureEnrollment(userId, courseId)  // idempotent: insert on conflict do nothing
+ *    - writeEvent(event)
+ *
+ * -----------------------------
+ * ENV VARS to set in Replit Secrets:
+ * -----------------------------
+ * APP_BASE_URL=https://<your-domain>
+ * STRIPE_SECRET_KEY=sk_live_...
+ * STRIPE_WEBHOOK_SECRET=whsec_...
+ * KYC_ENCRYPTION_KEY=<base64 32 bytes>
+ * (optional) ALLOW_PROD_SEED=true   // only if you explicitly want seeding in prod
+ */
+```
