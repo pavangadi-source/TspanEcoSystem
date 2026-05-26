@@ -140,9 +140,27 @@ import DPDPCompliance from "@/pages/tracks/DPDPCompliance";
 import NCIIPCCertification from "@/pages/tracks/NCIIPCCertification";
 import CybersecurityGovernance from "@/pages/tracks/CybersecurityGovernance";
 
+// Raiffeisen Real Estate Finance AI Command Center — strategic AI concept demo
+import RaiffeisenLanding from "@/pages/raiffeisen/Landing";
+import RaiffeisenCommandCenter from "@/pages/raiffeisen/CommandCenter";
+import RaiffeisenKnowledgeGraph from "@/pages/raiffeisen/KnowledgeGraphPage";
+import RaiffeisenDealDigitalTwin from "@/pages/raiffeisen/DealDigitalTwin";
+import RaiffeisenBeforeAfter from "@/pages/raiffeisen/BeforeAfter";
+import RaiffeisenExecutiveBrief from "@/pages/raiffeisen/ExecutiveBriefPage";
+import RaiffeisenSSDLC from "@/pages/raiffeisen/SSDLCPage";
+
 function Router() {
   return (
     <Switch>
+      {/* Raiffeisen NÖ-Wien — Real Estate Finance AI Command Center (concept demo) */}
+      <Route path="/raiffeisen" component={RaiffeisenLanding} />
+      <Route path="/raiffeisen/command-center" component={RaiffeisenCommandCenter} />
+      <Route path="/raiffeisen/knowledge-graph" component={RaiffeisenKnowledgeGraph} />
+      <Route path="/raiffeisen/deal-digital-twin" component={RaiffeisenDealDigitalTwin} />
+      <Route path="/raiffeisen/before-after" component={RaiffeisenBeforeAfter} />
+      <Route path="/raiffeisen/executive-brief" component={RaiffeisenExecutiveBrief} />
+      <Route path="/raiffeisen/ssdlc" component={RaiffeisenSSDLC} />
+
       {/* Core routes */}
       <Route path="/" component={Home} />
       <Route path="/login" component={Login} />
